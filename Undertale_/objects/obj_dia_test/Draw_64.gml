@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-draw_rectangle(1, 420, 1366, 768, true);
+draw_rectangle_colour(1, 420, 1366, 768, c_black, c_black, c_black, c_black, true);
 if(string_length(Dialog_List[0].Text) > Current_Char)
 {
 Current_Char ++;

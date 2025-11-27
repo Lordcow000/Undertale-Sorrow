@@ -3,9 +3,27 @@
 
 //full_text is temporary, but for now we can use it to test
 //Any '#'s indicate a newline
-full_text = "OMG it's working, this is great#New line"; 
+Dialog_List = [];
+Dialog = 
+{
+Text: "Hyper light drifter is peak"
+//more stuff will be added like talking sprites
+}
+array_push(Dialog_List, Dialog);
+Dialog = 
+{
+Text: "You should play it"
+//more stuff will be added like talking sprites
+}
+array_push(Dialog_List, Dialog);
+Dialog = 
+{
+Text: "It was also made in Gamemaker"
+//more stuff will be added like talking sprites
+}
+array_push(Dialog_List, Dialog);
+current_char = 0;
 
-cutoff = 0;
-counter = 0;
+
 
 text_speed = 2; //how fast the text gets typed

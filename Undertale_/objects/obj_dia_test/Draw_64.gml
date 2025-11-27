@@ -16,3 +16,4 @@ draw_set_font(Font1);
 //this draws the text, since it updates every frame the message will procedulary(is that how you spell it?) type
 draw_text_ext(88,200,string_hash_to_newline(message_actual),18,-1);
 
+//a

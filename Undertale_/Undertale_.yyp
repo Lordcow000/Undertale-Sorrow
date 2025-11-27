@@ -34,6 +34,7 @@
     {"id":{"name":"obj_interactcollision","path":"objects/obj_interactcollision/obj_interactcollision.yy",},},
     {"id":{"name":"obj_interaction","path":"objects/obj_interaction/obj_interaction.yy",},},
     {"id":{"name":"obj_mainchara","path":"objects/obj_mainchara/obj_mainchara.yy",},},
+    {"id":{"name":"obj_npc","path":"objects/obj_npc/obj_npc.yy",},},
     {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},},
     {"id":{"name":"Room0","path":"rooms/Room0/Room0.yy",},},
     {"id":{"name":"scr_text_counter_overworld","path":"scripts/scr_text_counter_overworld/scr_text_counter_overworld.yy",},},

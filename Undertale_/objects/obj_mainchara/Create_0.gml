@@ -126,3 +126,7 @@ y += ySpeed;
 
 State = State_Overworld;
 
+State_Talking = function()
+{
+
+}

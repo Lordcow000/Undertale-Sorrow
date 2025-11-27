@@ -1,12 +1,13 @@
 {
   "$GMObject":"",
-  "%Name":"obj_interaction",
+  "%Name":"obj_npc",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_interactcollision","path":"objects/obj_interactcollision/obj_interactcollision.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_interaction",
+  "name":"obj_npc",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -26,15 +27,13 @@
   "physicsShape":1,
   "physicsShapePoints":[],
   "physicsStartAwake":true,
-  "properties":[
-    {"$GMObjectProperty":"v2","%Name":"Dialogue","filters":[],"listItems":[],"multiselect":false,"name":"Dialogue","rangeEnabled":false,"rangeMax":10.0,"rangeMin":0.0,"resourceType":"GMObjectProperty","resourceVersion":"2.0","value":"\"Insert somethin here idk lol\"","varType":2,},
-  ],
+  "properties":[],
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
-  "solid":false,
+  "solid":true,
   "spriteId":{
-    "name":"spr_interaction",
-    "path":"sprites/spr_interaction/spr_interaction.yy",
+    "name":"temp_idle_down",
+    "path":"sprites/temp_idle_down/temp_idle_down.yy",
   },
   "spriteMaskId":null,
   "visible":true,

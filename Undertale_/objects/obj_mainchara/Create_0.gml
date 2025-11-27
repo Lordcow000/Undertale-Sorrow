@@ -30,12 +30,12 @@ last_dir = "down";
 
 State_Overworld = function()
 {
-/*how these two work is keyboard_check_direct is either positive (the key is being pressed(1)) or neutral (the key is not being pressed (0))
+/*how these two work is keyboard_check is either positive (the key is being pressed(1)) or neutral (the key is not being pressed (0))
 it then subtracts these values to get which direction you are moving. For example, if left is being pressed but not right it would return -1,
 meaning in xSpeed = xDirection * Speed it would be xSpeed = -1 * Speed (5) making the player move left.
 */
-var xDirection = keyboard_check_direct(vk_right) - keyboard_check_direct(vk_left);
-var yDirection = keyboard_check_direct(vk_down) - keyboard_check_direct(vk_up);
+var xDirection = keyboard_check(vk_right) - keyboard_check(vk_left);
+var yDirection = keyboard_check(vk_down) - keyboard_check(vk_up);
 
 
 //these get how long a direction key has been held down for
@@ -94,7 +94,7 @@ else
 	}
 }
 
-if keyboard_check(vk_shift) or keyboard_check(ord("X"))
+if (keyboard_check(vk_shift) or keyboard_check(ord("X")))
 {
 	Run = true
 }
@@ -114,7 +114,7 @@ var interactready = function()
 {
 	ready = true
 }
-if keyboard_check_pressed(ord("Z")) and ready = true
+if (keyboard_check_pressed(ord("Z")) and ready = true)
 {
 	switch(last_dir)
 	{
@@ -168,5 +168,6 @@ y += ySpeed;
 }
 
 State = State_Overworld;
+
 
 

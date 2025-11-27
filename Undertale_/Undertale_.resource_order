@@ -10,6 +10,8 @@
     {"name":"Moving","order":2,"path":"folders/Sprites/Player/Moving.yy",},
   ],
   "ResourceOrderSettings":[
+    {"name":"obj_wall","order":1,"path":"objects/obj_wall/obj_wall.yy",},
+    {"name":"spr_collision","order":3,"path":"sprites/spr_collision/spr_collision.yy",},
     {"name":"temp_idle_left","order":2,"path":"sprites/temp_idle_left/temp_idle_left.yy",},
     {"name":"temp_idle_right","order":1,"path":"sprites/temp_idle_right/temp_idle_right.yy",},
     {"name":"temp_idle_up","order":3,"path":"sprites/temp_idle_up/temp_idle_up.yy",},

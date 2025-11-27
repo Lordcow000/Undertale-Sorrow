@@ -29,8 +29,10 @@
   "name":"Undertale_",
   "resources":[
     {"id":{"name":"obj_mainchara","path":"objects/obj_mainchara/obj_mainchara.yy",},},
+    {"id":{"name":"obj_wall","path":"objects/obj_wall/obj_wall.yy",},},
     {"id":{"name":"Room0","path":"rooms/Room0/Room0.yy",},},
     {"id":{"name":"bg_room0","path":"sprites/bg_room0/bg_room0.yy",},},
+    {"id":{"name":"spr_collision","path":"sprites/spr_collision/spr_collision.yy",},},
     {"id":{"name":"temp_idle_down","path":"sprites/temp_idle_down/temp_idle_down.yy",},},
     {"id":{"name":"temp_idle_left","path":"sprites/temp_idle_left/temp_idle_left.yy",},},
     {"id":{"name":"temp_idle_right","path":"sprites/temp_idle_right/temp_idle_right.yy",},},

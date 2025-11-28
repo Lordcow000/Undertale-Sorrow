@@ -40,7 +40,7 @@ Type: "Food",
 Value: 10
 }
 
-array_push(global.Game_Data, Item);
+array_push(global.Game_Data.Inventory_1, Item);
 
 State_Menu = 
 {
@@ -223,5 +223,6 @@ State_Talking = function()
 {
 
 }
+
 
 

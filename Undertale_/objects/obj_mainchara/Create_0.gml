@@ -25,6 +25,8 @@ hold_down  = 0;
 
 last_dir = "down";
 
+Inventory_Index = 0;
+
 // move this code later
 global.Game_Data = 
 {
@@ -42,10 +44,32 @@ array_push(global.Game_Data, Item);
 
 State_Menu = 
 {
+var Down = keyboard_check_pressed(vk_down);
+var Up = keyboard_check_pressed(vk_up);
+var _inventory = global.Game_Data.Inventory_1;
 if(keyboard_check(ord("E")))
 {
 State = State_Overworld;
 }
+
+if(Down)
+{
+Inventory_Index ++;
+if(Inventory_Index > array_length(_inventory) - 1)
+{
+Inventory_Index = 0;
+}
+}
+
+if(Up)
+{
+Inventory_Index --;
+if(Inventory_Index < 0)
+{
+Inventory_Index = array_length(_inventory) - 1;
+}
+}
+
 }
 
 
@@ -199,4 +223,5 @@ State_Talking = function()
 {
 
 }
+
 

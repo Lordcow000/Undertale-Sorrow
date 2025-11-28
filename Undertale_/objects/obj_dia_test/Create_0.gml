@@ -25,5 +25,4 @@ array_push(Dialog_List, Dialog);
 Current_Char = 0;
 
 
-
 text_speed = 2; //how fast the text gets typed

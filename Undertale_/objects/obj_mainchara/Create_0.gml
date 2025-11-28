@@ -30,12 +30,12 @@ last_dir = "down";
 
 State_Overworld = function()
 {
-/*how these two work is keyboard_check_direct is either positive (the key is being pressed(1)) or neutral (the key is not being pressed (0))
+/*how these two work is keyboard_check is either positive (the key is being pressed(1)) or neutral (the key is not being pressed (0))
 it then subtracts these values to get which direction you are moving. For example, if left is being pressed but not right it would return -1,
 meaning in xSpeed = xDirection * Speed it would be xSpeed = -1 * Speed (5) making the player move left.
 */
-var xDirection = keyboard_check_direct(vk_right) - keyboard_check_direct(vk_left);
-var yDirection = keyboard_check_direct(vk_down) - keyboard_check_direct(vk_up);
+var xDirection = keyboard_check(vk_right) - keyboard_check(vk_left);
+var yDirection = keyboard_check(vk_down) - keyboard_check(vk_up);
 
 
 //these get how long a direction key has been held down for
@@ -92,6 +92,49 @@ else
 			sprite_index = d_idle;
 			break;
 	}
+}
+
+if (keyboard_check(vk_shift) or keyboard_check(ord("X")))
+{
+	Run = true
+}
+else
+{
+	Run = false
+}
+if Run = true
+{
+	Speed = 3;
+}
+else
+{
+	Speed = 1;
+}
+var interactready = function()
+{
+	ready = true
+}
+if (keyboard_check_pressed(ord("Z")) and ready = true)
+{
+	switch(last_dir)
+	{
+		case "right":
+		instance_create_layer(x + 20, y + 20, "Instances", obj_interactcollision)
+		break
+		case "left":
+		instance_create_layer(x - 20, y + 20, "Instances", obj_interactcollision)
+		break
+		case "up":
+		instance_create_layer(x, y, "Instances", obj_interactcollision)
+		break
+		case "down":
+		instance_create_layer(x, y + 40, "Instances", obj_interactcollision)
+		break
+	}
+	ready = false
+	var cooldowninteract = time_source_create(time_source_global, 0.5, time_source_units_seconds, interactready)
+	time_source_start(cooldowninteract)
+
 }
 
 /*having xSpeed and ySpeed variables are useful as it makes sure the player's speed stays consistent throughout the step

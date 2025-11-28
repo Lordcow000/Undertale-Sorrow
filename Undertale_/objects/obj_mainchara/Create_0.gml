@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+Health = 20;
 ready = true
 Run = false
 xSpeed = 0;
@@ -24,7 +25,28 @@ hold_down  = 0;
 
 last_dir = "down";
 
+// move this code later
+global.Game_Data = 
+{
+Inventory_1: []
+}
 
+Item = 
+{
+Name: "Lime",
+Type: "Food",
+Value: 10
+}
+
+array_push(global.Game_Data, Item);
+
+State_Menu = 
+{
+if(keyboard_check(ord("E")))
+{
+State = State_Overworld;
+}
+}
 
 
 
@@ -143,6 +165,10 @@ and can be modified
 xSpeed = xDirection * Speed;
 ySpeed = yDirection * Speed;
 
+if(keyboard_check(ord("E")))
+{
+State = State_Menu;
+}
 
 //call these variables (or at least x += xSpeed and y += ySpeed) last or after any speed checks are made.
 
@@ -173,3 +199,4 @@ State_Talking = function()
 {
 
 }
+

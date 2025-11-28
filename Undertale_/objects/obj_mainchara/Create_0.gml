@@ -42,7 +42,7 @@ Value: 10
 
 array_push(global.Game_Data.Inventory_1, Item);
 
-State_Menu = 
+State_Menu = function()
 {
 var Down = keyboard_check_pressed(vk_down);
 var Up = keyboard_check_pressed(vk_up);
@@ -223,6 +223,7 @@ State_Talking = function()
 {
 
 }
+
 
 
 

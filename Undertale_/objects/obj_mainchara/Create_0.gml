@@ -1,11 +1,22 @@
 Health = 20;
-ready = true
-Run = false
+global.MaxHealth = 20;
+ready = true;
+Run = false;
 xSpeed = 0;
 ySpeed = 0;
 Speed = 1;
 facing = 0;
 Selection = 1;
+global.LOVE = 1;
+global.Attack = 0;
+WeaponAtk = 0;
+global.Defense = 0;
+ArmorDef = 0;
+global.EXP = 0;
+NEXTLV = 10;
+global.Weapon = "Fists";
+global.Armor = "Nothing";
+global.Money = 0;
 
 d_idle = temp_idle_down;
 u_idle = temp_idle_up;
@@ -37,12 +48,25 @@ Item =
 {
 Name: "Lime",
 Type: "Food",
-Value: 10
+Value: 10,
+Description: "A green fruit, really sour.#Heals 10 HP"
 }
 
 array_push(global.Game_Data.Inventory_1, Item);
 
 MenuSelect = ["Item", "Stats", "Cellphone"]
+
+State_Stat = function()
+{
+	if(keyboard_check_pressed(ord("C"))) or (keyboard_check_pressed(vk_control))
+{
+State = State_Overworld;
+}
+if(keyboard_check_pressed(ord("X"))) or (keyboard_check_pressed(vk_shift))
+{
+State = State_Menu
+}
+}
 
 State_Inventory = function()
 {
@@ -87,9 +111,17 @@ if(keyboard_check_pressed(ord("C"))) or (keyboard_check_pressed(ord("X"))) or (k
 {
 	State = State_Overworld
 }
-if((keyboard_check_pressed(ord("Z"))) or (keyboard_check_pressed(vk_enter))) and Menu_Index = 0
+if((keyboard_check_pressed(ord("Z"))) or (keyboard_check_pressed(vk_enter)))
 {
+switch(Menu_Index) 
+{
+	case 0:
 	State = State_Inventory
+	break
+	case 1:
+	State = State_Stat
+	break
+}
 }
 if(Down)
 {

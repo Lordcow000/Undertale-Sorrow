@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-Health = 20;
+global.Health = 20;
 global.MaxHealth = 20;
 ready = true
 Run = false
@@ -11,14 +11,20 @@ facing = 0;
 Selection = 1;
 global.LOVE = 1;
 global.Attack = 0;
-WeaponAtk = 0;
 global.Defense = 0;
-ArmorDef = 0;
 global.EXP = 0;
 NEXTLV = 10;
-global.Weapon = "Fists";
-global.Armor = "Nothing";
 global.Money = 0;
+global.WeaponEquipped =
+{
+	Name: "Fists",
+	Attack: 0
+}
+global.ArmorEquipped =
+{
+	Name: "Nothing",
+	Defense: 0
+}
 
 d_idle = temp_idle_down;
 u_idle = temp_idle_up;
@@ -103,6 +109,21 @@ Inventory_Index = array_length(_inventory) - 1;
 }
 State_Menu = function()
 {
+switch(last_dir)
+{
+		case "right":
+			sprite_index = r_idle;
+			break;
+		case "left": 
+			sprite_index = l_idle;
+			break;
+		case "up":
+			sprite_index = u_idle;
+			break;
+		case "down":
+			sprite_index = d_idle;
+			break;
+	}
 var Down = keyboard_check_pressed(vk_down);
 var Up = keyboard_check_pressed(vk_up);
 if(keyboard_check_pressed(ord("C"))) or (keyboard_check_pressed(ord("X"))) or (keyboard_check_pressed(vk_shift)) or (keyboard_check_pressed(vk_control))
@@ -138,7 +159,6 @@ if(Up)
 	}
 }
 }
-
 
 
 State_Overworld = function()

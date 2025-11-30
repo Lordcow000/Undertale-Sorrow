@@ -1,14 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_mainchara",
+  "%Name":"obj_test_enemy",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":64,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":{"name":"obj_encounter","path":"objects/obj_encounter/obj_encounter.yy",},"eventNum":0,"eventType":4,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_mainchara",
+  "name":"obj_test_enemy",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -33,8 +30,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"temp_idle_down",
-    "path":"sprites/temp_idle_down/temp_idle_down.yy",
+    "name":"spr_notcopyrightedtestenemy",
+    "path":"sprites/spr_notcopyrightedtestenemy/spr_notcopyrightedtestenemy.yy",
   },
   "spriteMaskId":null,
   "visible":true,

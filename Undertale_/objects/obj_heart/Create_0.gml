@@ -64,8 +64,8 @@ State_Fight = function()
 {
 	var up = keyboard_check_pressed(vk_up);
 	var down = keyboard_check_pressed(vk_down);
-	var z = keyboard_check_pressed(ord("Z"));
-	var _x = keyboard_check_pressed(ord("X"));
+	var z = (keyboard_check_pressed(ord("Z")) or keyboard_check_pressed(vk_enter));
+	var _x = (keyboard_check_pressed(ord("X")) or keyboard_check_pressed(vk_shift));
 	
 	if(down)
 	{

@@ -59,26 +59,47 @@ State_Selec = function()
 		break
 	}
 }
+
 State_Fight = function()
 {
-	var up = keyboard_check_pressed(vk_up)
-	var down = keyboard_check_pressed(vk_down)
+	var up = keyboard_check_pressed(vk_up);
+	var down = keyboard_check_pressed(vk_down);
+	var z = keyboard_check_pressed(ord("Z"));
+	var _x = keyboard_check_pressed(ord("X"));
+	
 	if(down)
 	{
-	Attack_Index ++
-	if(Attack_Index > array_length(Enemy_Count) - 1)
-	{
-		Attack_Index = 0
-	}
+		Attack_Index ++
+		if(Attack_Index > array_length(Enemy_Count) - 1)
+		{
+			Attack_Index = 0;
+		}
 	}
 	if(up)
 	{
-		Attack_Index --
-		if Attack_Index < 0
+		Attack_Index --;
+		if (Attack_Index < 0)
 		{
-			Attack_Index = array_length(Enemy_Count) - 1
+			Attack_Index = array_length(Enemy_Count) - 1;
 		}
+	}	
+	if(z)
+	{
+		var enemy = Enemy_Count[Attack_Index]; //Get the enemy
+		enemy._health -= global.Attack; // we'll switch this out for proper attacks eventually
+		if (enemy._health <= 0)
+		{
+			array_delete(Enemy_Count,Attack_Index,1); // removes enemy if dead
+		}
+		show_debug_message(enemy);
+		State = State_Selec;
+		
 	}
+	if(_x)
+	{
+		State = State_Selec;			
+	}
+
 }
 State_Mercy = function()
 {

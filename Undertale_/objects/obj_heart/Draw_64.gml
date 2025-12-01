@@ -31,3 +31,23 @@ if State = State_Selec
 {
 	draw_text_transformed(52, 281, string_hash_to_newline("* You feel like you're not gonna get #copyrighted."), 2, 2, 0)
 }
+
+if State = State_Fight
+{
+
+	
+	array_foreach(Enemy_Count,function(enemy, _index) // Loops through each enemy
+	{
+		if (Attack_Index == _index)
+		{
+			draw_sprite(spr_heart,1,52,275+(_index*30))
+			draw_text_transformed(90, 265+(_index*30), "* "+enemy.name, 2, 2, 0);
+		}
+		else
+		{
+			draw_text_transformed(90, 265+(_index*30), "* "+enemy.name, 2, 2, 0);
+		}
+	})
+		
+	
+}

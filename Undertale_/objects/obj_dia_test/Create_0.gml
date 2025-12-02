@@ -4,6 +4,8 @@
 //full_text is temporary, but for now we can use it to test
 //Any '#'s indicate a newline
 Dialog_List = [];
+Player_Next_State = obj_mainchara.State_Overworld;
+Has_Sprite = 0;
 Dialog = 
 {
 Text: "Hyper light drifter is peak"

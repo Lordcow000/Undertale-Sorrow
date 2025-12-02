@@ -1,12 +1,12 @@
 /// @description Insert description here
 // You can write your code in this editor
-global.Health = 20;
+global.Health = 10;
 global.MaxHealth = 20;
 ready = true
 Run = false
 xSpeed = 0;
 ySpeed = 0;
-Speed = 1;
+Speed = 3;
 facing = 0;
 Selection = 1;
 global.LOVE = 1;
@@ -14,6 +14,9 @@ global.Attack = 10;
 global.Defense = 0;
 global.EXP = 0;
 NEXTLV = 10;
+Current_Item = {};
+Item_Actions = ["USE", "INFO", "DROP"];
+Item_Action_Index = 0;
 global.Money = 0;
 global.WeaponEquipped =
 {
@@ -58,7 +61,25 @@ Item =
 Name: "Lime",
 Type: "Food",
 Value: 10,
-Description: "A green fruit, really sour.#Heals 10 HP"
+Description: "A green fruit, really sour. Heals 10 HP."
+}
+
+array_push(global.Game_Data.Inventory_1, Item);
+Item = 
+{
+Name: "Lemon",
+Type: "Food",
+Value: 20,
+Description: "A yellow fruit, really REALLY sour. Heals 10 HP."
+}
+
+array_push(global.Game_Data.Inventory_1, Item);
+Item = 
+{
+Name: "Lemon Lime Bitters",
+Type: "Food",
+Value: 100,
+Description: "The best drink. Heals 100 HP!"
 }
 
 array_push(global.Game_Data.Inventory_1, Item);
@@ -76,10 +97,13 @@ State = State_Menu
 }
 }
 
+
+
 State_Inventory = function()
 {
 var Down = keyboard_check_pressed(vk_down);
 var Up = keyboard_check_pressed(vk_up);
+var Select = keyboard_check_pressed(ord("Z"));
 var _inventory = global.Game_Data.Inventory_1;
 if(keyboard_check_pressed(ord("C"))) or (keyboard_check_pressed(vk_control))
 {
@@ -87,7 +111,7 @@ State = State_Overworld;
 }
 if(keyboard_check_pressed(ord("X"))) or (keyboard_check_pressed(vk_shift))
 {
-State = State_Menu
+State = State_Menu;
 }
 if(Down)
 {
@@ -106,7 +130,127 @@ Inventory_Index = array_length(_inventory) - 1;
 }
 }
 
+if(Select)
+{
+Current_Item = _inventory[Inventory_Index];
+State = State_Inventory_2;
 }
+
+}
+
+State_Inventory_2 = function()
+{
+var Left = keyboard_check_pressed(vk_left);
+var Right = keyboard_check_pressed(vk_right);
+var Select = keyboard_check_pressed(ord("Z"));
+
+if(Select)
+{
+if(Item_Actions[Item_Action_Index] = "INFO")
+{
+var _dialog = instance_create_layer(x, y, "Instances", obj_dia_test);
+with(_dialog)
+{
+Dialog_List = [];
+Dialog = 
+{
+Text: global.Game_Data.Inventory_1[other.Inventory_Index].Description
+//more stuff will be added like talking sprites
+}
+array_push(Dialog_List, Dialog);
+}
+State = State_Talking;
+show_debug_message(Item_Action_Index);
+}
+}
+
+if(Select)
+{
+if(Item_Actions[Item_Action_Index] = "DROP")
+{
+var _dialog = instance_create_layer(x, y, "Instances", obj_dia_test);
+with(_dialog)
+{
+Dialog_List = [];
+Dialog = 
+{
+Text: "The " + global.Game_Data.Inventory_1[other.Inventory_Index].Name + " was thrown away."
+//more stuff will be added like talking sprites
+}
+array_push(Dialog_List, Dialog);
+}
+State = State_Talking;
+show_debug_message(Item_Action_Index);
+array_delete(global.Game_Data.Inventory_1, Inventory_Index, 1);
+}
+if(Item_Actions[Item_Action_Index] = "USE")
+{
+if(global.Game_Data.Inventory_1[Item_Action_Index].Type = "Food")
+{
+global.Health += global.Game_Data.Inventory_1[Item_Action_Index].Value;
+if(global.Health >= global.MaxHealth)
+{
+global.Health = global.MaxHealth;
+var _dialog = instance_create_layer(x, y, "Instances", obj_dia_test);
+with(_dialog)
+{
+Dialog_List = [];
+Dialog = 
+{
+Text: "The " + global.Game_Data.Inventory_1[other.Inventory_Index].Name + " was consumed. You healed to full!"
+//more stuff will be added like talking sprites
+}
+array_push(Dialog_List, Dialog);
+}
+State = State_Talking;
+show_debug_message(Item_Action_Index);
+array_delete(global.Game_Data.Inventory_1, Inventory_Index, 1);
+}
+else
+{
+var _dialog = instance_create_layer(x, y, "Instances", obj_dia_test);
+with(_dialog)
+{
+Dialog_List = [];
+Dialog = 
+{
+Text: "The " + global.Game_Data.Inventory_1[other.Inventory_Index].Name + " was consumed. You healed " + global.Game_Data.Inventory_1[other.Inventory_Index].Value + " HP!"
+//more stuff will be added like talking sprites
+}
+array_push(Dialog_List, Dialog);
+}
+State = State_Talking;
+show_debug_message(Item_Action_Index);
+array_delete(global.Game_Data.Inventory_1, Inventory_Index, 1);
+}
+}
+}
+}
+
+if(Right)
+{
+Item_Action_Index ++;
+if(Item_Action_Index > array_length(Item_Actions) - 1)
+{
+Item_Action_Index = 0;
+}
+}
+if(Left)
+{
+Item_Action_Index --;
+if(Item_Action_Index < 0)
+{
+Item_Action_Index = array_length(Item_Actions) - 1;
+}
+}
+
+if(keyboard_check_pressed(ord("X"))) or (keyboard_check_pressed(vk_shift))
+{
+State = State_Inventory;
+}
+
+}
+
 State_Menu = function()
 {
 switch(last_dir)
@@ -135,7 +279,11 @@ if((keyboard_check_pressed(ord("Z"))) or (keyboard_check_pressed(vk_enter)))
 switch(Menu_Index) 
 {
 	case 0:
+	if(array_length(global.Game_Data.Inventory_1) != 0)
+	{
 	State = State_Inventory
+	}
+
 	break
 	case 1:
 	State = State_Stat

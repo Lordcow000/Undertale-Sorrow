@@ -50,10 +50,45 @@ if (State = State_Inventory)
 	draw_text_transformed(60, 270, "CELL", 3, 3, 0)
 	draw_rectangle_colour(200, 100, 500, 400, c_black, c_black, c_black, c_black, false)
 	draw_rectangle_colour(200, 100, 500, 400, c_white, c_white, c_white, c_white, true)
-	draw_text_transformed(220, 350, "USE", 2, 2, 0)
-	draw_text_transformed(320, 350, "INFO", 2, 2, 0)
-	draw_text_transformed(420, 350, "DROP", 2, 2, 0)
+	for(var i = 0; i < array_length(Item_Actions); i ++)
+	{
+	draw_text_transformed(225 + 100 * i, 350, Item_Actions[i], 2, 2, 0)
+	}
 	//Arrays aren't my strongest, help me do this
 	//-Migo
+	//gotcha - Wikibell
+	for(var i = 0; i < array_length(global.Game_Data.Inventory_1); i ++)
+	{
+	draw_text_transformed(240, 120 + 30 * i, global.Game_Data.Inventory_1[i].Name, 2, 2, 0)
+	}
 	draw_text_transformed(240, 120, global.Game_Data.Inventory_1[0].Name, 2, 2, 0)
+	
+	draw_sprite(spr_heart, 0, 220, 130 + 30 * Inventory_Index);
+
+}
+if (State = State_Inventory_2)
+{
+	draw_rectangle_colour(16, 160, 160, 330, c_black, c_black, c_black, c_black, false)
+	draw_rectangle_colour(16, 160, 160, 330, c_white, c_white, c_white, c_white, true)
+	draw_set_font(Font1)
+	draw_text_transformed(60, 170, "ITEM", 3, 3, 0)
+	draw_text_transformed(60, 220, "STAT", 3, 3, 0)
+	draw_text_transformed(60, 270, "CELL", 3, 3, 0)
+	draw_rectangle_colour(200, 100, 500, 400, c_black, c_black, c_black, c_black, false)
+	draw_rectangle_colour(200, 100, 500, 400, c_white, c_white, c_white, c_white, true)
+	for(var i = 0; i < array_length(Item_Actions); i ++)
+	{
+	draw_text_transformed(225 + 100 * i, 350, Item_Actions[i], 2, 2, 0)
+	}
+
+	//Arrays aren't my strongest, help me do this
+	//-Migo
+	//gotcha - Wikibell
+	for(var i = 0; i < array_length(global.Game_Data.Inventory_1); i ++)
+	{
+	draw_text_transformed(240, 120 + 30 * i, global.Game_Data.Inventory_1[i].Name, 2, 2, 0)
+	}
+	draw_text_transformed(240, 120, global.Game_Data.Inventory_1[0].Name, 2, 2, 0)
+	
+	draw_sprite(spr_heart, 0, 205 + 100 * Item_Action_Index, 360);
 }

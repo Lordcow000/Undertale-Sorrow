@@ -3,7 +3,7 @@
 show_debug_message(array_length(Dialog_List));
 if(array_length(Dialog_List) < 1)
 {
-obj_mainchara.State = obj_mainchara.State_Overworld;
+obj_mainchara.State = Player_Next_State;
 instance_destroy();
 }
 else
@@ -32,12 +32,19 @@ Current_Char = 0;
 }
 if(array_length(Dialog_List) < 1)
 {
-obj_mainchara.State = obj_mainchara.State_Overworld;
+obj_mainchara.State = Player_Next_State;
 instance_destroy();
 }
 else
 {
 draw_set_colour(c_white);
-draw_text_ext_transformed(browser_width / 4, 330, "* " + string_copy(Dialog_List[0].Text, 1, Current_Char), 20, 220, 2, 2, 0);
+if(Has_Sprite = 1)
+{
+draw_text_ext_transformed(160, 330, "* " + string_copy(Dialog_List[0].Text, 1, Current_Char), 20, 220, 2, 2, 0);
+}
+else
+{
+draw_text_ext_transformed(22, 330, "* " + string_copy(Dialog_List[0].Text, 1, Current_Char), 20, 348, 2, 2, 0);
+}
 }
 }

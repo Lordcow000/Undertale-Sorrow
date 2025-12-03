@@ -57,6 +57,7 @@ if (State = State_Inventory)
 	//Arrays aren't my strongest, help me do this
 	//-Migo
 	//gotcha - Wikibell
+	//Thanks - Migo
 	for(var i = 0; i < array_length(global.Game_Data.Inventory_1); i ++)
 	{
 	draw_text_transformed(240, 120 + 30 * i, global.Game_Data.Inventory_1[i].Name, 2, 2, 0)
@@ -84,6 +85,7 @@ if (State = State_Inventory_2)
 	//Arrays aren't my strongest, help me do this
 	//-Migo
 	//gotcha - Wikibell
+	//Thanks - Migo
 	for(var i = 0; i < array_length(global.Game_Data.Inventory_1); i ++)
 	{
 	draw_text_transformed(240, 120 + 30 * i, global.Game_Data.Inventory_1[i].Name, 2, 2, 0)

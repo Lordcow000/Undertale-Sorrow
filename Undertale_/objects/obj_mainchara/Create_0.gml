@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+encounter = false
 global.Health = 10;
 global.MaxHealth = 20;
 ready = true
@@ -27,6 +28,15 @@ global.ArmorEquipped =
 {
 	Name: "Nothing",
 	Defense: 0
+}
+if encounter = false
+{
+global.EchoLocation =
+{
+	Room: room,
+	X: obj_mainchara.x,
+	Y: obj_mainchara.y,
+}
 }
 
 d_idle = temp_idle_down;

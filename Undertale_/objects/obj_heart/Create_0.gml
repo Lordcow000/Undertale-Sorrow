@@ -13,9 +13,11 @@ Enemy_select_Index = 0;
 Act_Index = 0;
 Mercy_Index = 0;
 Mercy_Select = ["SPARE", "FLEE"]
+ActSelected = false
 
 State_Selec = function()
 {
+	ActSelected = false
 	var right = keyboard_check_pressed(vk_right)
 	var left = keyboard_check_pressed(vk_left)
 	if(right)
@@ -102,6 +104,10 @@ State_Quicktime = function()
 		show_debug_message(enemy);
 		State = State_Selec;
 	}
+	if array_length(Enemy_Count) < 1
+	{
+		room_goto(global.EchoLocation.Room)
+	}
 	
 	Quicktime_Pos += 4;
 	
@@ -109,6 +115,8 @@ State_Quicktime = function()
 	{
 	State = State_Selec;
 	}
+	x = -20
+	y = 65
 }
 
 State_Fight = function()
@@ -155,11 +163,20 @@ State_Fight = function()
 	{
 		State = State_Selec;			
 	}
+	array_foreach(Enemy_Count,function(enemy, _index)
+	{
+		if (Enemy_select_Index == _index)
+		{
+			x = 52
+			y = 275 + (_index*30)
+		}
+	})
 
 }
 
 State_Act_Enemy_Select = function()
 {
+	ActSelected = false
 	var up = keyboard_check_pressed(vk_up);
 	var down = keyboard_check_pressed(vk_down);
 	var z = (keyboard_check_pressed(ord("Z")) or keyboard_check_pressed(vk_enter));
@@ -189,6 +206,14 @@ State_Act_Enemy_Select = function()
 	{
 		State = State_Selec;			
 	}
+		array_foreach(Enemy_Count,function(enemy, _index) // Loops through each enemy
+	{
+		if (Enemy_select_Index == _index)
+		{
+			x = 52
+			y = 275 + (_index*30)
+		}
+	})
 }
 
 State_Act_Select = function()
@@ -219,12 +244,27 @@ State_Act_Select = function()
 	if(z)
 	{
 		//Nothing yet
+		//Something yet
+		ActSelected = true
 	}
 	if(_x)
 	{
 		State = State_Act_Enemy_Select;			
 	}
-	
+		array_foreach(enemy.act_actions,function(act, _index) // Loops through each enemy
+	{
+
+		if (Act_Index == _index) and ActSelected = false
+		{
+			x = 52
+			y = 275 + (_index*30)
+		}
+		if ActSelected = true
+		{
+			x = -20
+			y = 65
+		}
+	})
 }
 
 State_Mercy = function()

@@ -51,6 +51,32 @@ draw_text_ext_transformed(52, 265, "* " + string_copy(Dialog, 1, Current_Char), 
 	//could have just deleted it tbh
 }
 
+
+if State = State_Act_Consequence
+{
+draw_set_font(Font1);
+if(string_length(Dialog) > Current_Char)
+{
+Current_Char ++;
+}
+
+if(keyboard_check_pressed(ord("Z")))
+{
+if(Current_Char < string_length(Dialog))
+{
+if(Current_Char > 2)
+{
+Current_Char = string_length(Dialog);
+}
+}
+}
+
+draw_set_colour(c_white);
+draw_text_ext_transformed(52, 265, "* " + string_copy(Dialog, 1, Current_Char), 20, 348, 2, 2, 0);
+
+	//draw_text_transformed(52, 281, string_hash_to_newline("* You feel like you're not gonna get #copyrighted."), 2, 2, 0)
+}
+
 if State = State_Fight or State = State_Act_Enemy_Select
 {
 

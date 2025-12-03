@@ -16,7 +16,9 @@ if(string_length(Dialog_List[0].Text) > Current_Char)
 Current_Char ++;
 if(keyboard_check_pressed(ord("Z")))
 {
+
 Current_Char = string_length(Dialog_List[0].Text);
+
 }
 }
 else

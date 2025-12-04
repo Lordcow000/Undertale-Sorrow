@@ -60,6 +60,7 @@
     {"id":{"name":"spr_item","path":"sprites/spr_item/spr_item.yy",},},
     {"id":{"name":"spr_mercy","path":"sprites/spr_mercy/spr_mercy.yy",},},
     {"id":{"name":"spr_notcopyrightedtestenemy","path":"sprites/spr_notcopyrightedtestenemy/spr_notcopyrightedtestenemy.yy",},},
+    {"id":{"name":"spr_talkbubble","path":"sprites/spr_talkbubble/spr_talkbubble.yy",},},
     {"id":{"name":"spr_text_box","path":"sprites/spr_text_box/spr_text_box.yy",},},
     {"id":{"name":"temp_idle_down","path":"sprites/temp_idle_down/temp_idle_down.yy",},},
     {"id":{"name":"temp_idle_left","path":"sprites/temp_idle_left/temp_idle_left.yy",},},

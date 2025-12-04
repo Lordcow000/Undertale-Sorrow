@@ -28,6 +28,7 @@
     {"name":"spr_encounter_room","order":1,"path":"sprites/spr_encounter_room/spr_encounter_room.yy",},
     {"name":"spr_encounter","order":7,"path":"sprites/spr_encounter/spr_encounter.yy",},
     {"name":"spr_fight","order":1,"path":"sprites/spr_fight/spr_fight.yy",},
+    {"name":"spr_heart_walk","order":14,"path":"sprites/spr_heart_walk/spr_heart_walk.yy",},
     {"name":"spr_heart","order":6,"path":"sprites/spr_heart/spr_heart.yy",},
     {"name":"spr_interactcollision","order":4,"path":"sprites/spr_interactcollision/spr_interactcollision.yy",},
     {"name":"spr_interaction","order":5,"path":"sprites/spr_interaction/spr_interaction.yy",},

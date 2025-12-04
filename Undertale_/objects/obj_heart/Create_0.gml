@@ -288,12 +288,22 @@ State_Mercy = function()
 	{
 	if(Mercy_Select[Mercy_Index] = "Flee")
 	{
-	room_goto(global.Game_Data.Previ_Room);
-	obj_mainchara.x = global.Game_Data.PlayerStartxPos;
-	obj_mainchara.y = global.Game_Data.PlayerStartyPos;
+	Heart_Pos_Mod = 0;
+	State = State_Flee;
 	}
 	}
 		
+}
+
+State_Flee = function()
+{
+Heart_Pos_Mod -= 1;
+if(Heart_Pos_Mod + 52 < -16)
+{
+room_goto(global.Game_Data.Previ_Room);
+	obj_mainchara.x = global.Game_Data.PlayerStartxPos;
+	obj_mainchara.y = global.Game_Data.PlayerStartyPos;
+}
 }
 
 State = State_Selec

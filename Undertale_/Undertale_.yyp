@@ -54,6 +54,7 @@
     {"id":{"name":"spr_encounter_room","path":"sprites/spr_encounter_room/spr_encounter_room.yy",},},
     {"id":{"name":"spr_encounter","path":"sprites/spr_encounter/spr_encounter.yy",},},
     {"id":{"name":"spr_fight","path":"sprites/spr_fight/spr_fight.yy",},},
+    {"id":{"name":"spr_heart_walk","path":"sprites/spr_heart_walk/spr_heart_walk.yy",},},
     {"id":{"name":"spr_heart","path":"sprites/spr_heart/spr_heart.yy",},},
     {"id":{"name":"spr_interactcollision","path":"sprites/spr_interactcollision/spr_interactcollision.yy",},},
     {"id":{"name":"spr_interaction","path":"sprites/spr_interaction/spr_interaction.yy",},},

@@ -221,29 +221,21 @@ State_Act_Select = function()
 	}	
 	if(z)
 	{
-		ActSelected = true
 	Act_Value = enemy.act_actions[Act_Index];
 	State = State_Act_Consequence;
 	if(Act_Value.ID = "Sans_Talk")
 {
-Dialog = string_hash_to_newline("You talk to Sans.#He understands how array_foreach works#now.");
+Dialog = "You talk to Sans. He understands how array_foreach works now.";
 Current_Char = 0;
 enemy.dialog_next = "Ah okay now I understand now";
 enemy.spareable = true;
 }
 	if(Act_Value.ID = "Sans_Argue")
 {
-Dialog = string_hash_to_newline("You argue with Sans,#yelling at him for 'befriending' your#mother last night.");
+Dialog = "You argue with Sans, yelling at him for 'befriending' your mother last night.";
 Current_Char = 0;
 enemy.dialog_next = "Human, I remember I'm you're dad.";
-enemy.def = true;
-}
-if(Act_Value.ID = "Sans_Instakill")
-{
-	Dialog = string_hash_to_newline("You tell Sans he's cringe.#He dies")
-	Current_Char = 0;
-	enemy.dialogue_next = "Ow i'm ded (this message shouldn't have appeared"
-	enemy.health = 0;
+enemy.spareable = false;
 }
 	
 		//Nothing yet
@@ -252,20 +244,7 @@ if(Act_Value.ID = "Sans_Instakill")
 	{
 		State = State_Act_Enemy_Select;			
 	}
-		array_foreach(enemy.act_actions,function(act, _index) // Loops through each enemy
-	{
-
-		if (Act_Index == _index) and ActSelected = false
-		{
-			x = 52
-			y = 275 + (_index*30)
-		}
-		if ActSelected = true
-		{
-			x = -20
-			y = 64
-		}
-	})
+	
 }
 
 State_Act_Consequence = function()

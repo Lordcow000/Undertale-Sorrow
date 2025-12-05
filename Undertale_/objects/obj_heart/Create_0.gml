@@ -227,17 +227,24 @@ State_Act_Select = function()
 	State = State_Act_Consequence;
 	if(Act_Value.ID = "Sans_Talk")
 {
-Dialog = "You talk to Sans. He understands how array_foreach works now.";
+Dialog = string_hash_to_newline("You talk to Sans.#He understands how array_foreach#works now.");
 Current_Char = 0;
 enemy.dialog_next = "Ah okay now I understand now";
 enemy.spareable = true;
 }
 	if(Act_Value.ID = "Sans_Argue")
 {
-Dialog = "You argue with Sans, yelling at him for 'befriending' your mother last night.";
+Dialog = string_hash_to_newline("You argue with Sans,#yelling at him for 'befriending' your#mother last night.");
 Current_Char = 0;
 enemy.dialog_next = "Human, I remember I'm you're dad.";
 enemy.spareable = false;
+}
+if(Act_Value.ID = "Sans_Instakill")
+{
+	Dialog = string_hash_to_newline("You tell sans he's cringe.#He dies.");
+	Current_Char = 0;
+	enemy.dialog_next = "Oof i'm ded (this message is not supposed to be here)";
+	enemy.health = 0;
 }
 	
 		//Nothing yet

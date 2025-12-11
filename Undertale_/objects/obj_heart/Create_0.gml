@@ -244,7 +244,7 @@ if(Act_Value.ID = "Sans_Instakill")
 	Dialog = string_hash_to_newline("You tell sans he's cringe.#He dies.");
 	Current_Char = 0;
 	enemy.dialog_next = "Oof i'm ded (this message is not supposed to be here)";
-	enemy.health = 0;
+	enemy._health = 0;
 }
 	
 		//Nothing yet

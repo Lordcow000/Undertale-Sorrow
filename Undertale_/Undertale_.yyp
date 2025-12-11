@@ -27,7 +27,7 @@
   "isEcma":false,
   "LibraryEmitters":[],
   "MetaData":{
-    "IDEVersion":"2024.14.1.210",
+    "IDEVersion":"2024.14.2.212",
   },
   "name":"Undertale_",
   "resources":[
@@ -48,6 +48,7 @@
     {"id":{"name":"Room3","path":"rooms/Room3/Room3.yy",},},
     {"id":{"name":"main_data","path":"scripts/main_data/main_data.yy",},},
     {"id":{"name":"scr_text_counter_overworld","path":"scripts/scr_text_counter_overworld/scr_text_counter_overworld.yy",},},
+    {"id":{"name":"Script4","path":"scripts/Script4/Script4.yy",},},
     {"id":{"name":"string_wrap","path":"scripts/string_wrap/string_wrap.yy",},},
     {"id":{"name":"bg_room0","path":"sprites/bg_room0/bg_room0.yy",},},
     {"id":{"name":"spr_act","path":"sprites/spr_act/spr_act.yy",},},

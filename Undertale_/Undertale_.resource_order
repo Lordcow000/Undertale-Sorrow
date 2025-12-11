@@ -25,6 +25,7 @@
     {"name":"encounter_room","order":1,"path":"rooms/encounter_room/encounter_room.yy",},
     {"name":"Room3","order":2,"path":"rooms/Room3/Room3.yy",},
     {"name":"main_data","order":1,"path":"scripts/main_data/main_data.yy",},
+    {"name":"Script4","order":3,"path":"scripts/Script4/Script4.yy",},
     {"name":"string_wrap","order":2,"path":"scripts/string_wrap/string_wrap.yy",},
     {"name":"spr_battle_attack_bar","order":11,"path":"sprites/spr_battle_attack_bar/spr_battle_attack_bar.yy",},
     {"name":"spr_battle_quicktime","order":10,"path":"sprites/spr_battle_quicktime/spr_battle_quicktime.yy",},

@@ -43,6 +43,7 @@ State_Battle = function()
 
 Item = 
 {
+Display_Name: "Lime",
 Name: "Lime",
 Type: "Food",
 Value: 10,
@@ -52,6 +53,7 @@ Description: "A green fruit, really sour. Heals 10 HP."
 array_push(global.Game_Data.Inventory_1, Item);
 Item = 
 {
+Display_Name: "Lemon",
 Name: "Lemon",
 Type: "Food",
 Value: 20,
@@ -61,6 +63,7 @@ Description: "A yellow fruit, really REALLY sour. Heals 10 HP."
 array_push(global.Game_Data.Inventory_1, Item);
 Item = 
 {
+Display_Name: "Limon Bitt",
 Name: "Lemon Lime Bitters",
 Type: "Food",
 Value: 100,

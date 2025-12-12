@@ -148,7 +148,7 @@ if(Select)
 {
 if(Item_Actions[Item_Action_Index] = "INFO")
 {
-var _dialog = instance_create_layer(x, y, "Instances", obj_dia_test);
+var _dialog = instance_create_layer(x, y, "Instances", zold_dialogue_DONT_USE);
 with(_dialog)
 {
 Dialog_List = [];
@@ -168,7 +168,7 @@ if(Select)
 {
 if(Item_Actions[Item_Action_Index] = "DROP")
 {
-var _dialog = instance_create_layer(x, y, "Instances", obj_dia_test);
+var _dialog = instance_create_layer(x, y, "Instances", zold_dialogue_DONT_USE);
 with(_dialog)
 {
 Dialog_List = [];
@@ -191,7 +191,7 @@ global.Health += global.Game_Data.Inventory_1[Item_Action_Index].Value;
 if(global.Health >= global.MaxHealth)
 {
 global.Health = global.MaxHealth;
-var _dialog = instance_create_layer(x, y, "Instances", obj_dia_test);
+var _dialog = instance_create_layer(x, y, "Instances", zold_dialogue_DONT_USE);
 with(_dialog)
 {
 Dialog_List = [];
@@ -208,7 +208,7 @@ array_delete(global.Game_Data.Inventory_1, Inventory_Index, 1);
 }
 else
 {
-var _dialog = instance_create_layer(x, y, "Instances", obj_dia_test);
+var _dialog = instance_create_layer(x, y, "Instances", zold_dialogue_DONT_USE);
 with(_dialog)
 {
 Dialog_List = [];

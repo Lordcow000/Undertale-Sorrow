@@ -19,6 +19,5 @@ if (Dialouge_port != noone)
 
 	}
 }
-
 }
 }

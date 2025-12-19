@@ -10,16 +10,23 @@ test_enemy =
 	dialog_type: "Random",
 	dialog_next: "None",
 	//this was supposed to be an array, but the game crashed
+	fire_rate: 30,
 	Attacks: [
 	{
 		Name: "EnemyTest",
 		Duration: 10,
-		BattleBoxSize: {Ytop: 201, Xleft: 225, Ybottom: 389, Xright: 413},
+		BattleBoxSize: {Left: 237, Right: 397,Up: 250, Down: 385},
 		pattern: function()
 		{
-			
+			obj_test_enemy.alarm[0] = 30;			
 		}
 	}
 	]
 }
 array_push(obj_heart.Enemy_Count, test_enemy)
+
+
+
+
+
+

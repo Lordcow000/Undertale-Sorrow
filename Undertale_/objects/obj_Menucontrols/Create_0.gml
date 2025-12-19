@@ -1,7 +1,7 @@
 MenuIndex = 0
 reset = function()
 {
-global.Health = 10;
+global.Health = 20;
 global.MaxHealth = 20;
 global.LOVE = 1;
 global.Attack = 10;

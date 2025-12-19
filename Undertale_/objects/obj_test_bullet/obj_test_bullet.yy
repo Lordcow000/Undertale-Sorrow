@@ -1,18 +1,22 @@
 {
   "$GMObject":"",
-  "%Name":"obj_test_enemy",
+  "%Name":"obj_test_bullet",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
+    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":1,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_test_enemy",
+  "name":"obj_test_bullet",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"Bullets",
+    "path":"folders/Objects/Bullets.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"obj_bullet_parent",
+    "path":"objects/obj_bullet_parent/obj_bullet_parent.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_notcopyrightedtestenemy",
-    "path":"sprites/spr_notcopyrightedtestenemy/spr_notcopyrightedtestenemy.yy",
+    "name":"spr_bullet",
+    "path":"sprites/spr_bullet/spr_bullet.yy",
   },
   "spriteMaskId":null,
   "visible":true,

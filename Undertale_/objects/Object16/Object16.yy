@@ -1,12 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"obj_test_enemy",
-  "eventList":[
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":2,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-  ],
+  "%Name":"Object16",
+  "eventList":[],
   "managed":true,
-  "name":"obj_test_enemy",
+  "name":"Object16",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -31,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_notcopyrightedtestenemy",
-    "path":"sprites/spr_notcopyrightedtestenemy/spr_notcopyrightedtestenemy.yy",
+    "name":"spr_100x100",
+    "path":"sprites/spr_100x100/spr_100x100.yy",
   },
   "spriteMaskId":null,
   "visible":true,

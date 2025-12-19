@@ -12,7 +12,9 @@ Quicktime_Pos = 0;
 Enemy_select_Index = 0;
 Act_Index = 0;
 Mercy_Index = 0;
-Mercy_Select = ["Spare", "Flee"]
+Mercy_Select = ["Spare", "Flee"];
+started = false;
+image_speed = 0;
 
 State_Selec = function()
 {
@@ -105,14 +107,14 @@ State_Quicktime = function()
 			array_delete(Enemy_Count,Enemy_select_Index,1); // removes enemy if dead
 		}
 		show_debug_message(enemy);
-		State = State_Selec;
+		State = State_Enemy_Attack_Start;
 	}
 	
 	Quicktime_Pos += 4;
 	
 	if(Quicktime_Pos >= 576)
 	{
-	State = State_Selec;
+	State = State_Enemy_Attack_Start;
 	}
 }
 
@@ -313,6 +315,69 @@ room_goto(global.Game_Data.Previ_Room);
 	obj_mainchara.x = global.Game_Data.PlayerStartxPos;
 	obj_mainchara.y = global.Game_Data.PlayerStartyPos;
 }
+}
+
+State_Enemy_Attack_Start = function()
+{
+	if (started == false){
+		var enemy = Enemy_Count[0];
+		var battle_box = enemy.Attacks[0].BattleBoxSize;
+		new_border(battle_box.Left,battle_box.Right,battle_box.Up,battle_box.Down);
+		enemy.Attacks[0].pattern();
+		started = true;
+		_x = (battle_box.Right + battle_box.Left)/2-8;
+		_y = (battle_box.Up + battle_box.Down)/2-8;
+		x = _x;
+		y = _y;
+		global.invincible = 0;
+		global.TurnTimer = enemy.Attacks[0].Duration*60
+		State = State_Enemy_Attack;
+
+	}
+}
+
+State_Enemy_Attack = function()
+{
+	global.TurnTimer --;
+	if (global.TurnTimer <=0)
+	{
+		global.idealborder[0] = 32;
+		global.idealborder[1] = 602;
+		global.idealborder[2] = 250;
+		global.idealborder[3] = 385;
+		State = State_Selec;
+		
+	}
+	if (global.invincible > 0)
+	{
+		global.invincible --;
+		image_speed = 3;
+	}
+	else
+	{
+		image_index = 0;
+		image_speed = 0;
+	}
+	var Speed = 2;
+	var xDirection = keyboard_check(vk_right) - keyboard_check(vk_left);
+	var yDirection = keyboard_check(vk_down) - keyboard_check(vk_up);
+	
+	xSpeed = xDirection * Speed;
+	ySpeed = yDirection * Speed;
+	
+	if(place_meeting(x + xSpeed, y, obj_border_parent))
+	{
+		xSpeed = 0;
+	}
+
+	if(place_meeting(x, y + ySpeed, obj_border_parent))
+	{
+		ySpeed = 0;
+	}
+	
+	x += xSpeed;
+	y += ySpeed;
+	show_debug_message(global.Health);
 }
 
 State = State_Selec

@@ -2,14 +2,6 @@
 //draw_rectangle_colour(32, 250, 606, 389, c_white, c_white, c_white, c_white, true)
 
 
-draw_set_color(c_white);
-draw_rectangle(32, 250, 607, 390, false);
-
-draw_set_color(c_black);
-draw_rectangle(32 + 5, 250 + 5, 607 - 5, 390 - 5, false);
-draw_set_color(c_white);
-
-
 switch(Selec_Index)
 	{//153
 		case 0:
@@ -39,11 +31,7 @@ switch(Selec_Index)
 	}
 if State = State_Selec
 {
-draw_set_color(c_white);
-draw_rectangle(32, 250, 607, 390, false);
 
-draw_set_color(c_black);
-draw_rectangle(32 + 5, 250 + 5, 607 - 5, 390 - 5, false);
 	
 draw_set_font(Font1);
 if(string_length(Dialog) > Current_Char)
@@ -56,7 +44,6 @@ draw_text_ext_transformed(52, 265, "* " + string_copy(Dialog, 1, Current_Char), 
 
 	//draw_text_transformed(52, 281, string_hash_to_newline("* You feel like you're not gonna get #copyrighted."), 2, 2, 0)
 }
-
 
 if State = State_Act_Consequence
 {
@@ -91,7 +78,7 @@ if State = State_Fight or State = State_Act_Enemy_Select
 	{
 		if (Enemy_select_Index == _index)
 		{
-			draw_sprite(spr_heart,1,52,275+(_index*30))
+			draw_sprite(spr_heart,0,52,275+(_index*30))
 			draw_text_transformed(90, 265+(_index*30), "* "+enemy.name, 2, 2, 0);
 		}
 		else
@@ -120,7 +107,7 @@ if State = State_Act_Select
 
 		if (Act_Index == _index)
 		{
-			draw_sprite(spr_heart,1,52,275+(_index*30))
+			draw_sprite(spr_heart,0,52,275+(_index*30))
 			draw_text_transformed(90, 265+(_index*30), "* "+act.Name, 2, 2, 0);
 		}
 		else
@@ -139,7 +126,7 @@ for(var i = 0; i < array_length(Mercy_Select); i ++)
 	draw_text_transformed(90, 265+(i*30), "* "+Mercy_Select[i], 2, 2, 0);
 }
 
-draw_sprite(spr_heart,1,52,275+(Mercy_Index * 30))
+draw_sprite(spr_heart,0,52,275+(Mercy_Index * 30))
 }
 
 if(State = State_Flee)

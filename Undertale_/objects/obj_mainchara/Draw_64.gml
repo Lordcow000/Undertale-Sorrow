@@ -2,12 +2,13 @@ if (State = State_Menu)
 {
 	show_debug_message("Ahh");
 	draw_set_colour(c_white);
-	draw_rectangle_colour(16, 154, 192, 336, c_white, c_white, c_white, c_white, false)
-	draw_rectangle_colour(22, 160, 186, 330, c_black, c_black, c_black, c_black, false)
+	draw_rectangle_colour(16, 154, 192, 10 + (170 + (50 * array_length(MenuSelect))) + 6, c_white, c_white, c_white, c_white, false)
+	draw_rectangle_colour(22, 160, 186, 10 + (170 + (50 * array_length(MenuSelect))), c_black, c_black, c_black, c_black, false)
+	for (var i = 0; i < array_length(MenuSelect); i++;)
+	{
 	draw_set_font(Font1)
-	draw_text_transformed(68, 170, "ITEM", 3, 3, 0)
-	draw_text_transformed(68, 220, "STAT", 3, 3, 0)
-	draw_text_transformed(68, 270, "CELL", 3, 3, 0)
+	draw_text_transformed(68, 170 + (50 * i), MenuSelect[i], 3, 3, 0)
+	}
 	switch(Menu_Index)
 	{
 	case 0:
@@ -24,12 +25,13 @@ if (State = State_Menu)
 	if State = State_Stat
 	{
 
-		draw_rectangle_colour(16, 154, 192, 336, c_white, c_white, c_white, c_white, false)
-		draw_rectangle_colour(22, 160, 186, 330, c_black, c_black, c_black, c_black, false)
-		draw_set_font(Font1)
-		draw_text_transformed(68, 170, "ITEM", 3, 3, 0)
-		draw_text_transformed(68, 220, "STAT", 3, 3, 0)
-		draw_text_transformed(68, 270, "CELL", 3, 3, 0)
+		draw_rectangle_colour(16, 154, 192, 10 + (170 + (50 * array_length(MenuSelect))) + 6, c_white, c_white, c_white, c_white, false)
+	draw_rectangle_colour(22, 160, 186, 10 + (170 + (50 * array_length(MenuSelect))), c_black, c_black, c_black, c_black, false)
+	for (var i = 0; i < array_length(MenuSelect); i++;)
+	{
+	draw_set_font(Font1)
+	draw_text_transformed(68, 170 + (50 * i), MenuSelect[i], 3, 3, 0)
+	}
 		draw_rectangle_colour(200, 100, 532, 475, c_white, c_white, c_white, c_white, false)
 		draw_rectangle_colour(206, 106, 526, 469, c_black, c_black, c_black, c_black, false)
 		draw_text_transformed(226, 120, "\"Echo\"", 2, 2, 0)
@@ -45,12 +47,13 @@ if (State = State_Menu)
 }
 if (State = State_Inventory)
 {
-	draw_rectangle_colour(16, 154, 192, 336, c_white, c_white, c_white, c_white, false)
-	draw_rectangle_colour(22, 160, 186, 330, c_black, c_black, c_black, c_black, false)
+	draw_rectangle_colour(16, 154, 192, 10 + (170 + (50 * array_length(MenuSelect))) + 6, c_white, c_white, c_white, c_white, false)
+	draw_rectangle_colour(22, 160, 186, 10 + (170 + (50 * array_length(MenuSelect))), c_black, c_black, c_black, c_black, false)
+	for (var i = 0; i < array_length(MenuSelect); i++;)
+	{
 	draw_set_font(Font1)
-	draw_text_transformed(68, 170, "ITEM", 3, 3, 0)
-	draw_text_transformed(68, 220, "STAT", 3, 3, 0)
-	draw_text_transformed(68, 270, "CELL", 3, 3, 0)
+	draw_text_transformed(68, 170 + (50 * i), MenuSelect[i], 3, 3, 0)
+	}
 	draw_rectangle_colour(200, 94, 506, 412, c_white, c_white, c_white, c_white, false)
 	draw_rectangle_colour(206, 100, 500, 406, c_black, c_black, c_black, c_black, false)
 	for(var i = 0; i < array_length(Item_Actions); i ++)
@@ -72,12 +75,13 @@ if (State = State_Inventory)
 }
 if (State = State_Inventory_2)
 {
-	draw_rectangle_colour(16, 154, 192, 336, c_white, c_white, c_white, c_white, false)
-	draw_rectangle_colour(22, 160, 186, 330, c_black, c_black, c_black, c_black, false)
+	draw_rectangle_colour(16, 154, 192, 10 + (170 + (50 * array_length(MenuSelect))) + 6, c_white, c_white, c_white, c_white, false)
+	draw_rectangle_colour(22, 160, 186, 10 + (170 + (50 * array_length(MenuSelect))), c_black, c_black, c_black, c_black, false)
+	for (var i = 0; i < array_length(MenuSelect); i++;)
+	{
 	draw_set_font(Font1)
-	draw_text_transformed(68, 170, "ITEM", 3, 3, 0)
-	draw_text_transformed(68, 220, "STAT", 3, 3, 0)
-	draw_text_transformed(68, 270, "CELL", 3, 3, 0)
+	draw_text_transformed(68, 170 + (50 * i), MenuSelect[i], 3, 3, 0)
+	}
 	draw_rectangle_colour(200, 94, 506, 412, c_white, c_white, c_white, c_white, false)
 	draw_rectangle_colour(206, 100, 500, 406, c_black, c_black, c_black, c_black, false)
 	for(var i = 0; i < array_length(Item_Actions); i ++)

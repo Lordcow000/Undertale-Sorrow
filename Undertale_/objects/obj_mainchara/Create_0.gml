@@ -66,7 +66,7 @@ array_push(global.Game_Data.Inventory_1, ItemID.Lemon_Lime_Bitters);
 //Description: "The best drink. Heals 100 HP!"
 //}
 
-MenuSelect = ["Item", "Stats", "Cellphone"]
+MenuSelect = ["ITEM", "STAT", "CELL"]
 
 State_Stat = function()
 {

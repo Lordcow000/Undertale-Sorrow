@@ -106,17 +106,30 @@ if State = State_Act_Select
 	var enemy = Enemy_Count[Enemy_select_Index];
 	array_foreach(enemy.act_actions,function(act, _index) // Loops through each enemy
 	{
-
+		if ((_index+1) % 2 == 0)
+		{
+			var multi = 200;
+			var row = floor(_index / 2);
+			
+		}
+		
+		else
+		{
+			var multi = 0;
+			var row = floor(_index / 2);
+		}
 		if (Act_Index == _index)
 		{
-			draw_sprite(spr_heart,0,52,275+(_index*30))
-			draw_text_transformed(90, 265+(_index*30), "* "+act.Name, 2, 2, 0);
+			
+			draw_sprite(spr_heart,0,52+(multi),275+(row*30));
+			draw_text_transformed(90+(multi), 265+(row*30), "* "+act.Name, 2, 2, 0);
 		}
 		else
 		{
-			draw_text_transformed(90, 265+(_index*30), "* "+act.Name, 2, 2, 0);
+			draw_text_transformed(90+(multi), 265+(row*30), "* "+act.Name, 2, 2, 0);
 		}
 	})
+
 		
 	
 }

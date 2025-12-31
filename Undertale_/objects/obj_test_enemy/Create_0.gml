@@ -32,8 +32,9 @@ test_enemy =
 	}
 	]
 }
-array_push(obj_heart.Enemy_Count, test_enemy)
+array_push(obj_heart.Enemy_Count, test_enemy);
 
+ds_grid_create(1,2);
 
 
 

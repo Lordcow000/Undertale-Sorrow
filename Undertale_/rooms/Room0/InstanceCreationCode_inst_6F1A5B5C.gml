@@ -5,6 +5,7 @@
 //Any '#'s indicate a newline
 image_blend = c_blue;
 Dialog_List = [];
+name = "TestMan"
 
 Dialog = 
 {

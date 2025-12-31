@@ -5,7 +5,7 @@ test_enemy =
 	_health: 1000,
 	def: 0,
 	spareable: false,
-	act_actions: [{Name: "Argue", ID: "Sans_Argue",}, {Name: "Talk", ID: "Sans_Talk",}, {Name: "Your cringe", ID: "Sans_Instakill",}],
+	act_actions: [{Name: "Argue", ID: "Sans_Argue",}, {Name: "Talk", ID: "Sans_Talk",},{Name: "Argue", ID: "Sans_Argue",},{Name: "Argue", ID: "Sans_Argue",},],
 	dialog: ["*omnomnomnomnom", "Breakin it down", "Please stop making fanart of me"],
 	dialog_type: "Random",
 	dialog_next: "None",

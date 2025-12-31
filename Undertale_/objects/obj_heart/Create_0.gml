@@ -9,6 +9,8 @@ Current_Char = 0;
 Quicktime_Pos = 0;
 Enemy_select_Index = 0;
 Act_Index = 0;
+Act_Grid_x = 0;
+Act_Grid_y = 0;
 Mercy_Index = 0;
 Mercy_Select = ["Spare", "Flee"];
 started = false;
@@ -211,6 +213,8 @@ State_Act_Select = function()
 {
 	var up = keyboard_check_pressed(vk_up);
 	var down = keyboard_check_pressed(vk_down);
+	var left = keyboard_check_pressed(vk_left);
+	var right = keyboard_check_pressed(vk_right);
 	var z = (keyboard_check_pressed(ord("Z")) or keyboard_check_pressed(vk_enter));
 	var _x = (keyboard_check_pressed(ord("X")) or keyboard_check_pressed(vk_shift));
 	
@@ -218,20 +222,29 @@ State_Act_Select = function()
 	
 	if(down)
 	{
-		Act_Index ++
+		Act_Index += 2;
+	}
+	if(up)
+	{
+		Act_Index -= 2;
+	}	
+	if(right)
+	{
+		Act_Index ++;
 		if(Act_Index > array_length(enemy.act_actions) - 1)
 		{
 			Act_Index = 0;
 		}
 	}
-	if(up)
+	if(left)
 	{
 		Act_Index --;
-		if (Act_Index < 0)
+		Act_Index ++;
+		if(Act_Index < 0)
 		{
 			Act_Index = array_length(enemy.act_actions) - 1;
 		}
-	}	
+	}
 	if(z)
 	{
 	Act_Value = enemy.act_actions[Act_Index];

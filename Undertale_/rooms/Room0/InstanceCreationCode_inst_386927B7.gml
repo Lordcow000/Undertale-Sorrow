@@ -2,6 +2,7 @@
 // You can write your code in this editor
 
 image_blend = c_red;
+name = "NotTestMan"
 
 Dialog_List[0] = 
 {

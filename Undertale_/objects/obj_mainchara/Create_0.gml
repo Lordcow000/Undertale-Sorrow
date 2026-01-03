@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+enemy_type = global.testenemies
 ready = true
 Run = false
 xSpeed = 0;
@@ -12,6 +13,7 @@ Encounter_Chance_Counter = 0;
 Current_Item = {};
 Item_Actions = ["USE", "INFO", "DROP"];
 Item_Action_Index = 0;
+enemies_spawned = false
 
 d_idle = temp_idle_down;
 u_idle = temp_idle_up;
@@ -38,7 +40,19 @@ Menu_Index = 0;
 
 State_Battle = function()
 {
-
+	if enemies_spawned = false
+	{
+	enemy_amount = irandom_range(1, 3)
+	for (var i = 0; i < enemy_amount - 1; i++)
+	{
+	array_push(obj_heart.Enemy_Count, (enemy_type[irandom(array_length(enemy_type) - 1)]));
+	}
+		for (var i = 0; i < array_length(obj_heart.Enemy_Count) - 1; i++)
+{
+instance_create_layer((224 / array_length(obj_heart.Enemy_Count)) * i, 32, "Instances", obj_heart.Enemy_Count[i])
+}
+enemies_spawned = true
+}
 }
 
 

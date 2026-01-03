@@ -1,7 +1,7 @@
 //draw_rectangle_colour(32, 250, 606, 389, c_black, c_black, c_black, c_black, false)
 //draw_rectangle_colour(32, 250, 606, 389, c_white, c_white, c_white, c_white, true)
-draw_rectangle_colour(275, 400, 275 + global.MaxHealth, 420, c_yellow, c_yellow, c_yellow, c_yellow, false)
-draw_rectangle_colour((275 + global.MaxHealth) - (global.MaxHealth - global.Health), 400, 275 + global.MaxHealth, 420, c_red, c_red, c_red, c_red, false)
+draw_rectangle_colour(275, 400, 275 + global.Game_Data.MaxHealth, 420, c_yellow, c_yellow, c_yellow, c_yellow, false)
+draw_rectangle_colour((275 + global.Game_Data.MaxHealth) - (global.Game_Data.MaxHealth - global.Game_Data.Health), 400, 275 + global.Game_Data.MaxHealth, 420, c_red, c_red, c_red, c_red, false)
 //we need the small font
 
 switch(Selec_Index)

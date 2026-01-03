@@ -1,0 +1,1 @@
+global.testenemies = [obj_LORDCOW, obj_test_enemy]

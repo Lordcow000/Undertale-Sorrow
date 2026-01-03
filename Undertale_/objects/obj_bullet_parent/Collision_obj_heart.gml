@@ -6,8 +6,8 @@ if (is_blue)
 	{
 		if (global.invincible <= 0)
 		{
-			var act_dmg = round(dmg - (global.Defense/5));
-			global.Health -= act_dmg;
+			var act_dmg = round(dmg - (global.Game_Data.Defense/5));
+			global.Game_Data.Health -= act_dmg;
 	
 			global.invincible = 60;
 
@@ -22,8 +22,8 @@ else if (is_orange)
 	{
 		if (global.invincible <= 0)
 		{
-			var act_dmg = round(dmg - (global.Defense/5));
-			global.Health -= act_dmg;
+			var act_dmg = round(dmg - (global.Game_Data.Defense/5));
+			global.Game_Data.Health -= act_dmg;
 	
 			global.invincible = 60;
 
@@ -35,8 +35,8 @@ else
 {
 	if (global.invincible <= 0)
 	{
-		var act_dmg = round(dmg - (global.Defense/5));
-		global.Health -= act_dmg;
+		var act_dmg = round(dmg - (global.Game_Data.Defense/5));
+		global.Game_Data.Health -= act_dmg;
 	
 		global.invincible = 60;
 

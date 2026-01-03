@@ -3,6 +3,7 @@ test_enemy =
 	obj: obj_LORDCOW,
 	name: "LORDCOW",
 	_health: 1000,
+	dialog_first: "You remember you're geno...cows?",
 	def: 0,
 	spareable: false,
 	act_actions: [{Name: "Argue", ID: "Sans_Argue",}, {Name: "Talk", ID: "Sans_Talk",},{Name: "Argue", ID: "Sans_Argue",},{Name: "Argue", ID: "Sans_Argue",},],
@@ -23,8 +24,6 @@ test_enemy =
 	},
 	]
 }
-
-array_push(obj_heart.Enemy_Count, test_enemy);
 
 
 

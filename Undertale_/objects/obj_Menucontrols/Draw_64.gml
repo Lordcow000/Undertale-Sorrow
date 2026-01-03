@@ -1,4 +1,27 @@
 draw_set_font(Font1)
+	if Savefilexists = true
+	{
+		switch MenuIndex
+{
+	case 0:
+	draw_text_transformed_colour(170, 235, "Continue", 2, 2, 0, c_yellow, c_yellow, c_yellow, c_yellow, 1)
+	draw_text_transformed_colour(390, 235, "Reset", 2, 2, 0, c_white, c_white, c_white, c_white, 1)
+	draw_text_transformed_colour(264, 275, "Settings", 2, 2, 0, c_white, c_white, c_white, c_white, 1)
+	break
+	case 1:
+	draw_text_transformed_colour(170, 235, "Continue", 2, 2, 0, c_white, c_white, c_white, c_white, 1)
+	draw_text_transformed_colour(390, 235, "Reset", 2, 2, 0, c_yellow, c_yellow, c_yellow, c_yellow, 1)
+	draw_text_transformed_colour(264, 275, "Settings", 2, 2, 0, c_white, c_white, c_white, c_white, 1)
+	break
+	case 2:
+	draw_text_transformed_colour(170, 235, "Continue", 2, 2, 0, c_white, c_white, c_white, c_white, 1)
+	draw_text_transformed_colour(390, 235, "Reset", 2, 2, 0, c_white, c_white, c_white, c_white, 1)
+	draw_text_transformed_colour(264, 275, "Settings", 2, 2, 0, c_yellow, c_yellow, c_yellow, c_yellow, 1)
+	break
+	}
+	}
+	else
+	{
 switch MenuIndex
 {
 	case 0:
@@ -17,3 +40,4 @@ switch MenuIndex
 	draw_text_transformed_colour(264, 275, "Settings", 2, 2, 0, c_yellow, c_yellow, c_yellow, c_yellow, 1)
 	break
 }
+	}

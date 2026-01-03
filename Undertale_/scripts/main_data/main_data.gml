@@ -9,7 +9,25 @@ Inventory_1: [],
 PlayerStartxPos: 0,
 PlayerStartyPos: 0,
 Previ_Room: Room0,
-Gold: 0
+Gold: 0,
+Health: 20,
+MaxHealth: 20,
+LOVE: 1,
+Attack: 10,
+Defense: 10,
+EXP: 0,
+Money: 0,
+WeaponEquipped:
+{
+	Name: "Fists",
+	Attack: 0
+},
+ArmorEquipped:
+{
+	Name: "Worn Sweater",
+	Defense: 1
+},
+NEXTLV: 10
 }
 
 var _string = json_stringify(global.Game_Data);

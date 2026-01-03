@@ -1,10 +1,8 @@
 items = global.Game_Data.Inventory_1
-DEF = global.Defense + global.ArmorEquipped.Defense
-ATK = global.Attack + global.WeaponEquipped.Attack
 Selec_Index = 0;
 Selec = ["FIGHT", "ACT", "ITEM", "MERCY"]
 Enemy_Count = []
-Dialog = "You remember you're genocides."
+Dialog = "I'll solve it later blah"
 Current_Char = 0;
 Quicktime_Pos = 0;
 Enemy_select_Index = 0;
@@ -107,7 +105,7 @@ State_Quicktime = function()
 		
 		var enemy = Enemy_Count[Enemy_select_Index];
 		
-		var _damage = ceil(round(global.Attack - enemy.def + random(2)) * _accuracy_multi)
+		var _damage = ceil(round(global.Game_Data.Attack - enemy.def + random(2)) * _accuracy_multi)
 		
 		show_debug_message(_damage);
 		
@@ -400,7 +398,7 @@ State_Enemy_Attack = function()
 	
 	x += xSpeed;
 	y += ySpeed;
-	show_debug_message(global.Health);
+	show_debug_message(global.Game_Data.Health);
 	started = false
 }
 

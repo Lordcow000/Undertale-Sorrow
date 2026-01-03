@@ -3,6 +3,7 @@ test_enemy =
 	obj: obj_test_enemy,
 	name: "Not Sans",
 	_health: 1000,
+	dialog_first: "You remember you're genocides",
 	def: 0,
 	spareable: false,
 	act_actions: [{Name: "Argue", ID: "Sans_Argue",}, {Name: "Talk", ID: "Sans_Talk",}, {Name: "Your cringe", ID: "Sans_Instakill",}],
@@ -32,7 +33,6 @@ test_enemy =
 	}
 	]
 }
-array_push(obj_heart.Enemy_Count, test_enemy);
 
 ds_grid_create(1,2);
 

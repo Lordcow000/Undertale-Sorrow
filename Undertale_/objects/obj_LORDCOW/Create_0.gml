@@ -1,4 +1,4 @@
-test_enemy =
+test_cow =
 {
 	obj: obj_LORDCOW,
 	name: "LORDCOW",

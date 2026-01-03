@@ -13,7 +13,7 @@ Encounter_Chance_Counter = 0;
 Current_Item = {};
 Item_Actions = ["USE", "INFO", "DROP"];
 Item_Action_Index = 0;
-enemies_spawned = false
+enemy_amount = irandom_range(1, 3)
 
 d_idle = temp_idle_down;
 u_idle = temp_idle_up;
@@ -40,9 +40,6 @@ Menu_Index = 0;
 
 State_Battle = function()
 {
-	if enemies_spawned = false
-	{
-	enemy_amount = irandom_range(1, 3)
 	for (var i = 0; i < enemy_amount - 1; i++)
 	{
 	array_push(obj_heart.Enemy_Count, (enemy_type[irandom(array_length(enemy_type) - 1)]));
@@ -50,8 +47,7 @@ State_Battle = function()
 		for (var i = 0; i < array_length(obj_heart.Enemy_Count) - 1; i++)
 {
 instance_create_layer((224 / array_length(obj_heart.Enemy_Count)) * i, 32, "Instances", obj_heart.Enemy_Count[i])
-}
-enemies_spawned = true
+show_debug_message("HECK YEA IT SPAWNED!")
 }
 }
 
@@ -319,6 +315,7 @@ if(Up)
 
 State_Overworld = function()
 {
+	enemies_spawned = false
 	if(keyboard_check_pressed(ord("C"))) or (keyboard_check_pressed(vk_control))
 {
 State = State_Menu;
@@ -441,14 +438,14 @@ State = State_Menu;
 
 //call these variables (or at least x += xSpeed and y += ySpeed) last or after any speed checks are made.
 
-if(place_meeting(x + xSpeed, y, obj_wall))
+if(place_meeting(x + xSpeed, y, obj_wall)) or (place_meeting(x + xSpeed, y, obj_npc))
 {
 	xSpeed = 0;
 }
 
 x += xSpeed;
 
-if(place_meeting(x, y + ySpeed, obj_wall))
+if(place_meeting(x, y + ySpeed, obj_wall)) or (place_meeting(x, y + ySpeed, obj_npc))
 {
 	ySpeed = 0;
 }
@@ -498,7 +495,21 @@ State = State_Overworld;
 
 State_Talking = function()
 {
-
+switch(last_dir)
+{
+		case "right":
+			sprite_index = r_idle;
+			break;
+		case "left": 
+			sprite_index = l_idle;
+			break;
+		case "up":
+			sprite_index = u_idle;
+			break;
+		case "down":
+			sprite_index = d_idle;
+			break;
+	}
 }
 
 

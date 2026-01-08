@@ -1,4 +1,4 @@
-name = "SavePointest"
+name = "Test - First corridor"
 
 Dialog_List[0]=
 {
@@ -9,7 +9,7 @@ Text: "* Knowing that one day. The programmers will finish the game.",
 
 Dialog_List[1]= 
 {
-Text: "* It feels you with the power of state functions",
+Text: "* It fills you with the power of State Functions",
 
 //more stuff will be added like talking sprites
 }

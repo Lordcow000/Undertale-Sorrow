@@ -24,9 +24,7 @@ test_cow =
 	},
 	]
 }
+enemies = obj_heart.Enemy_Count;
 
-
-
-
-
+array_insert(enemies,array_length(enemies),test_cow);
 

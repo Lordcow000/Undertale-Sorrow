@@ -13,7 +13,7 @@ Encounter_Chance_Counter = 0;
 Current_Item = {};
 Item_Actions = ["USE", "INFO", "DROP"];
 Item_Action_Index = 0;
-enemy_amount = irandom_range(1, 3)
+
 
 d_idle = temp_idle_down;
 u_idle = temp_idle_up;
@@ -40,15 +40,7 @@ Menu_Index = 0;
 
 State_Battle = function()
 {
-	for (var i = 0; i < enemy_amount - 1; i++)
-	{
-	array_push(obj_heart.Enemy_Count, (enemy_type[irandom(array_length(enemy_type) - 1)]));
-	}
-		for (var i = 0; i < array_length(obj_heart.Enemy_Count) - 1; i++)
-{
-instance_create_layer((224 / array_length(obj_heart.Enemy_Count)) * i, 32, "Instances", obj_heart.Enemy_Count[i])
-show_debug_message("HECK YEA IT SPAWNED!")
-}
+
 }
 
 
@@ -100,7 +92,23 @@ if(Encounter_Chance >= 60)
 global.Game_Data.PlayerStartxPos = x;
 global.Game_Data.PlayerStartyPos = y;
 global.Game_Data.Previ_Room = room;
-room_goto(encounter_room)
+enemies = [];
+randomise();
+enemy_amount = irandom_range(1, 3);
+show_debug_message("random amount: "+ string(enemy_amount))
+for (var i = 0; i < enemy_amount; i++)
+{
+	enemy = (enemy_type[irandom(array_length(enemy_type) - 1)]);
+	show_debug_message(enemy);
+	array_push(enemies, enemy);
+}
+global.BattleEnemies = enemies;
+
+room_goto(encounter_room);
+//instance_create_layer(50,50,"Instances",obj_enemy_placer);
+show_debug_message("Enemeis seemingly spawned")
+
+
 }
 }
 

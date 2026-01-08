@@ -94,8 +94,10 @@ if State = State_Fight or State = State_Act_Enemy_Select
 
 if(State = State_Quicktime)
 {
-draw_sprite(spr_battle_quicktime, 0, 32, 250);
-draw_sprite(spr_battle_attack_bar, 0, 16 + Quicktime_Pos, 322.5);
+//draw_sprite(spr_battle_quicktime, 0, 32, 250);
+//draw_sprite(spr_UT_qte, 0, (global.idealborder[1]+global.idealborder[0])/2, (global.idealborder[2]+global.idealborder[3])/2);
+draw_sprite(spr_UT_qte,0,319,319.5);
+draw_sprite(spr_battle_bar, floor(battle_bar_index), 16 + Quicktime_Pos, 322.5);
 draw_sprite(spr_debug_pixel,0,319,319.5);
 }
 

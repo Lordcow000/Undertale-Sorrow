@@ -13,6 +13,7 @@ Mercy_Index = 0;
 Mercy_Select = ["Spare", "Flee"];
 started = false;
 image_speed = 0;
+battle_bar_index = 0;
 
 global.instantborder = true;
 global.idealborder[0] = 32;
@@ -87,7 +88,8 @@ State_Quicktime = function()
 {
 	var z = (keyboard_check_pressed(ord("Z")) or keyboard_check_pressed(vk_enter));
 	var center_x = 319;
-	_accuracy_multi=1
+	_accuracy_multi=1;
+	battle_bar_index += .1;
 	
 	if(z)
 	{

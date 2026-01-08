@@ -1,10 +1,24 @@
 if keyboard_check_pressed(ord("Z"))
 {
+	switch(Savefilexists)
+	{
+		case true:
 	switch(MenuIndex)
 	{
 		case 1:
 		reset()
 		break
+	}
+	case false:
+	switch(MenuIndex)
+	{
+		case 1:
+		reset()
+		break
+		case 2:
+		load_game()
+		break
+	}
 	}
 }
 if keyboard_check_pressed(vk_down)

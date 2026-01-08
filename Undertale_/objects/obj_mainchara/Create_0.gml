@@ -446,14 +446,14 @@ State = State_Menu;
 
 //call these variables (or at least x += xSpeed and y += ySpeed) last or after any speed checks are made.
 
-if(place_meeting(x + xSpeed, y, obj_wall)) or (place_meeting(x + xSpeed, y, obj_npc))
+if(place_meeting(x + xSpeed, y, obj_wall)) 
 {
 	xSpeed = 0;
 }
 
 x += xSpeed;
 
-if(place_meeting(x, y + ySpeed, obj_wall)) or (place_meeting(x, y + ySpeed, obj_npc))
+if(place_meeting(x, y + ySpeed, obj_wall))
 {
 	ySpeed = 0;
 }

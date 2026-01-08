@@ -28,6 +28,7 @@ global.Game_Data.ArmorEquipped =
 	Defense: 1
 }
 global.Game_Data.NEXTLV = 10;
-room_goto(Room0)
+reset_game();
+room_goto(Room0);
 }
 	

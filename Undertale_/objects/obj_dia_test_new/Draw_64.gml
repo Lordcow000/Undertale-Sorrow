@@ -13,15 +13,15 @@ draw_rectangle(x1 + 6, y1 + 6, x2 - 6, y2 - 6, false);
 
 draw_set_font(Font1);
 
-if(!array_length(Dialog_List) <= text_current)
+if(!array_length(dialogue_list) <= text_current)
 {
  
 
-var _len = string_length(Dialog_List[text_current])
-var current_char = string_copy(Dialog_List[text_current].Text,char_current,1);
-var next_char = string_copy(Dialog_List[text_current].Text,char_current+1,1);
-var next_char_2 = string_copy(Dialog_List[text_current].Text,char_current+2,1);
-var next_char_3 = string_copy(Dialog_List[text_current].Text,char_current+3,1);
+var _len = string_length(dialogue_list[text_current])
+var current_char = string_copy(dialogue_list[text_current].Text,char_current,1);
+var next_char = string_copy(dialogue_list[text_current].Text,char_current+1,1);
+var next_char_2 = string_copy(dialogue_list[text_current].Text,char_current+2,1);
+var next_char_3 = string_copy(dialogue_list[text_current].Text,char_current+3,1);
 
 if (array_contains(pauses,current_char) && !waited)
 {
@@ -40,7 +40,7 @@ if (next_char == "/")
 			waited_custom = true;
 			paused = true;
 			alarm[0] = real(next_char_3)*60;
-			Dialog_List[text_current].Text = string_delete(Dialog_List[text_current].Text,char_current+1,3);
+			dialogue_list[text_current].Text = string_delete(dialogue_list[text_current].Text,char_current+1,3);
 		}
 		
 		
@@ -60,16 +60,16 @@ if (Portrait != true)
 {
 	
 draw_set_color(c_white);
-var _str = string_copy(Dialog_List[text_current].Text, 1, char_current);
+var _str = string_copy(dialogue_list[text_current].Text, 1, char_current);
 draw_text_transformed(text_x, text_y,  _str,2,2,0);
 
 }
 
 else
 {
-var dialogue_port = Dialog_List[text_current].Portrait
+var dialogue_port = dialogue_list[text_current].Portrait
 draw_set_color(c_white);
-var _str = string_copy(Dialog_List[text_current].Text, 1, char_current);
+var _str = string_copy(dialogue_list[text_current].Text, 1, char_current);
 draw_sprite_ext(dialogue_port,0,text_x,text_y,2,2,0,c_white,1);
 draw_text_transformed(text_x + (sprite_get_width(dialogue_port)*2+15), text_y,  _str,2,2,0);		
 }

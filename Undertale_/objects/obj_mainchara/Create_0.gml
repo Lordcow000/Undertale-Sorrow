@@ -164,11 +164,11 @@ if(Item_Actions[Item_Action_Index] = "INFO")
 var _dialog = instance_create_layer(x, y, "Instances", obj_dia_test_new);
 
 //Text: global.Game_Data.Inventory_1[other.Inventory_Index].Description
-Dialog_List[0] = Fetch_item(global.Game_Data.Inventory_1[Inventory_Index]).desc
+dialogue_list[0] = Fetch_item(global.Game_Data.Inventory_1[Inventory_Index]).desc
 with(_dialog)
 {
-Dialog_List = other.Dialog_List;
-Dialog_List[0].Text = string_wrap(Dialog_List[0].Text, text_width);
+dialogue_list = other.dialogue_list;
+dialogue_list[0].Text = string_wrap(dialogue_list[0].Text, text_width);
 }
 
 State = State_Talking;
@@ -182,11 +182,11 @@ if(Select)
 if(Item_Actions[Item_Action_Index] = "DROP")
 {
 var _dialog = instance_create_layer(x, y, "Instances", obj_dia_test_new);
-Dialog_List[0] = {Text:"* The " +  Fetch_item(global.Game_Data.Inventory_1[Inventory_Index]).name+ " was thrown away."}
+dialogue_list[0] = {Text:"* The " +  Fetch_item(global.Game_Data.Inventory_1[Inventory_Index]).name+ " was thrown away."}
 with(_dialog)
 {
-	Dialog_List = other.Dialog_List;
-	Dialog_List[0].Text = string_wrap(Dialog_List[0].Text, text_width);
+	dialogue_list = other.dialogue_list;
+	dialogue_list[0].Text = string_wrap(dialogue_list[0].Text, text_width);
 
 
 
@@ -206,13 +206,13 @@ global.Health = global.MaxHealth;
 var _dialog = instance_create_layer(x, y, "Instances", zold_dialogue_DONT_USE);
 with(_dialog)
 {
-Dialog_List = [];
+dialogue_list = [];
 Dialog = 
 {
 Text: "The " + global.Game_Data.Inventory_1[other.Inventory_Index].Name + " was consumed. You healed to full!"
 //more stuff will be added like talking sprites
 }
-array_push(Dialog_List, Dialog);
+array_push(dialogue_list, Dialog);
 }
 State = State_Talking;
 show_debug_message(Item_Action_Index);
@@ -223,13 +223,13 @@ else
 var _dialog = instance_create_layer(x, y, "Instances", zold_dialogue_DONT_USE);
 with(_dialog)
 {
-Dialog_List = [];
+dialogue_list = [];
 Dialog = 
 {
 Text: "The " + global.Game_Data.Inventory_1[other.Inventory_Index].Name + " was consumed. You healed " + global.Game_Data.Inventory_1[other.Inventory_Index].Value + " HP!"
 //more stuff will be added like talking sprites
 }
-array_push(Dialog_List, Dialog);
+array_push(dialogue_list, Dialog);
 }
 State = State_Talking;
 show_debug_message(Item_Action_Index);

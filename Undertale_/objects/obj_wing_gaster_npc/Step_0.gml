@@ -14,15 +14,32 @@ if (waiter == 1)
 	with (dialoger)
 	{
 		portrait = false;
-		Dialog_List[0] = "* I'm Wing Gaster.#  The royal Scientist";
-		Dialog_List[1] = "* WOO HOO 2nd prompt"
+		dialogue_list[0] = "* I'm Wing Gaster.";
+		ch_msg = 0;
+		ch[1] = "Hi";
+		ch[2] = "HOI";
+		
+		if (outcome != 0 && text_current == 0)
+        {
+            if (outcome == 1)
+            {
+                dialogue_list[1] = "* You said Hi";
+            }
+            else if (outcome == 2)
+            {
+                dialogue_list[1] = "* HOI!!!";
+            }
+
+            
+            // Now advance to waiter 2
+            other.waiter = 2;
+        }
 	}
-	waiter = 2;
-	show_debug_message("set dialogue");
 }
 
 if (waiter == 2 && !instance_exists(obj_dialogue))
 {
 	waiter = 0;
 	can_interact = true;
+	outcome = 0;
 }

@@ -14,8 +14,8 @@ if (waiter == 1)
 	with (dialoger)
 	{
 		portrait = false;
-		Dialog_List[0] = "* WOAW/2 IT, worked#  Line 2#  Line 3";
-		Dialog_List[1] = "* WOO HOO 2nd prompt"
+		dialogue_list[0] = "* WOAW/2 IT, worked#  Line 2#  Line 3";
+		dialogue_list[1] = "* WOO HOO 2nd prompt"
 	}
 	waiter = 2;
 	show_debug_message("set dialogue");

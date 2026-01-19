@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-Dialog_List = [];
+dialogue_list = [];
 
 text_width = 300;
 text_x = 56;

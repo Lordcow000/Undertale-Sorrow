@@ -12,4 +12,4 @@ if(place_meeting(x, y, obj_interactcollision))
 		show_debug_message("Interacted");
 	}
 
-}
+}//38

@@ -1,13 +1,13 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-if(array_length(Dialog_List) <= text_current)
+if(array_length(dialogue_list) <= text_current)
 {
 instance_destroy();
 }
 
 
-var _len = string_length(Dialog_List[text_current]);
+var _len = string_length(dialogue_list[text_current]);
 dialogue_advance = false;
 
 if (keyboard_check_pressed(ord("X")) and char_current < _len)
@@ -25,8 +25,8 @@ if (char_current < _len)
 	}
 	else
 	{
-		var current_char = string_char_at(Dialog_List[text_current], char_current + 1);
-		var next_char = string_char_at(Dialog_List[text_current], char_current + 2);
+		var current_char = string_char_at(dialogue_list[text_current], char_current + 1);
+		var next_char = string_char_at(dialogue_list[text_current], char_current + 2);
 
 		switch (current_char)
 		{
@@ -56,12 +56,17 @@ if (char_current < _len)
 
 else if (keyboard_check_pressed(ord("Z")))
 {
-	dialogue_advance = true;
+	if (choice == false)
+	{
+		dialogue_advance = true;
+	}
 }
+
+script_execute(scr_choicer);
 
 if (dialogue_advance)
 {
-	if (text_current + 1) < array_length(Dialog_List)
+	if ((text_current + 1) < array_length(dialogue_list))
 	{
 		text_current += 1;
 		char_current = 0;

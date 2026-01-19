@@ -9,14 +9,14 @@ var _dialog = instance_create_layer(x, y, "Instances", obj_dia_test_new);
 
 with(_dialog)
 {
-Dialog_List = other.Dialog_List;
-Dialog_List[0].Text = string_wrap(Dialog_List[0].Text, text_width);
+dialogue_list = other.dialogue_list;
+dialogue_list[0].Text = string_wrap(dialogue_list[0].Text, text_width);
 
-if (variable_struct_exists(Dialog_List[text_current],"Portrait")) 
+if (variable_struct_exists(dialogue_list[text_current],"Portrait")) 
 	{
-		var Dialouge_port = Dialog_List[text_current].Portrait;
+		var Dialouge_port = dialogue_list[text_current].Portrait;
 		Portrait = true;
-		Dialog_List[text_current].Text = string_wrap(Dialog_List[text_current].Text, text_width - (sprite_get_width(Dialouge_port) + 15));
+		dialogue_list[text_current].Text = string_wrap(dialogue_list[text_current].Text, text_width - (sprite_get_width(Dialouge_port) + 15));
 
 	}
 }

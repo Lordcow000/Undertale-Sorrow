@@ -17,17 +17,16 @@ global.Game_Data.Attack = 10;
 global.Game_Data.Defense = 10;
 global.Game_Data.EXP = 0;
 global.Game_Data.Money = 0;
-global.Game_Data.WeaponEquipped =
-{
-	Name: "Fists",
-	Attack: 0
-}
-global.Game_Data.ArmorEquipped =
-{
-	Name: "Worn Sweater",
-	Defense: 1
-}
+global.Game_Data.WeaponEquipped = Fetch_item(ItemID.Fists)
+global.Game_Data.ArmorEquipped = Fetch_item(ItemID.Worn_sweater);
 global.Game_Data.NEXTLV = 10;
+
+
+for (var i = 1; i <= 8; i++)
+{
+	global.Game_Data.Inventory[i] = "Nothing";
+}
+
 reset_game();
 room_goto(Room0);
 }

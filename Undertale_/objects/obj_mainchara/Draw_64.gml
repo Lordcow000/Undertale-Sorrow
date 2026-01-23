@@ -6,7 +6,7 @@ if (State = State_Menu)
 	draw_rectangle_colour(22, 160, 186, 10 + (170 + (50 * array_length(MenuSelect))), c_black, c_black, c_black, c_black, false)
 	for (var i = 0; i < array_length(MenuSelect); i++;)
 	{
-	draw_set_font(Font1)
+	draw_set_font(fnt_main)
 	draw_text_transformed(68, 170 + (50 * i), MenuSelect[i], 3, 3, 0)
 	}
 	switch(Menu_Index)
@@ -29,7 +29,7 @@ if (State = State_Menu)
 	draw_rectangle_colour(22, 160, 186, 10 + (170 + (50 * array_length(MenuSelect))), c_black, c_black, c_black, c_black, false)
 	for (var i = 0; i < array_length(MenuSelect); i++;)
 	{
-	draw_set_font(Font1)
+	draw_set_font(fnt_main)
 	draw_text_transformed(68, 170 + (50 * i), MenuSelect[i], 3, 3, 0)
 	}
 		draw_rectangle_colour(200, 100, 532, 475, c_white, c_white, c_white, c_white, false)
@@ -51,7 +51,7 @@ if (State = State_Inventory)
 	draw_rectangle_colour(22, 160, 186, 10 + (170 + (50 * array_length(MenuSelect))), c_black, c_black, c_black, c_black, false)
 	for (var i = 0; i < array_length(MenuSelect); i++;)
 	{
-	draw_set_font(Font1)
+	draw_set_font(fnt_main)
 	draw_text_transformed(68, 170 + (50 * i), MenuSelect[i], 3, 3, 0)
 	}
 	draw_rectangle_colour(200, 94, 506, 412, c_white, c_white, c_white, c_white, false)
@@ -64,11 +64,11 @@ if (State = State_Inventory)
 	//-Migo
 	//gotcha - Wikibell
 	//Thanks - Migo
-	for(var i = 0; i < array_length(global.Game_Data.Inventory_1); i ++)
+	for(var i = 0; i < array_length(global.Game_Data.Inventory); i ++)
 	{
-	draw_text_transformed(250, 120 + 30 * i, Fetch_item(global.Game_Data.Inventory_1[i]).display_name, 2, 2, 0)
+	draw_text_transformed(250, 120 + 30 * i, Fetch_item(global.Game_Data.Inventory[i]).display_name, 2, 2, 0)
 	}
-	draw_text_transformed(250, 120, Fetch_item(global.Game_Data.Inventory_1[0]).display_name, 2, 2, 0)
+	draw_text_transformed(250, 120, Fetch_item(global.Game_Data.Inventory[0]).display_name, 2, 2, 0)
 	
 	draw_sprite(spr_heart, 0, 214, 130 + 30 * Inventory_Index);
 
@@ -79,7 +79,7 @@ if (State = State_Inventory_2)
 	draw_rectangle_colour(22, 160, 186, 10 + (170 + (50 * array_length(MenuSelect))), c_black, c_black, c_black, c_black, false)
 	for (var i = 0; i < array_length(MenuSelect); i++;)
 	{
-	draw_set_font(Font1)
+	draw_set_font(fnt_main)
 	draw_text_transformed(68, 170 + (50 * i), MenuSelect[i], 3, 3, 0)
 	}
 	draw_rectangle_colour(200, 94, 506, 412, c_white, c_white, c_white, c_white, false)
@@ -93,11 +93,11 @@ if (State = State_Inventory_2)
 	//-Migo
 	//gotcha - Wikibell
 	//Thanks - Migo
-	for(var i = 0; i < array_length(global.Game_Data.Inventory_1); i ++)
+	for(var i = 0; i < array_length(global.Game_Data.Inventory); i ++)
 	{
-	draw_text_transformed(250, 120 + 30 * i, Fetch_item(global.Game_Data.Inventory_1[i]).display_name, 2, 2, 0)
+	draw_text_transformed(250, 120 + 30 * i, Fetch_item(global.Game_Data.Inventory[i]).display_name, 2, 2, 0)
 	}
-	draw_text_transformed(250, 120, Fetch_item(global.Game_Data.Inventory_1[0]).display_name, 2, 2, 0)
+	draw_text_transformed(250, 120, Fetch_item(global.Game_Data.Inventory[0]).display_name, 2, 2, 0)
 	
 	draw_sprite(spr_heart, 0, 211 + 100 * Item_Action_Index, 360);
 }

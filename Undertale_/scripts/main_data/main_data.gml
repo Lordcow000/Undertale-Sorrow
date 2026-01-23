@@ -2,11 +2,12 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 global.Game_Data = 
 {
-Inventory_1: [],
+Name: "Echo",
+Inventory: [],
 PlayerStartxPos: 0,
 PlayerStartyPos: 0,
 Previ_Room: Room0,
-Gold: 0,
+Gold: 1,
 Health: 20,
 MaxHealth: 20,
 LOVE: 1,
@@ -14,16 +15,8 @@ Attack: 10,
 Defense: 10,
 EXP: 0,
 Money: 0,
-WeaponEquipped:
-{
-	Name: "Fists",
-	Attack: 0
-},
-ArmorEquipped:
-{
-	Name: "Worn Sweater",
-	Defense: 1
-},
+WeaponEquipped: Fetch_item(ItemID.Fists),
+ArmorEquipped: Fetch_item(ItemID.Worn_sweater),
 NEXTLV: 10
 }
 

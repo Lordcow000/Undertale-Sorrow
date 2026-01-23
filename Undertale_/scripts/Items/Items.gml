@@ -5,6 +5,9 @@ enum ItemID
 	Lemon,
 	Lime,
 	Lemon_Lime_Bitters,
+	Hair_Clip,
+	Fists,
+	Worn_sweater,
 	
 	
 }

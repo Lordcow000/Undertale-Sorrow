@@ -13,7 +13,7 @@ draw_rectangle(x1, y1, x2, y2, false);
 draw_set_color(c_black);
 draw_rectangle(x1 + 6, y1 + 6, x2 - 6, y2 - 6, false);
 
-draw_set_font(Font1);
+draw_set_font(fnt_main);
 draw_set_color(c_white);
 
 var clean_text = string_copy(dialogue_list[text_current], 1, char_current);

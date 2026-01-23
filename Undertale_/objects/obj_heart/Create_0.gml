@@ -1,4 +1,4 @@
-items = global.Game_Data.Inventory_1
+items = global.Game_Data.Inventory
 Selec_Index = 0;
 Selec = ["FIGHT", "ACT", "ITEM", "MERCY"]
 Enemy_Count = []

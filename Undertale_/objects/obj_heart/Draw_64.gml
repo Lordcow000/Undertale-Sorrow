@@ -35,7 +35,7 @@ if State = State_Selec
 {
 
 	
-draw_set_font(Font1);
+draw_set_font(fnt_main);
 if(string_length(Dialog) > Current_Char)
 {
 Current_Char ++;
@@ -49,7 +49,7 @@ draw_text_ext_transformed(52, 265, "* " + string_copy(Dialog, 1, Current_Char), 
 
 if State = State_Act_Consequence
 {
-draw_set_font(Font1);
+draw_set_font(fnt_main);
 if(string_length(Dialog) > Current_Char)
 {
 Current_Char ++;

@@ -1,4 +1,4 @@
-draw_set_font(Font1)
+draw_set_font(fnt_main)
 	if Savefilexists = true
 	{
 		switch MenuIndex

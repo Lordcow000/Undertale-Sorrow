@@ -30,8 +30,6 @@ if (waiter == 1)
                 dialogue_list[1] = "* HOI!!!";
             }
 
-            
-            // Now advance to waiter 2
             other.waiter = 2;
         }
 	}

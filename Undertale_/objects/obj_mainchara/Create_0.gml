@@ -51,17 +51,6 @@ scr_item_add(ItemID.Lemon_Lime_Bitters);
 
 MenuSelect = ["ITEM", "STAT", "CELL"]
 
-State_Stat = function()
-{
-	if(keyboard_check_pressed(ord("C"))) or (keyboard_check_pressed(vk_control))
-{
-State = State_Overworld;
-}
-if(keyboard_check_pressed(ord("X"))) or (keyboard_check_pressed(vk_shift))
-{
-State = State_Menu
-}
-}
 
 State_Battle_Start = function()
 {
@@ -93,161 +82,11 @@ show_debug_message("Enemeis seemingly spawned")
 }
 }
 
-State_Inventory = function()
-{
-var Down = keyboard_check_pressed(vk_down);
-var Up = keyboard_check_pressed(vk_up);
-var Select = keyboard_check_pressed(ord("Z"));
-var _inventory = global.Game_Data.Inventory;
-if(keyboard_check_pressed(ord("C"))) or (keyboard_check_pressed(vk_control))
-{
-State = State_Overworld;
-}
-if(keyboard_check_pressed(ord("X"))) or (keyboard_check_pressed(vk_shift))
-{
-State = State_Menu;
-}
-if(Down)
-{
-Inventory_Index ++;
-if(Inventory_Index > array_length(_inventory) - 1)
-{
-Inventory_Index = 0;
-}
-}
-if(Up)
-{
-Inventory_Index --;
-if(Inventory_Index < 0)
-{
-Inventory_Index = array_length(_inventory) - 1;
-}
-}
-
-if(Select)
-{
-Current_Item = _inventory[Inventory_Index];
-State = State_Inventory_2;
-}
-
-}
-
-State_Inventory_2 = function()
-{
-var Left = keyboard_check_pressed(vk_left);
-var Right = keyboard_check_pressed(vk_right);
-var Select = keyboard_check_pressed(ord("Z"));
-
-if(Select)
-{
-if(Item_Actions[Item_Action_Index] = "INFO")
-{
-var _dialog = instance_create_layer(x, y, "Instances", obj_dia_test_new);
-
-//Text: global.Game_Data.Inventory[other.Inventory_Index].Description
-dialogue_list[0] = Fetch_item(global.Game_Data.Inventory[Inventory_Index]).desc
-with(_dialog)
-{
-dialogue_list = other.dialogue_list;
-dialogue_list[0].Text = string_wrap(dialogue_list[0].Text, text_width);
-}
-
-State = State_Talking;
-show_debug_message(Item_Action_Index);
-}
-
-}
-
-if(Select)
-{
-if(Item_Actions[Item_Action_Index] = "DROP")
-{
-var _dialog = instance_create_layer(x, y, "Instances", obj_dia_test_new);
-dialogue_list[0] = {Text:"* The " +  Fetch_item(global.Game_Data.Inventory[Inventory_Index]).name+ " was thrown away."}
-with(_dialog)
-{
-	dialogue_list = other.dialogue_list;
-	dialogue_list[0].Text = string_wrap(dialogue_list[0].Text, text_width);
-
-
-
-}
-State = State_Talking;
-show_debug_message(Item_Action_Index);
-array_delete(global.Game_Data.Inventory, Inventory_Index, 1);
-}
-if(Item_Actions[Item_Action_Index] = "USE")
-{
-if(global.Game_Data.Inventory[Item_Action_Index].Type = "Food")
-{
-global.Health += global.Game_Data.Inventory[Item_Action_Index].Value;
-if(global.Health >= global.MaxHealth)
-{
-global.Health = global.MaxHealth;
-var _dialog = instance_create_layer(x, y, "Instances", zold_dialogue_DONT_USE);
-with(_dialog)
-{
-dialogue_list = [];
-Dialog = 
-{
-Text: "The " + global.Game_Data.Inventory[other.Inventory_Index].Name + " was consumed. You healed to full!"
-//more stuff will be added like talking sprites
-}
-array_push(dialogue_list, Dialog);
-}
-State = State_Talking;
-show_debug_message(Item_Action_Index);
-array_delete(global.Game_Data.Inventory, Inventory_Index, 1);
-}
-else
-{
-var _dialog = instance_create_layer(x, y, "Instances", zold_dialogue_DONT_USE);
-with(_dialog)
-{
-dialogue_list = [];
-Dialog = 
-{
-Text: "The " + global.Game_Data.Inventory[other.Inventory_Index].Name + " was consumed. You healed " + global.Game_Data.Inventory[other.Inventory_Index].Value + " HP!"
-//more stuff will be added like talking sprites
-}
-array_push(dialogue_list, Dialog);
-}
-State = State_Talking;
-show_debug_message(Item_Action_Index);
-array_delete(global.Game_Data.Inventory, Inventory_Index, 1);
-}
-}
-}
-}
-
-if(Right)
-{
-Item_Action_Index ++;
-if(Item_Action_Index > array_length(Item_Actions) - 1)
-{
-Item_Action_Index = 0;
-}
-}
-if(Left)
-{
-Item_Action_Index --;
-if(Item_Action_Index < 0)
-{
-Item_Action_Index = array_length(Item_Actions) - 1;
-}
-}
-
-if(keyboard_check_pressed(ord("X"))) or (keyboard_check_pressed(vk_shift))
-{
-State = State_Inventory;
-}
-
-}
 
 State_Menu = function()
 {
-switch(last_dir)
-{
+	switch(last_dir)
+	{
 		case "right":
 			sprite_index = r_idle;
 			break;
@@ -261,44 +100,6 @@ switch(last_dir)
 			sprite_index = d_idle;
 			break;
 	}
-var Down = keyboard_check_pressed(vk_down);
-var Up = keyboard_check_pressed(vk_up);
-if(keyboard_check_pressed(ord("C"))) or (keyboard_check_pressed(ord("X"))) or (keyboard_check_pressed(vk_shift)) or (keyboard_check_pressed(vk_control))
-{
-	State = State_Overworld
-}
-if((keyboard_check_pressed(ord("Z"))) or (keyboard_check_pressed(vk_enter)))
-{
-switch(Menu_Index) 
-{
-	case 0:
-	if(array_length(global.Game_Data.Inventory) != 0)
-	{
-	State = State_Inventory
-	}
-
-	break
-	case 1:
-	State = State_Stat
-	break
-}
-}
-if(Down)
-{
-	Menu_Index ++
-	if(Menu_Index > array_length(MenuSelect) - 1)
-	{
-		Menu_Index = 0
-	}
-}
-if(Up)
-{
-	Menu_Index --
-	if(Menu_Index < 0)
-	{
-		Menu_Index = array_length(MenuSelect) - 1
-	}
-}
 }
 
 State_Overworld = function()
@@ -307,6 +108,7 @@ State_Overworld = function()
 	if(scr_multicheck_pressed(2))
 	{
 		instance_create_layer(x,y,"Instances",obj_pause_menu);
+		State = State_Menu;
 	}
 	
 	var xDirection = keyboard_check(vk_right) - keyboard_check(vk_left);

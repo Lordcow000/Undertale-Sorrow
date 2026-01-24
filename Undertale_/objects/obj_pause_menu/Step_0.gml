@@ -152,6 +152,13 @@ if (Item_inspect)
 				scr_item_info(Current_Item);
 				instance_destroy(id,false);
 			break
+			
+			case 2:
+				drop = instance_create_layer(x,y,"Instances",obj_dialogue_drop);
+				drop.item = Current_Item;
+				drop.item_slot = Inventory_Index
+				
+				instance_destroy(id,false);
 		}
 		
 	}

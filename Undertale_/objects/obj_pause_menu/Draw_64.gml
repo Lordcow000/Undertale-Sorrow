@@ -107,13 +107,13 @@ if (Stats_open)
     draw_text_transformed(xx + 114.4, yy - 20, string_hash_to_newline("\"Echo\""),2,2,0);
     draw_text_transformed(xx + 300, yy - 20, string_hash_to_newline("LV " + string(global.Game_Data.LOVE)),2,2,0);
     draw_text_transformed(xx + 114.4, yy + 20, string_hash_to_newline("HP " + string(global.Game_Data.Health) + " / " + string(global.Game_Data.MaxHealth)),2,2,0);
-    draw_text_transformed(xx + 114.4, yy + 70, string_hash_to_newline("AT " + string(global.Game_Data.Attack) + "(" + string(global.Game_Data.WeaponEquipped.atk) + ")"),2,2,0);
-    draw_text_transformed(xx + 114.4, yy + 100, string_hash_to_newline("DF " + string(global.Game_Data.Defense) + "(" + string(global.Game_Data.ArmorEquipped.def) + ")"),2,2,0);
+    draw_text_transformed(xx + 114.4, yy + 70, string_hash_to_newline("AT " + string(global.Game_Data.Attack) + "(" + string(Fetch_item(global.Game_Data.WeaponEquipped).atk) + ")"),2,2,0);
+    draw_text_transformed(xx + 114.4, yy + 100, string_hash_to_newline("DF " + string(global.Game_Data.Defense) + "(" + string(Fetch_item(global.Game_Data.ArmorEquipped).def) + ")"),2,2,0);
     draw_text_transformed(xx + 260, yy + 70, string_hash_to_newline("EXP " + string(global.Game_Data.EXP)),2,2,0);
     
     //draw_text(xx + 260, yy + 100, string_hash_to_newline("NEXT " + string(level_up_treshhold))); next level
-    draw_text_transformed(xx + 114.4, yy + 140, string_hash_to_newline("WEAPON: " + global.Game_Data.WeaponEquipped.display_name),2,2,0);
-    draw_text_transformed(xx + 114.4, yy + 170, string_hash_to_newline("ARMOR: " + global.Game_Data.ArmorEquipped.display_name),2,2,0);
+    draw_text_transformed(xx + 114.4, yy + 140, string_hash_to_newline("WEAPON: " + Fetch_item(global.Game_Data.WeaponEquipped).display_name),2,2,0);
+    draw_text_transformed(xx + 114.4, yy + 170, string_hash_to_newline("ARMOR: " + Fetch_item(global.Game_Data.ArmorEquipped).display_name),2,2,0);
    
     draw_text_transformed(xx + 114.4, yy + 280, string_hash_to_newline("GOLD: " + string(global.Game_Data.Gold)),2,2,0);
 }

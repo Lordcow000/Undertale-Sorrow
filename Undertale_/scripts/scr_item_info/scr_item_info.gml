@@ -2,7 +2,8 @@
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_item_info(Item){
 	
-	msg = instance_create_layer(x,y,"Instances",obj_dialogue);
+	scr_gen_dialoguer();
+	show_debug_message("Called")
 	
 	
 	

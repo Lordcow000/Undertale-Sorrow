@@ -15,8 +15,8 @@ Attack: 10,
 Defense: 10,
 EXP: 0,
 Money: 0,
-WeaponEquipped: Fetch_item(ItemID.Fists),
-ArmorEquipped: Fetch_item(ItemID.Worn_sweater),
+WeaponEquipped: ItemID.Fists,
+ArmorEquipped: ItemID.Worn_sweater,
 NEXTLV: 10
 }
 

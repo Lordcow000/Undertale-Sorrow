@@ -8,6 +8,7 @@ enum ItemID
 	Hair_Clip,
 	Fists,
 	Worn_sweater,
+	Stick,
 	
 	
 }

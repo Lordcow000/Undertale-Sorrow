@@ -5,13 +5,12 @@ event_inherited();
 if (interact && waiter == 0)
 {
 	waiter = 1;
-	dialoger = instance_create_layer(x, y, "Instances", obj_dialogue);
-	show_debug_message("created dialoguer");
+	scr_gen_dialoguer();
 }
 
 if (waiter == 1)
 {
-	with (dialoger)
+	with (msg)
 	{
 		portrait = false;
 		dialogue_list[0] = "* I'm Wing Gaster.";

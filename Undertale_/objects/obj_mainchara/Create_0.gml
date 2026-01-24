@@ -36,8 +36,15 @@ Inventory_Index = 0;
 
 Menu_Index = 0;
 
+
+scr_item_add(ItemID.Lemon)
 scr_item_add(ItemID.Lime);
 scr_item_add(ItemID.Lemon_Lime_Bitters);
+scr_item_add(ItemID.Stick)
+
+
+
+
 
 State_Battle = function()
 {

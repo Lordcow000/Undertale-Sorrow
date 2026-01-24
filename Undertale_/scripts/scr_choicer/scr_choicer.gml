@@ -16,7 +16,7 @@ if (outcome == p && choice == false)
 	
 	
 }
-show_debug_message(outcome)
+
 if (text_current == ch_msg)
 {
 	choice = true;

@@ -50,12 +50,13 @@ if (!Inventory_open && !Stats_open && !Cell_open)
 
 if (Inventory_open && !Item_inspect)
 {
-	show_debug_message("Inventory open")
 	var Down = keyboard_check_pressed(vk_down);
 	var Up = keyboard_check_pressed(vk_up);
 	var _inventory = global.Game_Data.Inventory;
 	
-	var item_number = 8;
+	
+	
+	var item_number = 7;
     
     for (var i = 0; i <= 7; i++)
     {
@@ -65,6 +66,7 @@ if (Inventory_open && !Item_inspect)
             break;
         }
     }
+	
 
 	if(Down)
 	{
@@ -84,7 +86,9 @@ if (Inventory_open && !Item_inspect)
 		}
 		audio_play_sound(snd_main_select,1,0);
 	}
-
+	
+	
+	
 	if(scr_multicheck_pressed(0) && good_to_go)
 	{
 		Current_Item = Fetch_item(_inventory[Inventory_Index]);
@@ -101,14 +105,13 @@ if (Inventory_open && !Item_inspect)
 	{
 		Inventory_open = false;
 	}
-	
-	good_to_go = true;
 }
 
 if (Item_inspect)
 {
 	var Left = keyboard_check_pressed(vk_left);
 	var Right = keyboard_check_pressed(vk_right);
+	var _inventory = global.Game_Data.Inventory;
 	
 	if(Right)
 	{
@@ -135,13 +138,20 @@ if (Item_inspect)
 		Inspect_index = 0;
 	}
 	
-	if(scr_multicheck_pressed(0) &&good_to_go)
+	
+	if(scr_multicheck_pressed(0) && good_to_go)
 	{
 		switch(Inspect_index)
 		{
+			case 0:
+				scr_item_use(Current_Item, Inventory_Index, _inventory[Inventory_Index]);
+				instance_destroy();
+			break
+
 			case 1:
 				scr_item_info(Current_Item);
 				instance_destroy();
+			break
 		}
 		
 	}

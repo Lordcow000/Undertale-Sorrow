@@ -15,6 +15,8 @@ dialogue_advance = false;
 
 Portrait = false;
 
+
+obj_mainchara.State = obj_mainchara.State_Frozen;
 Player_Next_State = obj_mainchara.State_Overworld;
 
 pause_timer = 0;

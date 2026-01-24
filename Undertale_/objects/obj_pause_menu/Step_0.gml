@@ -145,12 +145,12 @@ if (Item_inspect)
 		{
 			case 0:
 				scr_item_use(Current_Item, Inventory_Index, _inventory[Inventory_Index]);
-				instance_destroy();
+				instance_destroy(id,false);
 			break
 
 			case 1:
 				scr_item_info(Current_Item);
-				instance_destroy();
+				instance_destroy(id,false);
 			break
 		}
 		

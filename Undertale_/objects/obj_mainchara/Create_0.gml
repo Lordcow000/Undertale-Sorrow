@@ -37,10 +37,10 @@ Inventory_Index = 0;
 Menu_Index = 0;
 
 
-scr_item_add(ItemID.Lemon)
+scr_item_add(ItemID.Lemon);
 scr_item_add(ItemID.Lime);
 scr_item_add(ItemID.Lemon_Lime_Bitters);
-scr_item_add(ItemID.Stick)
+scr_item_add(ItemID.Stick);
 
 
 
@@ -81,7 +81,7 @@ show_debug_message("Enemeis seemingly spawned")
 }
 }
 
-State_Menu = function()
+State_Frozen = function()
 {
 	switch(last_dir)
 	{
@@ -106,7 +106,7 @@ State_Overworld = function()
 	if(scr_multicheck_pressed(2))
 	{
 		instance_create_layer(x,y,"Instances",obj_pause_menu);
-		State = State_Menu;
+		State = State_Frozen;
 	}
 	
 	var xDirection = keyboard_check(vk_right) - keyboard_check(vk_left);

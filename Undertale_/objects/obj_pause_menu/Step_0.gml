@@ -87,7 +87,8 @@ if (Inventory_open && !Item_inspect)
 
 	if(scr_multicheck_pressed(0) && good_to_go)
 	{
-		Current_Item = _inventory[Inventory_Index];
+		Current_Item = Fetch_item(_inventory[Inventory_Index]);
+		good_to_go = false;
 		Item_inspect = true;
 	}
 	
@@ -132,7 +133,19 @@ if (Item_inspect)
 	{
 		Item_inspect = false;
 		Inspect_index = 0;
-	}	
+	}
+	
+	if(scr_multicheck_pressed(0) &&good_to_go)
+	{
+		switch(Inspect_index)
+		{
+			case 1:
+				scr_item_info(Current_Item);
+				instance_destroy();
+		}
+		
+	}
+	good_to_go = true;
 }
 
 if (Stats_open)

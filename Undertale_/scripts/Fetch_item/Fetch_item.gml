@@ -8,7 +8,10 @@ function Fetch_item(id){
 		{
 			name: "Fists",
 			display_name: "Fists",
-			desc: {Text:"* Aint much but better than#   Nothing"},
+			desc: 
+			[
+			"* Aint much but better than#   Nothing"
+			],
 			type: "Weapon",
 			atk: 1,
 			value: 0,
@@ -19,7 +22,10 @@ function Fetch_item(id){
 		{
 			name: "Worn Sweater",
 			display_name: "Worn Swtr",
-			desc: {Text:"* Sweater"},
+			desc: 
+			[
+			"* \"Worn Sweater\" - Armor DF 1#*  Your old sweater"
+			],
 			type: "Armour",
 			def: 1,
 			value: 10,
@@ -30,7 +36,10 @@ function Fetch_item(id){
 		{
 				name: "Lemon",
 				display_name: "Lemon", 
-				desc: {Text:"* A yellow fruit, really REALLY sour. Heals 20 HP."}, 
+				desc: 
+				[
+				"* \"Lemon\" - Heals 20 HP #* A yellow fruit, really REALLY#  sour.", "* Mwah"
+				], 
 				type: "Heal",
 				heal_value: 20,
 				value: 10
@@ -41,7 +50,7 @@ function Fetch_item(id){
 		{
 				name: "Lime",
 				display_name: "Lime", 
-				desc: {Text:"* A green fruit, really sour. Heals 10 HP."}, 
+				desc: ["* \"Lime\" - Heals 10 HP#* A green fruit, really sour."], 
 				type: "Heal",
 				heal_value: 10,
 				value: 5
@@ -52,7 +61,7 @@ function Fetch_item(id){
 		{
 				name: "Lemon Lime Bitters",
 				display_name: "Limon Bitt", 
-				desc: {Text: "* The best drink. Heals 100 HP."}, 
+				desc: ["* \"Lemon Lime Bitters\"#  - Heals 100HP#* The best drink."], 
 				type: "Heal",
 				heal_value: 100,
 				value: 50
@@ -63,7 +72,7 @@ function Fetch_item(id){
 		{
 			name: "Hair Clip",
 			display_name: "Hair Clip",
-			desc: {Text:"* A cyan hair clip"},
+			desc: ["* \"Hair Clip\" - Armor DF 10#* A cyan hair clip"],
 			type: "Armour",
 			def: 10,
 			value: 10,

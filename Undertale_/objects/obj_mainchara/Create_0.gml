@@ -36,21 +36,13 @@ Inventory_Index = 0;
 
 Menu_Index = 0;
 
-// move this code later
+scr_item_add(ItemID.Lime);
+scr_item_add(ItemID.Lemon_Lime_Bitters);
 
 State_Battle = function()
 {
 
 }
-
-
-scr_item_add(ItemID.Lime);
-scr_item_add(ItemID.Lemon);
-scr_item_add(ItemID.Lemon_Lime_Bitters);
-
-
-MenuSelect = ["ITEM", "STAT", "CELL"]
-
 
 State_Battle_Start = function()
 {
@@ -81,7 +73,6 @@ show_debug_message("Enemeis seemingly spawned")
 
 }
 }
-
 
 State_Menu = function()
 {
@@ -273,8 +264,6 @@ State_Overworld = function()
 
 }
 
-State = State_Overworld;
-
 State_Talking = function()
 {
 switch(last_dir)
@@ -294,6 +283,6 @@ switch(last_dir)
 	}
 }
 
-
+State = State_Overworld;
 
 

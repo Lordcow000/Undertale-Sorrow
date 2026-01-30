@@ -9,8 +9,8 @@
   "name":"obj_test_npc",
   "overriddenProperties":[],
   "parent":{
-    "name":"Objects",
-    "path":"folders/Objects.yy",
+    "name":"NPS'c",
+    "path":"folders/Objects/NPS'c.yy",
   },
   "parentObjectId":{
     "name":"obj_base_npc",

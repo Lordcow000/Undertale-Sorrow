@@ -11,5 +11,4 @@ if(place_meeting(x, y, obj_interactcollision))
 		can_interact = false;
 		show_debug_message("Interacted");
 	}
-
-}//38
+}

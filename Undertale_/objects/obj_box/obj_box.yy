@@ -1,21 +1,18 @@
 {
   "$GMObject":"",
-  "%Name":"obj_wing_gaster_npc",
+  "%Name":"obj_box",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_wing_gaster_npc",
+  "name":"obj_box",
   "overriddenProperties":[],
   "parent":{
-    "name":"NPS'c",
-    "path":"folders/Objects/NPS'c.yy",
+    "name":"Objects",
+    "path":"folders/Objects.yy",
   },
-  "parentObjectId":{
-    "name":"obj_base_npc",
-    "path":"objects/obj_base_npc/obj_base_npc.yy",
-  },
+  "parentObjectId":null,
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -34,9 +31,12 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_wingaster",
-    "path":"sprites/spr_wingaster/spr_wingaster.yy",
+    "name":"spr_box",
+    "path":"sprites/spr_box/spr_box.yy",
   },
-  "spriteMaskId":null,
+  "spriteMaskId":{
+    "name":"spr_box",
+    "path":"sprites/spr_box/spr_box.yy",
+  },
   "visible":true,
 }

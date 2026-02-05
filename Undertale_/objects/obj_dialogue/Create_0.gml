@@ -13,7 +13,7 @@ text_current = 0;
 char_speed = 1;
 dialogue_advance = false;
 
-Portrait = false;
+portrait = false;
 
 
 obj_mainchara.State = obj_mainchara.State_Frozen;

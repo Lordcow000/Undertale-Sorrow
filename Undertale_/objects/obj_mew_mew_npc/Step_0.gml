@@ -35,7 +35,8 @@ if (waiter == 1)
 		with(msg)
 		{
 			portrait = false;
-			dialogue_list[0] = "* You've talked to me:#  " + string(other.talked_to_amt) + " times"
+			dialogue_list[0] = "* You've talked to me:#  " + string(other.talked_to_amt) + " times."
+			dialogue_list[1] = "* Quick test";
 		}
 	}
 	waiter = 2;

@@ -28,7 +28,7 @@ if(!array_length(dialogue_list) <= text_current)
 {
  
 
-if (!Portrait)
+if (!portrait)
 {
 
 draw_text_transformed(text_x, text_y, string_hash_to_newline(clean_text),2,2,0);
@@ -37,9 +37,18 @@ draw_text_transformed(text_x, text_y, string_hash_to_newline(clean_text),2,2,0);
 
 else
 {
-var dialogue_port = dialogue_list[text_current].Portrait
-draw_sprite_ext(dialogue_port,0,text_x,text_y,2,2,0,c_white,1);
-draw_text_transformed(text_x + (sprite_get_width(dialogue_port)*2+15), text_y,  string_hash_to_newline(clean_text),2,2,0);		
+	var dialogue_port = prt[text_current];
+	show_debug_message(dialogue_port);
+	show_debug_message("^")
+	if(dialogue_port != false)
+	{
+		draw_sprite_ext(dialogue_port,0,text_x,text_y,2,2,0,c_white,1);
+		draw_text_transformed(text_x + (sprite_get_width(dialogue_port)*2+15), text_y,  string_hash_to_newline(clean_text),2,2,0);		
+	}
+	else
+	{
+		draw_text_transformed(text_x, text_y, string_hash_to_newline(clean_text),2,2,0);
+	}
 }
 }
 
@@ -51,7 +60,7 @@ var spacing = 0.5;
 if (ch[4] != "")
     spacing = 1;
 
-if (Portrait)
+if (portrait)
     spacing = 0.30;
 
 var ypos1, ypos2;

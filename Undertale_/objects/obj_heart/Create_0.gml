@@ -330,6 +330,11 @@ State_Mercy = function()
 State_Flee = function()
 {
 Heart_Pos_Mod -= 1;
+sprite_index = spr_heart_walk
+image_speed = 1
+x = Heart_Pos_Mod + 52;
+y = 275+(Mercy_Index * 30);
+
 if(Heart_Pos_Mod + 52 < -16)
 {
 room_goto(global.Game_Data.Previ_Room);

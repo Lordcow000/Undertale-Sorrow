@@ -9,8 +9,8 @@
   "name":"obj_wing_gaster_npc",
   "overriddenProperties":[],
   "parent":{
-    "name":"NPS'c",
-    "path":"folders/Objects/NPS'c.yy",
+    "name":"NPCs",
+    "path":"folders/Objects/NPCs.yy",
   },
   "parentObjectId":{
     "name":"obj_base_npc",

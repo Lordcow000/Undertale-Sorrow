@@ -7,6 +7,7 @@ if (outcome == p && choice == false)
     {
         text_current += 1;
         char_current = 0;
+		pause_timer = 0;
     }
     else
     {

@@ -149,5 +149,5 @@ draw_sprite(spr_heart,0,52,275+(Mercy_Index * 30))
 if(State = State_Flee)
 {
 draw_text_transformed(90, 265, "* " + "I'm outta here", 2, 2, 0);
-draw_sprite(spr_heart_walk,1,52 + Heart_Pos_Mod,275+(Mercy_Index * 30))
+//draw_sprite(spr_heart_walk,1,52 + Heart_Pos_Mod,275+(Mercy_Index * 30))
 }

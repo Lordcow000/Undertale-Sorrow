@@ -12,11 +12,14 @@ if (waiter == 1)
 {
 	with (msg)
 	{
-		portrait = false;
+		portrait = true;
 		dialogue_list[0] = "* I'm Wing Gaster.";
 		ch_msg = 0;
 		ch[1] = "Hi";
 		ch[2] = "HOI";
+		
+		prt[0] = Ralsei_port_royalscientist;
+		prt[1] = Ralsei_port_royalscientist;
 		
 		if (outcome != 0 && text_current == 0)
         {

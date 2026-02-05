@@ -11,7 +11,7 @@ char_current = 1;
 text_current = 0;
 char_speed = 1;
 
-Portrait = false;
+portrait = false;
 
 Player_Next_State = obj_mainchara.State_Overworld;
 

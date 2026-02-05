@@ -27,6 +27,7 @@ if (char_current < _len)
 	{
 		var current_char = string_char_at(dialogue_list[text_current], char_current + 1);
 		var next_char = string_char_at(dialogue_list[text_current], char_current + 2);
+		
 
 		switch (current_char)
 		{
@@ -46,6 +47,8 @@ if (char_current < _len)
 			default:
 				char_current += char_speed;
 				break;
+			
+			
 		}
 	}
 }
@@ -70,6 +73,7 @@ if (dialogue_advance)
 	{
 		text_current += 1;
 		char_current = 0;
+		pause_timer = 0;
 	}
 	
 	else

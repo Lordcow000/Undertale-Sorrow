@@ -220,14 +220,20 @@ State_Act_Select = function()
 	
 	var enemy = Enemy_Count[Enemy_select_Index];
 	
-	if(down)
+	if (down)
 	{
-		Act_Index += 2;
+	    Act_Index += 2;
+	    if (Act_Index >= array_length(enemy.act_actions))
+	        Act_Index -= 2;
 	}
-	if(up)
+
+	if (up)
 	{
-		Act_Index -= 2;
-	}	
+	    Act_Index -= 2;
+	    if (Act_Index < 0)
+	        Act_Index += 2;
+	}
+	
 	if(right)
 	{
 		Act_Index ++;
@@ -239,7 +245,8 @@ State_Act_Select = function()
 	if(left)
 	{
 		Act_Index --;
-		Act_Index ++;
+
+		
 		if(Act_Index < 0)
 		{
 			Act_Index = array_length(enemy.act_actions) - 1;

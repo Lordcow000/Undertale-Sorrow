@@ -1,7 +1,7 @@
 /// @description Insert description here
 // You can write your code in this editor
 
-enemies = global.BattleEnemies;
+enemies = global.BattleEnemiesPlacers;
 amt_of_enemies = array_length(enemies);
 
 show_debug_message("Enemeis" + string(enemies));

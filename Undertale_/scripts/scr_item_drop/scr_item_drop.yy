@@ -5,8 +5,8 @@
   "isDnD":false,
   "name":"scr_item_drop",
   "parent":{
-    "name":"Scripts",
-    "path":"folders/Scripts.yy",
+    "name":"Item managment",
+    "path":"folders/Scripts/Item managment.yy",
   },
   "resourceType":"GMScript",
   "resourceVersion":"2.0",

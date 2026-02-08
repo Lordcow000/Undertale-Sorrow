@@ -5,11 +5,11 @@
 and 1 main variable called 'State' which is set to the function or 'state' the player is in, then called every step. 
 */
 
-if(room = encounter_room)
+if(room = encounter_room || room = encounter_room_1)
 {
 State = State_Battle;
 }
-else if(room != encounter_room and State = State_Battle)
+else if(room != encounter_room and State = State_Battle || room != encounter_room_1 and State = State_Battle)
 {
 State = State_Overworld;
 x = global.Game_Data.PlayerStartxPos;

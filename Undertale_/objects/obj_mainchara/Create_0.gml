@@ -63,7 +63,7 @@ global.Game_Data.PlayerStartyPos = y;
 global.Game_Data.Previ_Room = room;
 enemies = [];
 randomise();
-enemy_amount = irandom_range(1, 3);
+enemy_amount = irandom_range(1, 1);
 show_debug_message("random amount: "+ string(enemy_amount))
 for (var i = 0; i < enemy_amount; i++)
 {
@@ -71,8 +71,15 @@ for (var i = 0; i < enemy_amount; i++)
 	show_debug_message(enemy);
 	array_push(enemies, enemy);
 }
-global.BattleEnemies = enemies;
+global.BattleEnemiesPlacers = enemies;
+global.BattleEnemies = [];
+if (variable_instance_exists(self,"encounter1"))
+{
 
+	room_goto(encounter_room_1);
+	
+}
+else
 room_goto(encounter_room);
 //instance_create_layer(50,50,"Instances",obj_enemy_placer);
 show_debug_message("Enemeis seemingly spawned")

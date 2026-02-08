@@ -1,7 +1,7 @@
 items = global.Game_Data.Inventory
 Selec_Index = 0;
 Selec = ["FIGHT", "ACT", "ITEM", "MERCY"]
-Enemy_Count = []
+Enemy_Count = global.BattleEnemies;
 Dialog = "I'll solve it later blah"
 Current_Char = 0;
 Quicktime_Pos = 0;
@@ -23,11 +23,22 @@ global.idealborder[3] = 385;
 
 State_Selec = function()
 {
+	show_debug_message(global.BattleEnemies)
 	global.idealborder[0] = 32;
 	global.idealborder[1] = 602;
 	global.idealborder[2] = 250;
 	global.idealborder[3] = 385;
-	global.instantborder = false  ;
+	global.instantborder = false;
+	var enemy = Enemy_Count[Enemy_select_Index]
+	if(enemy._health <= enemy.low_health_amt)
+	{
+		dialogue_box_txt = enemy.low_hp;
+	}
+	else
+	{
+		dialogue_box_txt = enemy.dialog_first;
+	}
+	
 	var right = keyboard_check_pressed(vk_right)
 	var left = keyboard_check_pressed(vk_left)
 	if(right)
@@ -219,6 +230,8 @@ State_Act_Select = function()
 	var _x = (keyboard_check_pressed(ord("X")) or keyboard_check_pressed(vk_shift));
 	
 	var enemy = Enemy_Count[Enemy_select_Index];
+	
+	
 	
 	if (down)
 	{

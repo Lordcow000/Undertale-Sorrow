@@ -2,8 +2,13 @@ test_cow =
 {
 	obj: obj_LORDCOW,
 	name: "LORDCOW",
-	_health: 1000,
-	dialog_first: "You remember you're geno...cows?",
+	max_health: 1000,
+	_health: 101,
+	low_health_amt: 100,
+	
+	dialog_first: "* You remember you're geno...cows?",
+	low_hp: "* What the fuck man?",
+	
 	def: 0,
 	spareable: false,
 	act_actions: [{Name: "Argue", ID: "Sans_Argue",}, {Name: "Talk", ID: "Sans_Talk",},{Name: "Argue", ID: "Sans_Argue",},{Name: "Argue", ID: "Sans_Argue",},],
@@ -24,7 +29,5 @@ test_cow =
 	},
 	]
 }
-enemies = obj_heart.Enemy_Count;
-
-array_insert(enemies,array_length(enemies),test_cow);
+array_insert(global.BattleEnemies,array_length(global.BattleEnemies),test_cow);
 

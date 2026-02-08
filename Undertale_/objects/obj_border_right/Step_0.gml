@@ -42,4 +42,7 @@ if(global.instantborder)
 	y = global.idealborder[3];
 }
 
-
+if(image_yscale = size && x = global.idealborder[1] && y = global.idealborder[3])
+{
+	finished = true;
+}

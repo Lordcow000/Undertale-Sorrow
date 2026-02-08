@@ -1,0 +1,13 @@
+{
+  "$GMScript":"v1",
+  "%Name":"scr_battle_flavour_text_dictionary",
+  "isCompatibility":false,
+  "isDnD":false,
+  "name":"scr_battle_flavour_text_dictionary",
+  "parent":{
+    "name":"encounters",
+    "path":"folders/Scripts/encounters.yy",
+  },
+  "resourceType":"GMScript",
+  "resourceVersion":"2.0",
+}

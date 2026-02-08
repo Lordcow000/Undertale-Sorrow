@@ -1,0 +1,516 @@
+items = global.Game_Data.Inventory;
+
+Selec_Index = 0;
+mercy_index = 0;
+act_index = 0;
+enemy_select_index = 0;
+
+Selec = ["FIGHT", "ACT", "ITEM", "MERCY"]
+mercy_select = ["Spare", "Flee"];
+
+first_turn = true;
+
+Quicktime_Pos = 0;
+
+started = false;
+image_speed = 0;
+battle_bar_index = 0;
+
+global.instantborder = true;
+global.idealborder[0] = 32;
+global.idealborder[1] = 602;
+global.idealborder[2] = 250;
+global.idealborder[3] = 385;
+
+enemies = global.battle.enemies;
+global.battle.draw_text = true;
+
+up = keyboard_check_pressed(vk_up);
+down = keyboard_check_pressed(vk_down);
+left = keyboard_check_pressed(vk_left);
+right = keyboard_check_pressed(vk_right);
+select = scr_multicheck_pressed(0);
+cancel = scr_multicheck_pressed(1);
+
+
+
+
+State_New_Turn = function()
+{
+	if(instance_exists(obj_battle_text_handler))
+	{
+		instance_destroy(obj_battle_text_handler);
+	}
+	
+	if(instance_exists(obj_battle_act_text_handler))
+	{
+		instance_destroy(obj_battle_act_text_handler);
+	}
+	first_turn = false;
+
+	mercy_index = 0;
+	act_index = 0;
+	enemy_select_index = 0;
+	
+	State = State_Selec;
+}
+
+State_Selec = function()
+{
+	if (!instance_exists(obj_battle_text_handler))
+	{
+		if (!first_turn)
+		{
+			instance_create_layer(0,0,"Instances",obj_battle_text_handler);
+		}
+		else
+		{
+			i = instance_create_layer(0,0,"Instances",obj_battle_text_handler);
+			i.mode = "encounter"
+		}
+	}
+	global.idealborder[0] = 32;
+	global.idealborder[1] = 602;
+	global.idealborder[2] = 250;
+	global.idealborder[3] = 385;
+	global.instantborder = false;
+
+	
+	global.battle.draw_text = true;
+	
+	if(right)
+	{
+		Selec_Index ++;
+		if(Selec_Index > array_length(Selec) - 1)
+		{
+			Selec_Index = 0
+		}
+	}
+	if(left)
+	{
+		Selec_Index --;
+		if(Selec_Index < 0)
+		{
+			Selec_Index = array_length(Selec) - 1
+		}
+	}
+	if(select)
+	{
+		global.battle.draw_text = false;
+
+		switch(Selec_Index)
+		{
+			case 0:
+			State = State_Fight;
+			break
+			
+			case 1:
+			State = State_Act_Enemy_Select;
+			break
+			
+			case 3:
+			State = State_Mercy;
+			break
+		}
+	}
+	switch(Selec_Index)
+	{
+		case 0:
+		x = 40
+		y = 446
+		break
+		case 1:
+		x = 193
+		y = 446
+		break
+		case 2:
+		x = 353
+		y = 446
+		break
+		case 3:
+		x = 508
+		y = 446
+		break
+	}
+}
+
+State_Quicktime = function()
+{
+	var center_x = 319;
+	_accuracy_multi=1;
+	battle_bar_index += .1;
+	enemies = global.battle.enemies;
+	
+	if(select)
+	{
+		var _distance_from_center = abs(center_x - Quicktime_Pos); 
+		if (_distance_from_center <= 12)
+		{
+			_accuracy_multi = 2.2
+		}
+		else
+		{
+			_accuracy_multi = (1-_distance_from_center/(view_wport/2))*2  //287 is half the width of spr_battle_quicktime
+		}
+		
+		var enemy = enemies[enemy_select_index];
+		
+		var _damage = ceil(round(global.Game_Data.Attack - enemy.defense + random(2)) * _accuracy_multi)
+		
+		show_debug_message(_damage);
+		
+		enemy.hp -= _damage;
+		
+		if (enemy.hp <= 0)
+		{
+			array_delete(Enemy_Count,enemy_select_index,1); // removes enemy if dead
+		}
+		show_debug_message(enemy);
+		State = State_New_Turn;
+	}
+	
+	Quicktime_Pos += 4;
+	
+	if(Quicktime_Pos >= 576)
+	{
+	State = State_Enemy_Attack_Start;
+	}
+}
+
+State_Fight = function()
+{	
+	enemies = global.battle.enemies;
+	
+	if (enemies[enemy_select_index].spared)
+	{
+	    repeat (array_length(enemies))
+	    {
+	        enemy_select_index++;
+        
+	        if (enemy_select_index > array_length(enemies) - 1)
+	        {
+	            enemy_select_index = 0;
+	        }
+
+	        if (!enemies[enemy_select_index].spared)
+	        {
+	            break;
+	        }
+	    }
+	}
+	
+	
+	if (down)
+	{
+	    repeat (array_length(enemies))
+	    {
+	        enemy_select_index++;
+        
+	        if (enemy_select_index > array_length(enemies) - 1)
+	        {
+	            enemy_select_index = 0;
+	        }
+
+	        if (!enemies[enemy_select_index].spared)
+	        {
+	            break;
+	        }
+	    }
+	}
+
+	if (up)
+	{
+	    repeat (array_length(enemies))
+	    {
+	        enemy_select_index--;
+        
+	        if (enemy_select_index < 0)
+	        {
+	            enemy_select_index = array_length(enemies) - 1;
+	        }
+
+	        if (!enemies[enemy_select_index].spared)
+	        {
+	            break;
+	        }
+	    }
+	}
+	if(select)
+	{
+		State = State_Quicktime;
+		Quicktime_Pos = 0;		
+	}
+	if(cancel)
+	{
+		State = State_Selec;
+	}
+
+}
+
+State_Act_Enemy_Select = function()
+{
+	enemies = global.battle.enemies;
+	
+	if (enemies[enemy_select_index].spared)
+	{
+	    repeat (array_length(enemies))
+	    {
+	        enemy_select_index++;
+        
+	        if (enemy_select_index > array_length(enemies) - 1)
+	        {
+	            enemy_select_index = 0;
+	        }
+
+	        if (!enemies[enemy_select_index].spared)
+	        {
+	            break;
+	        }
+	    }
+	}
+	
+	
+	if (down)
+	{
+	    repeat (array_length(enemies))
+	    {
+	        enemy_select_index++;
+        
+	        if (enemy_select_index > array_length(enemies) - 1)
+	        {
+	            enemy_select_index = 0;
+	        }
+
+	        if (!enemies[enemy_select_index].spared)
+	        {
+	            break;
+	        }
+	    }
+	}
+
+	if (up)
+	{
+	    repeat (array_length(enemies))
+	    {
+	        enemy_select_index--;
+        
+	        if (enemy_select_index < 0)
+	        {
+	            enemy_select_index = array_length(enemies) - 1;
+	        }
+
+	        if (!enemies[enemy_select_index].spared)
+	        {
+	            break;
+	        }
+	    }
+	}
+
+	if(select)
+	{
+		State = State_Act_Select;
+	}
+	if(cancel)
+	{
+		State = State_Selec;			
+	}
+}
+
+State_Act_Select = function()
+{
+	
+	enemies = global.battle.enemies;
+	
+	var enemy = enemies[enemy_select_index];
+	
+	
+	
+	if (down)
+	{
+	    act_index += 2;
+	    if (act_index >= array_length(enemy.actions))
+	        act_index -= 2;
+	}
+
+	if (up)
+	{
+	    act_index -= 2;
+	    if (act_index < 0)
+	        act_index += 2;
+	}
+	
+	if(right)
+	{
+		act_index ++;
+		if(act_index > array_length(enemy.actions) - 1)
+		{
+			act_index = 0;
+		}
+	}
+	if(left)
+	{
+		act_index --;
+		if(act_index < 0)
+		{
+			act_index = array_length(enemy.actions) - 1;
+		}
+	}
+	if(select)
+	{
+		_act = enemy.actions[act_index];
+		State = State_Act_Start;
+	}
+	if(cancel)
+	{
+		State = State_Act_Enemy_Select;			
+	}
+	
+}
+
+State_Act_Start = function()
+{
+	handler = instance_create_layer(0,0,"Instances",obj_battle_act_text_handler);
+	handler.act = _act.ID;
+	handler.enemy = enemies[enemy_select_index]
+	State = State_Act
+}
+
+State_Act = function()
+{
+	if(!instance_exists(obj_battle_act_text_handler))
+	{
+		State = State_New_Turn;
+	}
+}
+
+State_Mercy = function()
+{
+	if(down)
+	{
+		mercy_index ++
+		if(mercy_index > array_length(Mercy_Select) - 1)
+		{
+			mercy_index = 0
+		}
+	}
+	if(up)
+	{
+		mercy_index --
+		if(mercy_index < 0)
+		{
+			mercy_index = array_length(Mercy_Select) - 1
+		}
+	}
+			
+	if(cancel)
+	{
+		State = State_Selec;
+	}
+	
+	if(select)
+	{
+		if(Mercy_Select[mercy_index] == "Flee")
+		{
+			Heart_Pos_Mod = 0;
+			State = State_Flee;
+		}
+		else if(Mercy_Select[mercy_index] == "Spare")
+		{
+			array_foreach(enemies,function(enemy,index)
+			{
+				if(enemy.spareable)
+				{
+					enemy.spared = true;
+					enemy.object.image_blend = c_gray
+					
+				}
+			})
+			
+		}
+	}
+		
+}
+
+State_Flee = function()
+{
+Heart_Pos_Mod -= 1;
+sprite_index = spr_heart_walk
+image_speed = 1
+x = Heart_Pos_Mod + 52;
+y = 275+(mercy_index * 30);
+
+if(Heart_Pos_Mod + 52 < -16)
+{
+room_goto(global.Game_Data.Previ_Room);
+	obj_mainchara.x = global.Game_Data.PlayerStartxPos;
+	obj_mainchara.y = global.Game_Data.PlayerStartyPos;
+}
+}
+
+State_Enemy_Attack_Start = function()
+{
+		randomise();
+		var enemy = Enemy_Count[0];
+		var attack_num = irandom(array_length(enemy.Attacks)-1);
+		var battle_box = enemy.Attacks[attack_num].BattleBoxSize;
+		new_border(battle_box.Left,battle_box.Right,battle_box.Up,battle_box.Down);
+		enemy.Attacks[attack_num].pattern();
+		started = true;
+		_x = (battle_box.Right + battle_box.Left)/2-8;
+		_y = (battle_box.Up + battle_box.Down)/2-8;
+		x = _x;
+		y = _y;
+		global.invincible = 0;
+		global.TurnTimer = enemy.Attacks[attack_num].Duration*60
+		State = State_Enemy_Attack;
+
+}
+
+State_Enemy_Attack = function()
+{
+	global.TurnTimer --;
+	if (global.TurnTimer <=0)
+	{
+		obj_bullet_parent.alarm[11] = 1;
+		global.invincible = 0;
+		State = State_Selec;
+		
+	}
+	if (global.invincible > 0)
+	{
+		global.invincible --;
+		image_speed = 3;
+	}
+	else
+	{
+		image_index = 0;
+		image_speed = 0;
+	}
+	var Speed = 2;
+	var xDirection = keyboard_check(vk_right) - keyboard_check(vk_left);
+	var yDirection = keyboard_check(vk_down) - keyboard_check(vk_up);
+	if keyboard_check(vk_shift) or keyboard_check(ord("X"))
+	{
+		Speed = 1
+	}
+	
+	xSpeed = xDirection * Speed;
+	ySpeed = yDirection * Speed;
+	
+	if(place_meeting(x + xSpeed, y, obj_border_parent))
+	{
+		xSpeed = 0;
+	}
+
+	if(place_meeting(x, y + ySpeed, obj_border_parent))
+	{
+		ySpeed = 0;
+	}
+	
+	x += xSpeed;
+	y += ySpeed;
+	show_debug_message(global.Game_Data.Health);
+	started = false
+}
+
+State = State_Selec

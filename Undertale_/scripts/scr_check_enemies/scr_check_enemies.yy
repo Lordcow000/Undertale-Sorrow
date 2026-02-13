@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_battle_check_borders",
+  "%Name":"scr_check_enemies",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_battle_check_borders",
+  "name":"scr_check_enemies",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

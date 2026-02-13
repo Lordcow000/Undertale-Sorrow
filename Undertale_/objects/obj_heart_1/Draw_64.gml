@@ -4,7 +4,6 @@ draw_rectangle_colour(275, 400, 275 + global.Game_Data.MaxHealth, 420, c_yellow,
 draw_rectangle_colour((275 + global.Game_Data.MaxHealth) - (global.Game_Data.MaxHealth - global.Game_Data.Health), 400, 275 + global.Game_Data.MaxHealth, 420, c_red, c_red, c_red, c_red, false)
 //we need the small font
 
-;
 
 switch(Selec_Index)
 	{//153
@@ -57,7 +56,7 @@ if State = State_Fight || State = State_Act_Enemy_Select
 		{
 			draw_text_transformed(90, 265+(_index*30), "* "+enemy.name, 2, 2, 0);
 		}
-		draw_set_colour(c_white);
+		draw_set_colour(c_white);           
 	})
 		
 	
@@ -114,7 +113,9 @@ for(var i = 0; i < array_length(mercy_select); i ++)
 	draw_text_transformed(90, 265+(i*30), "* "+mercy_select[i], 2, 2, 0);
 }
 
-draw_sprite(spr_heart,0,52,275+(mercy_select * 30))
+draw_sprite(spr_heart,0,52,275+(mercy_index * 30))
+
+
 }
 
 if(State = State_Flee)

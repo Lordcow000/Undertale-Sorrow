@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"new_border",
+  "%Name":"scr_check_borders",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"new_border",
+  "name":"scr_check_borders",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

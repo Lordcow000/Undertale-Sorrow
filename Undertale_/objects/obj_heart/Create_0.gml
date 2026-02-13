@@ -369,7 +369,7 @@ State_Enemy_Attack_Start = function()
 		var enemy = Enemy_Count[0];
 		var attack_num = irandom(array_length(enemy.Attacks)-1);
 		var battle_box = enemy.Attacks[attack_num].BattleBoxSize;
-		new_border(battle_box.Left,battle_box.Right,battle_box.Up,battle_box.Down);
+		scr_new_border(battle_box.Left,battle_box.Right,battle_box.Up,battle_box.Down);
 		enemy.Attacks[attack_num].pattern();
 		started = true;
 		_x = (battle_box.Right + battle_box.Left)/2-8;

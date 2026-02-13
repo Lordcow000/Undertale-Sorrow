@@ -39,7 +39,12 @@ if(global.instantborder)
 	y = global.idealborder[3];
 }
 
-if(image_xscale = size && x = global.idealborder[0] && y = global.idealborder[3])
+if(image_xscale == size && x == global.idealborder[0] && y == global.idealborder[3])
 {
 	finished = true;
+}
+
+else
+{
+	finished = false;
 }

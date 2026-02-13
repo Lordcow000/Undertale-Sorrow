@@ -32,8 +32,35 @@ right = keyboard_check_pressed(vk_right);
 select = scr_multicheck_pressed(0);
 cancel = scr_multicheck_pressed(1);
 
+global.battle.turn_timer = 120;
 
+gained_gold = 0;
+gained_exp = 0;
 
+State_Temp_battle_start = function()
+{
+
+	_x = (237 + 397)/2-8; //Replace with left and right
+	_y = (250 + 385)/2-8; // replace with up and down
+	x = _x;
+	y = _y;
+	global.invincible = 0;
+	global.battle.turn_timer = 120;
+	State = State_Temp_battle;
+	
+}
+
+State_Temp_battle = function ()
+{
+	global.instantborder = false;
+	scr_new_border(237, 397, 250, 385);
+	
+	global.battle.turn_timer --;
+	if (global.battle.turn_timer <=0)
+	{
+		State = State_New_Turn;
+	}
+}
 
 State_New_Turn = function()
 {
@@ -52,11 +79,36 @@ State_New_Turn = function()
 	act_index = 0;
 	enemy_select_index = 0;
 	
-	State = State_Selec;
+	
+	
+	global.instantborder = false;
+	scr_new_border(32, 602, 250, 385);
+	
+	if (!scr_check_borders())
+    {
+        return; // stay in this state until finished HOWEVER, IT DOESNT FUCKING WORK
+    }
+	
+
+	if(scr_check_enemies())
+	{
+		State = State_End_Battle_Stats;
+	}
+	
+	else
+	{
+		State = State_Selec;
+	}
+	
+	
+	
+	
+	
 }
 
 State_Selec = function()
 {
+
 	if (!instance_exists(obj_battle_text_handler))
 	{
 		if (!first_turn)
@@ -69,11 +121,8 @@ State_Selec = function()
 			i.mode = "encounter"
 		}
 	}
-	global.idealborder[0] = 32;
-	global.idealborder[1] = 602;
-	global.idealborder[2] = 250;
-	global.idealborder[3] = 385;
-	global.instantborder = false;
+
+	
 
 	
 	global.battle.draw_text = true;
@@ -91,7 +140,7 @@ State_Selec = function()
 		Selec_Index --;
 		if(Selec_Index < 0)
 		{
-			Selec_Index = array_length(Selec) - 1
+			Selec_Index = array_length(Selec) - 1;
 		}
 	}
 	if(select)
@@ -161,19 +210,28 @@ State_Quicktime = function()
 		
 		enemy.hp -= _damage;
 		
-		if (enemy.hp <= 0)
+		if(enemy.hp <= 0 )
 		{
-			array_delete(Enemy_Count,enemy_select_index,1); // removes enemy if dead
+			enemy.killed = true;
 		}
-		show_debug_message(enemy);
-		State = State_New_Turn;
+		
+		if(scr_check_enemies())
+		{
+			State = State_End_Battle_Stats;
+		}
+		
+		else
+		{
+			State = State_Temp_battle;
+		}
+		
 	}
 	
 	Quicktime_Pos += 4;
 	
 	if(Quicktime_Pos >= 576)
 	{
-	State = State_Enemy_Attack_Start;
+		State = State_Temp_battle;
 	}
 }
 
@@ -388,7 +446,7 @@ State_Mercy = function()
 	if(down)
 	{
 		mercy_index ++
-		if(mercy_index > array_length(Mercy_Select) - 1)
+		if(mercy_index > array_length(mercy_select) - 1)
 		{
 			mercy_index = 0
 		}
@@ -398,10 +456,10 @@ State_Mercy = function()
 		mercy_index --
 		if(mercy_index < 0)
 		{
-			mercy_index = array_length(Mercy_Select) - 1
+			mercy_index = array_length(mercy_select) - 1
 		}
 	}
-			
+	
 	if(cancel)
 	{
 		State = State_Selec;
@@ -409,23 +467,32 @@ State_Mercy = function()
 	
 	if(select)
 	{
-		if(Mercy_Select[mercy_index] == "Flee")
+		if(mercy_select[mercy_index] == "Flee")
 		{
 			Heart_Pos_Mod = 0;
 			State = State_Flee;
 		}
-		else if(Mercy_Select[mercy_index] == "Spare")
+		else if(mercy_select[mercy_index] == "Spare")
 		{
 			array_foreach(enemies,function(enemy,index)
 			{
 				if(enemy.spareable)
 				{
 					enemy.spared = true;
-					enemy.object.image_blend = c_gray
-					
+					enemy.object.image_blend = c_gray;	
 				}
+				
 			})
 			
+			if (scr_check_enemies())
+			{
+				State = State_End_Battle_Stats;
+			}
+			
+			else
+			{
+				State = State_Temp_battle_start;
+			}
 		}
 	}
 		
@@ -433,18 +500,18 @@ State_Mercy = function()
 
 State_Flee = function()
 {
-Heart_Pos_Mod -= 1;
-sprite_index = spr_heart_walk
-image_speed = 1
-x = Heart_Pos_Mod + 52;
-y = 275+(mercy_index * 30);
+	Heart_Pos_Mod -= 1;
+	sprite_index = spr_heart_walk
+	image_speed = 1
+	x = Heart_Pos_Mod + 52;
+	y = 275+(mercy_index * 30);
 
-if(Heart_Pos_Mod + 52 < -16)
-{
-room_goto(global.Game_Data.Previ_Room);
-	obj_mainchara.x = global.Game_Data.PlayerStartxPos;
-	obj_mainchara.y = global.Game_Data.PlayerStartyPos;
-}
+	if(Heart_Pos_Mod + 52 < -16)
+	{
+		room_goto(global.Game_Data.Previ_Room);
+		obj_mainchara.x = global.Game_Data.PlayerStartxPos;
+		obj_mainchara.y = global.Game_Data.PlayerStartyPos;
+	}
 }
 
 State_Enemy_Attack_Start = function()
@@ -453,7 +520,7 @@ State_Enemy_Attack_Start = function()
 		var enemy = Enemy_Count[0];
 		var attack_num = irandom(array_length(enemy.Attacks)-1);
 		var battle_box = enemy.Attacks[attack_num].BattleBoxSize;
-		new_border(battle_box.Left,battle_box.Right,battle_box.Up,battle_box.Down);
+		scr_new_border(battle_box.Left,battle_box.Right,battle_box.Up,battle_box.Down);
 		enemy.Attacks[attack_num].pattern();
 		started = true;
 		_x = (battle_box.Right + battle_box.Left)/2-8;
@@ -513,4 +580,35 @@ State_Enemy_Attack = function()
 	started = false
 }
 
-State = State_Selec
+State_End_Battle_Stats = function()
+{
+	for(i=0; i<array_length(enemies);i++)
+	{
+		gained_gold += enemies[i].gold
+		global.Game_Data.Gold += enemies[i].gold;
+		if(enemies[i].killed)
+		{
+			gained_exp += enemies[i].xp
+			global.Game_Data.EXP += enemies[i].xp;
+		}
+	}
+	
+	dialoguer = instance_create_layer(0,0,"Instances",obj_dialogue_battle_end);
+	dialoguer._message[0] = "* YOU WON!#* You earned " +string(gained_exp)+ " EXP and "+string(gained_gold)+ " Gold.";
+
+	State = State_End_Battle_Gotoroom;
+}
+
+State_End_Battle_Gotoroom = function()
+{
+	if(!instance_exists(obj_dialogue_battle_end))
+	{
+		room_goto(global.Game_Data.Previ_Room);
+		obj_mainchara.x = global.Game_Data.PlayerStartxPos;
+		obj_mainchara.y = global.Game_Data.PlayerStartyPos;
+	}
+}
+
+
+
+State = State_Selec;

@@ -82,7 +82,7 @@ if (variable_instance_exists(self,"encounter1"))
 else
 room_goto(encounter_room);
 //instance_create_layer(50,50,"Instances",obj_enemy_placer);
-show_debug_message("Enemeis seemingly spawned")
+
 
 
 }

@@ -1,5 +1,10 @@
 items = global.Game_Data.Inventory;
 
+layer_id = layer_get_id("Background"); 
+bg_id = layer_background_get_id(layer_id);
+layer_background_blend(bg_id,global.battle.bg_colour);
+
+
 Selec_Index = 0;
 mercy_index = 0;
 act_index = 0;
@@ -213,6 +218,7 @@ State_Quicktime = function()
 		if(enemy.hp <= 0 )
 		{
 			enemy.killed = true;
+			instance_destroy(enemy.object);
 		}
 		
 		if(scr_check_enemies())

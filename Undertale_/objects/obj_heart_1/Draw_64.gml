@@ -5,6 +5,8 @@ draw_rectangle_colour((275 + global.Game_Data.MaxHealth) - (global.Game_Data.Max
 //we need the small font
 
 
+layer_background_blend(bg_id,global.battle.bg_colour);
+
 switch(Selec_Index)
 	{//153
 		case 0:

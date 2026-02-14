@@ -3,7 +3,7 @@
 function scr_lordcow_act_flirt(){
 	_message[0] = "* You try to flirt with Lordcow.";
 	_message[1] = "* She can't undestand you.#* she's a cow afterall";
-	_message[2] = "* Regardlessly, she's flatterd#  anyway.";
+	_message[2] = "* Regardless, she's flattered#  anyway.";
 	other.enemy.spareable = true;
 	
 }

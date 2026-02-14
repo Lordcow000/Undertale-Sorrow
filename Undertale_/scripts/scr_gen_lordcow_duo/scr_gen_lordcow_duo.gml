@@ -4,6 +4,7 @@ function scr_gen_lordcow_duo(){
 	global.battle.enemy_amts = 2;
 	global.battle.encounter_name = "Lordcow duo";
 	global.battle.encounter_text = "* Lordcow appeard!#* Lordcow came too."
+	global.battle.bg_colour = c_green;
 
 	global.battle.enemies = [];
 	

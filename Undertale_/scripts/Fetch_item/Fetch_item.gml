@@ -8,6 +8,7 @@ function Fetch_item(id){
 		{
 			name: "Fists",
 			display_name: "Fists",
+			battle_name: "Fists",
 			desc: 
 			[
 			"* Aint much but better than nothing"
@@ -23,6 +24,7 @@ function Fetch_item(id){
 		{
 			name: "Worn Sweater",
 			display_name: "Worn Swtr",
+			battle_name: "Wrn Swt.",
 			desc: 
 			[
 			"* \"Worn Sweater\" - Armor DF 1#*  Your old sweater"
@@ -37,7 +39,8 @@ function Fetch_item(id){
         return 
 		{
 			name: "Lemon",
-			display_name: "Lemon", 
+			display_name: "Lemon",
+			battle_name: "Lemon",
 			desc: 
 			[
 			"* \"Lemon\" - Heals 20 HP #* A yellow fruit, really REALLY#  sour."
@@ -52,7 +55,8 @@ function Fetch_item(id){
         return 
 		{
 			name: "Lime",
-			display_name: "Lime", 
+			display_name: "Lime",
+			battle_name: "Lime",
 			desc: ["* \"Lime\" - Heals 10 HP#* A green fruit, really sour."],
 			use: ["* Your tongue slightly recoil#  from the sourness."],
 			type: "Heal",
@@ -65,6 +69,7 @@ function Fetch_item(id){
 		{
 			name: "Lemon Lime Bitters",
 			display_name: "Limon Bitt", 
+			battle_name: "Limon B.",
 			desc: ["* \"Lemon Lime Bitters\"#  - Heals 100HP#* The best drink."],
 			use: ["* You down the bottle at a #  terrifyingly fast pace."],
 			type: "Heal",
@@ -77,6 +82,7 @@ function Fetch_item(id){
 		{
 			name: "Hair Clip",
 			display_name: "Hair Clip",
+			battle_name: "Hair Clip",
 			desc: ["* \"Hair Clip\" - Armor DF 10#* A cyan hair clip"],
 			use: ["* You clip the hair clip onto#  your hair"],
 			type: "Armor",
@@ -89,6 +95,7 @@ function Fetch_item(id){
 		{
 			name: "Stick",
 			display_name: "Stick",
+			battle_name: "Stick",
 			desc: 
 			[
 			"* \"Stick\" Weapon - ATK 5#* A flimsy looking stick"

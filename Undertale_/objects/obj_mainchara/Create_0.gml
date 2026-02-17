@@ -41,9 +41,10 @@ scr_item_add(ItemID.Lemon);
 scr_item_add(ItemID.Lime);
 scr_item_add(ItemID.Lemon_Lime_Bitters);
 scr_item_add(ItemID.Stick);
-
-
-
+scr_item_add(ItemID.Worn_sweater);
+//scr_item_add(ItemID.Lime);
+//scr_item_add(ItemID.Lime);
+//scr_item_add(ItemID.Lime);
 
 
 State_Battle = function()

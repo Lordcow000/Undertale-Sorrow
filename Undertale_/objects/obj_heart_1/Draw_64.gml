@@ -35,14 +35,14 @@ switch(Selec_Index)
 		break
 	}
 
-if State = State_Fight || State = State_Act_Enemy_Select
+if State = State_Enemy_Select
 {
 	array_foreach(enemies,function(enemy, _index)// Loops through each enemy
 	{
 		if(enemy.spareable)
 			draw_set_colour(c_yellow);
 		
-		if(enemy.spared)
+		if(enemy.spared || enemy.killed)
 		{
 			//dont draw
 		}
@@ -75,34 +75,93 @@ draw_sprite(spr_debug_pixel,0,319,319.5);
 
 if State = State_Act_Select
 {
-	
-
+	var cell_w = 240;
+	var cell_h = 32;
 	var enemy = enemies[enemy_select_index];
-	array_foreach(enemy.actions,function(act, _index) // Loops through each enemy
+
+	for (var i = 0; i < array_length(enemy.actions); i++)
 	{
-		if ((_index+1) % 2 == 0)
-		{
-			var multi = 200;
-			var row = floor(_index / 2);
-			
-		}
+	    var col = i mod act_cols;
+	    var row = i div act_cols;
+
+	    var draw_x = global.idealborder[0]+68 + col * cell_w;
+	    var draw_y = global.idealborder[2]+20 + row * cell_h;
 		
-		else
+		if(act_index = i)
 		{
-			var multi = 0;
-			var row = floor(_index / 2);
+			draw_sprite(spr_heart,0,draw_x - 38, draw_y+10);
 		}
-		if (act_index == _index)
+		draw_text_transformed(draw_x, draw_y, "* "+enemy.actions[i].name, 2,2,0);
+		
+	}
+	
+	
+}
+
+if State = State_Items
+{
+
+	var cell_w = 256;
+	var cell_h = 32;
+
+	for (var i = 0; i < array_length(current_page_list); i++)
+	{
+	    var col = i mod item_cols;
+	    var row = i div item_cols;
+
+	    var draw_x = global.idealborder[0]+68 + col * cell_w;
+	    var draw_y = global.idealborder[2]+20 + row * cell_h;
+		
+		if(item_index = i)
+			draw_sprite(spr_heart, 0, draw_x-36,draw_y+8);
+	
+		if(current_page_list[i] != "Nothing")
 		{
+			draw_text_transformed(draw_x, draw_y, "* "+ Fetch_item(current_page_list[i]).battle_name,2,2,0);
+		}
+	}
+	if(pages_on)
+	{
+		if(current_page == "left")
+			draw_text_transformed(global.idealborder[0]+323,global.idealborder[2]+84,"  PAGE 1",2,2,0);
+		else if(current_page == "right")
+			draw_text_transformed(global.idealborder[0]+323,global.idealborder[2]+84,"  PAGE 2",2,2,0);
+	}
+	
+	//for (var n = 0; n <= 7; n++)
+    //{
+	//	var item = global.Game_Data.Inventory[n]
+	//	if ((n+1) % 2 == 0)
+	//	{
+	//		var multi = 240;
+	//		var row = floor(n / 2);
 			
-			draw_sprite(spr_heart,0,52+(multi),275+(row*30));
-			draw_text_transformed(90+(multi), 265+(row*30), "* "+act.name, 2, 2, 0);
-		}
-		else
-		{
-			draw_text_transformed(90+(multi), 265+(row*30), "* "+act.name, 2, 2, 0);
-		}
-	})
+	//	}
+		
+	//	else
+	//	{
+	//		var multi = 0;
+	//		var row = floor(n / 2);
+	//	}
+		
+	//	if (item_index == n)
+	//	{
+			
+	//		if (global.Game_Data.Inventory[n] != "Nothing")
+	//		{
+	//			draw_sprite(spr_heart, 0, global.idealborder[0]+32+(multi),global.idealborder[2]+28 + (row*32));
+	//			draw_text_transformed(global.idealborder[0]+68 +(multi), global.idealborder[2]+20 + (row*32), "* "+Fetch_item(item).battle_name, 2, 2, 0);
+	//		}
+	//	}
+	//	else
+	//	{
+	//		if (global.Game_Data.Inventory[n] != "Nothing")
+	//		{
+	//			draw_text_transformed(global.idealborder[0]+68+(multi), global.idealborder[2]+20 + (row*32), "* "+Fetch_item(item).battle_name, 2, 2, 0);
+	//		}
+	//	}
+	//}
+
 
 		
 	

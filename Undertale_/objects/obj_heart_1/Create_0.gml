@@ -4,11 +4,15 @@ layer_id = layer_get_id("Background");
 bg_id = layer_background_get_id(layer_id);
 layer_background_blend(bg_id,global.battle.bg_colour);
 
+act_cols = 2;
+item_cols = 2;
 
 Selec_Index = 0;
 mercy_index = 0;
 act_index = 0;
+item_index = 0;
 enemy_select_index = 0;
+mode = "act";
 
 Selec = ["FIGHT", "ACT", "ITEM", "MERCY"]
 mercy_select = ["Spare", "Flee"];
@@ -16,6 +20,15 @@ mercy_select = ["Spare", "Flee"];
 first_turn = true;
 
 Quicktime_Pos = 0;
+
+pages_on = false
+inv_page1 = [];
+inv_page2 = [];
+page_1_len = 0;
+page_2_len = 0;
+current_page = "left";
+current_page_list = inv_page1;
+
 
 started = false;
 image_speed = 0;
@@ -134,6 +147,7 @@ State_Selec = function()
 	
 	if(right)
 	{
+		audio_play_sound(snd_main_select,1,false);
 		Selec_Index ++;
 		if(Selec_Index > array_length(Selec) - 1)
 		{
@@ -142,6 +156,7 @@ State_Selec = function()
 	}
 	if(left)
 	{
+		audio_play_sound(snd_main_select,1,false);
 		Selec_Index --;
 		if(Selec_Index < 0)
 		{
@@ -155,11 +170,17 @@ State_Selec = function()
 		switch(Selec_Index)
 		{
 			case 0:
-			State = State_Fight;
+			mode = "attack";
+			State = State_Enemy_Select;
 			break
 			
 			case 1:
-			State = State_Act_Enemy_Select;
+			mode = "act";
+			State = State_Enemy_Select;
+			break
+			
+			case 2:
+			State = State_Items;
 			break
 			
 			case 3:
@@ -220,9 +241,11 @@ State_Quicktime = function()
 			enemy.killed = true;
 			instance_destroy(enemy.object);
 		}
+		Quicktime_Pos = 0;
 		
 		if(scr_check_enemies())
 		{
+			
 			State = State_End_Battle_Stats;
 		}
 		
@@ -241,81 +264,11 @@ State_Quicktime = function()
 	}
 }
 
-State_Fight = function()
-{	
-	enemies = global.battle.enemies;
-	
-	if (enemies[enemy_select_index].spared)
-	{
-	    repeat (array_length(enemies))
-	    {
-	        enemy_select_index++;
-        
-	        if (enemy_select_index > array_length(enemies) - 1)
-	        {
-	            enemy_select_index = 0;
-	        }
-
-	        if (!enemies[enemy_select_index].spared)
-	        {
-	            break;
-	        }
-	    }
-	}
-	
-	
-	if (down)
-	{
-	    repeat (array_length(enemies))
-	    {
-	        enemy_select_index++;
-        
-	        if (enemy_select_index > array_length(enemies) - 1)
-	        {
-	            enemy_select_index = 0;
-	        }
-
-	        if (!enemies[enemy_select_index].spared)
-	        {
-	            break;
-	        }
-	    }
-	}
-
-	if (up)
-	{
-	    repeat (array_length(enemies))
-	    {
-	        enemy_select_index--;
-        
-	        if (enemy_select_index < 0)
-	        {
-	            enemy_select_index = array_length(enemies) - 1;
-	        }
-
-	        if (!enemies[enemy_select_index].spared)
-	        {
-	            break;
-	        }
-	    }
-	}
-	if(select)
-	{
-		State = State_Quicktime;
-		Quicktime_Pos = 0;		
-	}
-	if(cancel)
-	{
-		State = State_Selec;
-	}
-
-}
-
-State_Act_Enemy_Select = function()
+State_Enemy_Select = function()
 {
 	enemies = global.battle.enemies;
 	
-	if (enemies[enemy_select_index].spared)
+	if (enemies[enemy_select_index].spared || enemies[enemy_select_index].killed)
 	{
 	    repeat (array_length(enemies))
 	    {
@@ -326,7 +279,7 @@ State_Act_Enemy_Select = function()
 	            enemy_select_index = 0;
 	        }
 
-	        if (!enemies[enemy_select_index].spared)
+	        if (!enemies[enemy_select_index].spared || enemies[enemy_select_index].killed)
 	        {
 	            break;
 	        }
@@ -338,6 +291,7 @@ State_Act_Enemy_Select = function()
 	{
 	    repeat (array_length(enemies))
 	    {
+			audio_play_sound(snd_main_select,1,false);
 	        enemy_select_index++;
         
 	        if (enemy_select_index > array_length(enemies) - 1)
@@ -345,7 +299,7 @@ State_Act_Enemy_Select = function()
 	            enemy_select_index = 0;
 	        }
 
-	        if (!enemies[enemy_select_index].spared)
+	        if (!enemies[enemy_select_index].spared || enemies[enemy_select_index].killed)
 	        {
 	            break;
 	        }
@@ -356,6 +310,7 @@ State_Act_Enemy_Select = function()
 	{
 	    repeat (array_length(enemies))
 	    {
+			audio_play_sound(snd_main_select,1,false);
 	        enemy_select_index--;
         
 	        if (enemy_select_index < 0)
@@ -363,7 +318,7 @@ State_Act_Enemy_Select = function()
 	            enemy_select_index = array_length(enemies) - 1;
 	        }
 
-	        if (!enemies[enemy_select_index].spared)
+	        if (!enemies[enemy_select_index].spared || enemies[enemy_select_index].killed)
 	        {
 	            break;
 	        }
@@ -372,7 +327,15 @@ State_Act_Enemy_Select = function()
 
 	if(select)
 	{
-		State = State_Act_Select;
+		if(mode = "act")
+		{
+			State = State_Act_Select;
+		}
+		else if(mode = "attack")
+		{
+			State = State_Quicktime;
+		}
+		
 	}
 	if(cancel)
 	{
@@ -382,43 +345,73 @@ State_Act_Enemy_Select = function()
 
 State_Act_Select = function()
 {
-	
+
 	enemies = global.battle.enemies;
-	
+
 	var enemy = enemies[enemy_select_index];
+
+	var total = array_length(enemy.actions);
+
+
+	var rows = ceil(total / act_cols);
+
+	var col = act_index mod act_cols;
+	var row = act_index div act_cols;
 	
 	
-	
+	var new_col = col;
+	var new_row = row;
+
 	if (down)
 	{
-	    act_index += 2;
-	    if (act_index >= array_length(enemy.actions))
-	        act_index -= 2;
+	    new_row = row + 1;
+	    if (new_row * act_cols + col >= total)
+	    {
+	        new_row = 0;
+	    }
+		audio_play_sound(snd_main_select,1,false);
 	}
 
 	if (up)
 	{
-	    act_index -= 2;
-	    if (act_index < 0)
-	        act_index += 2;
+	    new_row = row - 1;
+		if (new_row < 0) 
+		{
+			new_row = rows - 1;
+		}
+		
+		while (new_row * act_cols + col >= total)
+	    {
+	        new_row--;
+	    }
+		
+		audio_play_sound(snd_main_select,1,false);
+
 	}
 	
 	if(right)
 	{
-		act_index ++;
-		if(act_index > array_length(enemy.actions) - 1)
-		{
-			act_index = 0;
-		}
+		new_col = (col + 1) mod act_cols;
+
+		audio_play_sound(snd_main_select,1,false);
 	}
+	
 	if(left)
 	{
-		act_index --;
-		if(act_index < 0)
-		{
-			act_index = array_length(enemy.actions) - 1;
-		}
+		new_col = (col - 1 + act_cols) mod act_cols;
+
+		audio_play_sound(snd_main_select,1,false);
 	}
+	
+	var new_index = new_row * act_cols + new_col;
+
+	if (new_index < total)
+	{
+	    act_index = new_index;
+	}
+	
+	
+	
 	if(select)
 	{
 		_act = enemy.actions[act_index];
@@ -426,7 +419,7 @@ State_Act_Select = function()
 	}
 	if(cancel)
 	{
-		State = State_Act_Enemy_Select;			
+		State = State_Enemy_Select;			
 	}
 	
 }
@@ -437,6 +430,226 @@ State_Act_Start = function()
 	handler.act = _act.ID;
 	handler.enemy = enemies[enemy_select_index]
 	State = State_Act
+}
+
+State_Items = function()
+{
+	var inventory = global.Game_Data.Inventory;
+	var inv_len = 0;
+
+	for(i=0; i<array_length(inventory);i++)
+	{
+		if(inventory[i]!="Nothing")
+		{
+			inv_len += 1;
+		}
+	}
+	
+	if(inv_len > 4)
+	{
+		page_2_len = array_length(inventory) - 4;
+		pages_on = true;
+		
+		for(i=0; i < 4;i++)
+		{
+			inv_page1[i] = inventory[i];
+		}
+		for(i=0; i < page_2_len;i ++)
+		{
+			inv_page2[i] = inventory[i+4]
+		}
+	}
+	else
+	{
+		inv_page1 = inventory;
+	}
+	show_debug_message(inv_page1);
+	show_debug_message(inv_page2);
+
+	var total = array_length(inventory);
+	var page_1_len = array_length(inv_page1)
+
+	show_debug_message(item_index)
+	show_debug_message(current_page)
+	var rows = ceil(total / item_cols);
+
+	var col = item_index mod item_cols;
+	var row = item_index div item_cols;
+	show_debug_message(col)
+
+	
+	var new_col = col;
+	var new_row = row;
+	if(current_page == "left")
+	{
+		current_page_list = inv_page1;
+	}
+	else
+	{
+		current_page_list = inv_page2;
+	}
+	
+
+	if (down)
+	{
+	    new_row = row + 1;
+	    var target = new_row * item_cols + col;
+
+	    if (target >= array_length(current_page_list) || current_page_list[target] == "Nothing")
+	    {
+	        new_row = 0;
+	    }
+		audio_play_sound(snd_main_select,1,false);
+	}
+
+	if (up)
+	{
+	    new_row = row - 1;
+		
+		if (new_row < 0) 
+		{
+			new_row = rows - 1;
+		}
+		
+		while (new_row >= 0 && (new_row * item_cols + col >= array_length(current_page_list) || current_page_list[new_row * item_cols + col] == "Nothing"))
+		{
+		    new_row--;
+		}
+
+		
+		audio_play_sound(snd_main_select,1,false);
+
+	}
+	
+	if(right)
+	{
+		if(pages_on && col == 1)
+		{
+			if(current_page == "left")
+			{
+				current_page = "right";
+			}
+			
+			else if(current_page == "right")
+			{
+				current_page = "left";
+			}
+			
+			new_col = 0;
+			new_row = 0;
+		}
+		else
+		{
+			new_col = (col + 1) mod item_cols
+		
+			var target = row * item_cols + new_col;
+		
+			if (target >= array_length(current_page_list) || current_page_list[target] == "Nothing")
+		    {
+		        new_col = 0;
+		    }
+		}
+
+		audio_play_sound(snd_main_select,1,false);
+	}
+	
+	if(left)
+	{
+		if(pages_on && col == 0)
+		{
+			if(current_page == "left")
+			{
+				current_page = "right";
+				var temp_index = row * item_cols + 1;
+				
+				if(inv_page2[temp_index] == "Nothing")
+					new_col = 0;
+
+				else
+					new_col = 1;
+					
+				var temp_index = 1 * item_cols + new_col;
+				if(inv_page2[temp_index] == "Nothing")
+					new_row = 0;
+					
+			}
+			
+			else if(current_page == "right")
+			{
+				current_page = "left";
+				new_col = 1;
+			}
+		}
+		else
+		{
+			new_col = (col - 1 + item_cols) mod item_cols;
+		
+			var target = row * item_cols + new_col;
+		
+			if (target < 0 || current_page_list[target] == "Nothing")
+		    {
+		        new_col = 0;
+		    }
+		}
+
+		audio_play_sound(snd_main_select,1,false);
+	}
+	
+	var new_index = new_row * item_cols + new_col;
+
+	if (new_index < array_length(current_page_list))
+	{
+	    item_index = new_index;
+	}
+	
+	
+	
+	
+	
+	//if (down)
+	//{
+	//    item_index += 2;
+	//	audio_play_sound(snd_main_select,1,false);
+	//    if (item_index >= array_length(inventory) || inventory[item_index] == "Nothing")
+	//        item_index -= 2;
+	//}
+
+	//if (up)
+	//{
+	//    item_index -= 2;
+	//	audio_play_sound(snd_main_select,1,false);
+	//    if (item_index < 0 || inventory[item_index] == "Nothing")
+	//        item_index += 2;
+	//}
+	
+	//if(right)
+	//{
+	//	item_index ++;
+	//	audio_play_sound(snd_main_select,1,false);
+	//	if(item_index > array_length(inventory) - 1)
+	//	{
+	//		item_index = 0;
+	//	}
+	//}
+	
+	//if(left)
+	//{
+	//	item_index --;
+	//	audio_play_sound(snd_main_select,1,false);
+	//	if(item_index < 0)
+	//	{
+	//		item_index = array_length(inventory) - 1;
+	//	}
+	//}
+	
+	if(select)
+	{
+		State = State_Selec;
+	}
+	if(cancel)
+	{
+		State = State_Selec;			
+	}
 }
 
 State_Act = function()
@@ -614,7 +827,5 @@ State_End_Battle_Gotoroom = function()
 		obj_mainchara.y = global.Game_Data.PlayerStartyPos;
 	}
 }
-
-
 
 State = State_Selec;

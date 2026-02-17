@@ -21,6 +21,8 @@ function scr_gen_lordcow_duo(){
 		{name:"Check",ID: lordcow_act_3},
 		{name:"Feed",ID: scr_lordcow_act_feed},
 		{name:"Flirt",ID: scr_lordcow_act_flirt},
+		{name:"Feed",ID: scr_lordcow_act_feed},
+		{name:"Flirt",ID: scr_lordcow_act_flirt},
 		],
 		last_act: "",
 		spareable: false,

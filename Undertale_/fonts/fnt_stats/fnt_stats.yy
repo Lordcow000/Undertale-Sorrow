@@ -110,7 +110,7 @@
     "9647":{"character":9647,"h":7,"offset":1,"shift":5,"w":3,"x":61,"y":38,},
   },
   "hinting":0,
-  "includeTTF":false,
+  "includeTTF":true,
   "interpreter":0,
   "italic":false,
   "kerningPairs":[],
@@ -138,6 +138,6 @@
     "name":"Default",
     "path":"texturegroups/Default",
   },
-  "TTFName":"",
+  "TTFName":"C:\\Users\\Administrator\\Documents\\GitHub\\Undertale-Fangame\\Undertale-Sorrow\\Undertale_\\fonts\\fnt_stats\\undertale-status-font.otf",
   "usesSDF":false,
 }

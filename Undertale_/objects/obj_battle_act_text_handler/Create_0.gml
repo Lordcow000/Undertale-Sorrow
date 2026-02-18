@@ -3,6 +3,6 @@
 enemy = global.battle.encounter_name;
 act = "";
 enemy = "";
-dialoguer = instance_create_layer(0,0,"Instances",obj_dialogue_battle_act);
+dialoguer = instance_create_layer(0,0,"Instances",obj_dialogue_battle);
 
 alarm[0] = 1;

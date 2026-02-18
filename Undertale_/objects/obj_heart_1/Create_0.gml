@@ -230,7 +230,7 @@ State_Quicktime = function()
 		
 		var enemy = enemies[enemy_select_index];
 		
-		var _damage = ceil(round(global.Game_Data.Attack - enemy.defense + random(2)) * _accuracy_multi)
+		var _damage = ceil(round( (Fetch_item(global.Game_Data.WeaponEquipped).atk + global.Game_Data.Attack) - enemy.defense + random(2)) * _accuracy_multi)
 		
 		show_debug_message(_damage);
 		
@@ -426,17 +426,20 @@ State_Act_Select = function()
 
 State_Act_Start = function()
 {
-	handler = instance_create_layer(0,0,"Instances",obj_battle_act_text_handler);
-	handler.act = _act.ID;
-	handler.enemy = enemies[enemy_select_index]
-	State = State_Act
+	enemy = enemies[enemy_select_index];
+	scr_battle_act_use(_act, enemy);
+	State = State_Act;
 }
 
 State_Items = function()
 {
 	var inventory = global.Game_Data.Inventory;
 	var inv_len = 0;
+	
+	inv_page1 = ["Nothing","Nothing","Nothing","Nothing"];
+	inv_page2 = ["Nothing","Nothing","Nothing","Nothing"];
 
+	
 	for(i=0; i<array_length(inventory);i++)
 	{
 		if(inventory[i]!="Nothing")
@@ -454,7 +457,7 @@ State_Items = function()
 		{
 			inv_page1[i] = inventory[i];
 		}
-		for(i=0; i < page_2_len;i ++)
+ 		for(i=0; i < page_2_len;i ++)
 		{
 			inv_page2[i] = inventory[i+4]
 		}
@@ -601,50 +604,23 @@ State_Items = function()
 	{
 	    item_index = new_index;
 	}
-	
-	
-	
-	
-	
-	//if (down)
-	//{
-	//    item_index += 2;
-	//	audio_play_sound(snd_main_select,1,false);
-	//    if (item_index >= array_length(inventory) || inventory[item_index] == "Nothing")
-	//        item_index -= 2;
-	//}
 
-	//if (up)
-	//{
-	//    item_index -= 2;
-	//	audio_play_sound(snd_main_select,1,false);
-	//    if (item_index < 0 || inventory[item_index] == "Nothing")
-	//        item_index += 2;
-	//}
-	
-	//if(right)
-	//{
-	//	item_index ++;
-	//	audio_play_sound(snd_main_select,1,false);
-	//	if(item_index > array_length(inventory) - 1)
-	//	{
-	//		item_index = 0;
-	//	}
-	//}
-	
-	//if(left)
-	//{
-	//	item_index --;
-	//	audio_play_sound(snd_main_select,1,false);
-	//	if(item_index < 0)
-	//	{
-	//		item_index = array_length(inventory) - 1;
-	//	}
-	//}
-	
+
 	if(select)
 	{
-		State = State_Selec;
+		var item_slot;
+
+	    if(current_page == "left")
+	        item_slot = item_index;
+	    else
+	        item_slot = item_index + 4;	
+			
+		var item = Fetch_item(inventory[item_slot]);
+		scr_item_use_battle(item, item_slot, inventory[item_slot]);
+		current_page = "left";
+		item_index = 0;
+		
+		State = State_Item_Use;
 	}
 	if(cancel)
 	{
@@ -652,9 +628,17 @@ State_Items = function()
 	}
 }
 
+State_Item_Use = function()
+{
+	if(!instance_exists(obj_dialogue_battle))
+	{
+		State = State_New_Turn;
+	}
+}
+
 State_Act = function()
 {
-	if(!instance_exists(obj_battle_act_text_handler))
+	if(!instance_exists(obj_dialogue_battle))
 	{
 		State = State_New_Turn;
 	}

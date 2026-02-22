@@ -10,7 +10,7 @@ with dialoguer
 	switch other.mode
 	{
 		case "flavour":
-			scr_battle_flavour_text_dictionary(other.enemy);
+			script_execute(global.battle.flavour_text_script);
 			break;
 		case "encounter":
 			_message[0] = global.battle.encounter_text

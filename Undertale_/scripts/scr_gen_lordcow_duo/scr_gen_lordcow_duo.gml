@@ -4,6 +4,7 @@ function scr_gen_lordcow_duo(){
 	global.battle.enemy_amts = 2;
 	global.battle.encounter_name = "Lordcow duo";
 	global.battle.encounter_text = "* Lordcow appeard!#* Lordcow came too."
+	global.battle.flavour_text_script = scr_lordcow_duo_flavour_text;
 	global.battle.bg_colour = c_green;
 
 	global.battle.enemies = [];
@@ -11,7 +12,7 @@ function scr_gen_lordcow_duo(){
 	global.battle.enemies[0] =
 	{
 		name: "Lordcow a",
-		hp: 1,
+		hp: 115,
 		max_hp: 115,
 		defense: 1,
 		gold: 1000,

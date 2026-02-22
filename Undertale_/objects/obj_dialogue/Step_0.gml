@@ -41,8 +41,15 @@ if (char_current < _len)
 				char_current += 1;
 				break;
 			case "/":
-				pause_timer = real(next_char)*60;
-				char_current += 1;
+				switch (next_char)
+				{
+					case "W":
+						pause_timer = real(next_next_char)*60;
+						char_current += 3;
+						break
+				}
+				break
+
 
 			default:
 				char_current += char_speed;

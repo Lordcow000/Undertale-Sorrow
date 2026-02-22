@@ -29,5 +29,4 @@ test_cow =
 	},
 	]
 }
-array_insert(global.BattleEnemies,array_length(global.BattleEnemies),test_cow);
 

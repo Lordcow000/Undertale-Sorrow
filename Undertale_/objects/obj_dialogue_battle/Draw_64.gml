@@ -9,7 +9,7 @@ var clean_text = string_copy(_message[text_current], 1, char_current);
 
 for(i=0;i <= 9; i++)
 {
-	clean_text = string_replace_all(clean_text, "/"+string(i), "");
+	clean_text = string_replace_all(clean_text, "/W"+string(i), "");
 }
 
 if(!array_length(_message) <= text_current)

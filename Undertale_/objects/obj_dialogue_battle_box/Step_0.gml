@@ -26,7 +26,7 @@ if (char_current < _len)
 	{
 		var current_char = string_char_at(_message[text_current], char_current + 1);
 		var next_char = string_char_at(_message[text_current], char_current + 2);
-		
+		var next_next_char = string_char_at(_message[text_current], char_current + 3);
 
 		switch (current_char)
 		{
@@ -39,15 +39,21 @@ if (char_current < _len)
 				pause_timer = 10;
 				char_current += 1;
 				break;
+				
 			case "/":
-				pause_timer = real(next_char)*60;
-				char_current += 1;
+				switch (next_char)
+				{
+					case "W":
+						pause_timer = real(next_next_char)*60;
+						char_current += 3;
+						break
+				}
+				break
+				
 
 			default:
 				char_current += char_speed;
 				break;
-			
-			
 		}
 	}
 }

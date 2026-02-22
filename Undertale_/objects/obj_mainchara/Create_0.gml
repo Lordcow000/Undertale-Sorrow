@@ -1,8 +1,9 @@
 /// @description Insert description here
 // You can write your code in this editor
-enemy_type = global.testenemies
-ready = true
-Run = false
+global.encounter_script = "";
+enemy_type = global.testenemies;
+ready = true;
+Run = false;
 xSpeed = 0;
 ySpeed = 0;
 Speed = 3;
@@ -52,7 +53,7 @@ State_Battle = function()
 
 }
 
-State_Battle_Start = function()
+State_Battle_Start_old = function()
 {
 Encounter_Chance ++;
 if(Encounter_Chance >= 60)
@@ -74,20 +75,36 @@ for (var i = 0; i < enemy_amount; i++)
 }
 global.BattleEnemiesPlacers = enemies;
 global.BattleEnemies = [];
-if (variable_instance_exists(self,"encounter1"))
-{
 
-	room_goto(encounter_room_1);
-	
-}
-else
-room_goto(encounter_room);
+room_goto(encounter_room_1);
+
 //instance_create_layer(50,50,"Instances",obj_enemy_placer);
 
 
 
 }
 }
+
+State_Battle_Start = function()
+{
+	Encounter_Chance ++;
+	if(Encounter_Chance >= 60)
+	{
+		Encounter_Chance = 0;
+		encounter = true;
+		global.Game_Data.PlayerStartxPos = x;
+		global.Game_Data.PlayerStartyPos = y;
+		global.Game_Data.Previ_Room = room;
+
+		randomise();
+		global.encounter_script = global.area_1_enemies[irandom_range(0, array_length(global.area_1_enemies)-1)];
+
+		room_goto(encounter_room_1);
+
+	}
+}
+
+
 
 State_Frozen = function()
 {

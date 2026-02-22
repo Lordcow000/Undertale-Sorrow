@@ -34,7 +34,7 @@ test_enemy =
 	]
 }
 
-enemies = obj_heart.Enemy_Count;
+enemies = obj_heart_old.Enemy_Count;
 
 array_insert(enemies,array_length(enemies),test_enemy);
 

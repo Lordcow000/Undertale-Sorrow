@@ -433,6 +433,7 @@ State_Act_Start = function()
 
 State_Items = function()
 {
+	pages_on = false;
 	var inventory = global.Game_Data.Inventory;
 	var inv_len = 0;
 	
@@ -464,6 +465,7 @@ State_Items = function()
 	}
 	else
 	{
+		pages_on = false;
 		inv_page1 = inventory;
 	}
 	show_debug_message(inv_page1);

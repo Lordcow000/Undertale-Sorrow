@@ -14,7 +14,7 @@ function scr_check_borders()
 	
 	for (var i = 0; i < array_length(borders); i++)
     {
-        if (!borders[i].finished)
+        if (!borders[i].finished == 1)
         {
             return false;
         }

@@ -18,6 +18,7 @@ Selec = ["FIGHT", "ACT", "ITEM", "MERCY"]
 mercy_select = ["Spare", "Flee"];
 
 first_turn = true;
+new_turn_started = false;
 
 Quicktime_Pos = 0;
 
@@ -55,6 +56,8 @@ global.battle.turn_timer = 120;
 gained_gold = 0;
 gained_exp = 0;
 
+attack = noone;
+
 State_Temp_battle_start = function()
 {
 
@@ -64,64 +67,59 @@ State_Temp_battle_start = function()
 	y = _y;
 	global.invincible = 0;
 	global.battle.turn_timer = 120;
+	instance_create_layer(x,y,"Instances",obj_attack_generator)
 	State = State_Temp_battle;
+	
+	
+
 	
 }
 
 State_Temp_battle = function ()
 {
-	global.instantborder = false;
-	scr_new_border(237, 397, 250, 385);
 	
-	global.battle.turn_timer --;
-	if (global.battle.turn_timer <=0)
+	
+	
+	if(!instance_exists(obj_attack_generator))
 	{
+		global.instantborder = false;
+		scr_new_border(32, 602, 250, 385);
+		x = 40;
+		y = 446;
 		State = State_New_Turn;
 	}
+
 }
 
 State_New_Turn = function()
 {
-	if(instance_exists(obj_battle_text_handler))
-	{
-		instance_destroy(obj_battle_text_handler);
-	}
-	
-	if(instance_exists(obj_battle_act_text_handler))
-	{
-		instance_destroy(obj_battle_act_text_handler);
-	}
-	first_turn = false;
 
 	mercy_index = 0;
 	act_index = 0;
 	enemy_select_index = 0;
 	
 	
-	
-	global.instantborder = false;
-	scr_new_border(32, 602, 250, 385);
-	
-	if (!scr_check_borders())
-    {
-        return; // stay in this state until finished HOWEVER, IT DOESNT FUCKING WORK
-    }
-	
 
-	if(scr_check_enemies())
-	{
-		State = State_End_Battle_Stats;
-	}
-	
+    if (!scr_check_borders())
+    {
+        return; // wait until finished
+    }
 	else
 	{
-		State = State_Selec;
+		if (instance_exists(obj_battle_text_handler))
+            instance_destroy(obj_battle_text_handler);
+
+        if (instance_exists(obj_battle_act_text_handler))
+            instance_destroy(obj_battle_act_text_handler);
+	
+
+
+	    if (scr_check_enemies())
+	        State = State_End_Battle_Stats;
+	    else
+	        State = State_Selec;
+		
 	}
-	
-	
-	
-	
-	
 }
 
 State_Selec = function()

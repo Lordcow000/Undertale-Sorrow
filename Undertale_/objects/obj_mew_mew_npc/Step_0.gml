@@ -13,9 +13,18 @@ if (waiter == 1)
 		with(msg)
 		{
 			portrait = false;
-			dialogue_list[0] = "* Fine, take this."
-			dialogue_list[1] = "* (You got a hair clip.)"
-			scr_item_add(ItemID.Hair_Clip);
+			if scr_item_add(ItemID.Hair_Clip)
+			{
+				dialogue_list[0] = "* Fine, take this."
+				dialogue_list[1] = "* (You got the hair clip)"
+			}
+			else
+			{
+				dialogue_list[0] = "* Fine, take thi- Oh? You're#  carrying too much?"
+				dialogue_list[1] = "* Too bad, i think you would've#  looked pretty."
+			}
+				
+		
 			
 		}
 	}

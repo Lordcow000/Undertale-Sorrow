@@ -15,8 +15,10 @@ if (waiter == 1)
 		portrait = true;
 		dialogue_list[0] = "* I'm Wing Gaster.";
 		ch_msg = 0;
-		ch[1] = "Hi";
-		ch[2] = "HOI";
+		ch[1] = "Opt 1";
+		ch[2] = "Opt 2";
+		ch[3] = "Opt 3";
+		ch[4] = "Opt 4";
 		
 		prt[0] = Ralsei_port_royalscientist;
 		prt[1] = Ralsei_port_royalscientist;
@@ -25,11 +27,19 @@ if (waiter == 1)
         {
             if (outcome == 1)
             {
-                dialogue_list[1] = "* You said Hi";
+                dialogue_list[1] = "* You selected option 1";
             }
             else if (outcome == 2)
             {
-                dialogue_list[1] = "* HOI!!!";
+                dialogue_list[1] = "* You selected option 2";
+            }
+			else if (outcome == 3)
+            {
+                dialogue_list[1] = "* You selected option 3";
+            }
+			else if (outcome == 4)
+            {
+                dialogue_list[1] = "* You selected option 4";
             }
 
             other.waiter = 2;

@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-with (obj_test_bullet) {
+with (blt_basic) {
     instance_destroy();
 }
 instance_destroy();

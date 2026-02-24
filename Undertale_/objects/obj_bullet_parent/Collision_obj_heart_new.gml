@@ -14,8 +14,8 @@ if (is_blue)
 			global.Game_Data.Health -= act_dmg;
 	
 			global.invincible = 60;
-
-			instance_destroy();
+			if(delete_on_touch)
+				instance_destroy();
 		}
 	}
 }
@@ -35,7 +35,8 @@ else if (is_orange)
 	
 			global.invincible = 60;
 
-			instance_destroy();
+			if(delete_on_touch)
+				instance_destroy();
 		}
 	}
 }
@@ -52,7 +53,8 @@ else
 	
 		global.invincible = 60;
 
-		instance_destroy();
+		if(delete_on_touch)
+				instance_destroy();
 	}
 }
 show_debug_message("Player Health: " + string(global.Game_Data.Health));

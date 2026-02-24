@@ -3,6 +3,6 @@
 function scr_lordcow_solo_attacks()
 {
 	randomise();
-	//return choose(obj_lordcow_attack_cows, obj_lordcow_attack_basic);
-	return obj_lordcow_attack_basic_1;
+	return choose(obj_lordcow_attack_cows, obj_lordcow_attack_basic, obj_lordcow_attack_basic_1);
+	//return obj_lordcow_attack_basic_1;
 }

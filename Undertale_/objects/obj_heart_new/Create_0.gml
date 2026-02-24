@@ -252,6 +252,7 @@ State_Selec = function()
 State_Quicktime = function()
 {
 	var center_x = 319;
+	
 	_accuracy_multi=1;
 	battle_bar_index += .1;
 	enemies = global.battle.enemies;
@@ -261,17 +262,17 @@ State_Quicktime = function()
 		var _distance_from_center = abs(center_x - Quicktime_Pos); 
 		if (_distance_from_center <= 12)
 		{
-			_accuracy_multi = 2.2
+			show_debug_message("PERFECT");
+			_accuracy_multi = 2.2;
 		}
 		else
 		{
-			_accuracy_multi = (1-_distance_from_center/(view_wport/2))*2  //287 is half the width of spr_battle_quicktime
+			_accuracy_multi = (1-_distance_from_center/(562/2))*2;  //287 is half the width of spr_battle_quicktime
 		}
 		
 		var enemy = enemies[enemy_select_index];
 		
-		var _damage = ceil(round(scr_get_player_atk() - enemy.defense + random(2)) * _accuracy_multi)
-		
+		var _damage = ceil(round(scr_get_player_atk() - enemy.defense + random(2)) * _accuracy_multi);
 		show_debug_message(_damage);
 		
 		enemy.hp -= _damage;

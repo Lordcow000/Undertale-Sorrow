@@ -2,7 +2,7 @@
 // You can write your code in this editor
 randomise();
 var spawn = random_range(global.idealborder[0], global.idealborder[1]);
-bullet = instance_create_layer(spawn,global.idealborder[2],"Instances",obj_test_bullet);
+bullet = instance_create_layer(spawn,global.idealborder[2],"Instances",blt_basic);
 bullet.is_blue = true;
 if global.TurnTimer > 0
 {

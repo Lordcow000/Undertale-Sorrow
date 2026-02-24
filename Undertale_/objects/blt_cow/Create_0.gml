@@ -1,5 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
+event_inherited();
 randomise();
 dmg = 1;
 is_blue = false;

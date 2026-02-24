@@ -1,11 +1,11 @@
 {
   "$GMObject":"",
-  "%Name":"obj_milk_bullet",
+  "%Name":"blt_milk_puddle",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"obj_milk_bullet",
+  "name":"blt_milk_puddle",
   "overriddenProperties":[],
   "parent":{
     "name":"Bullets",

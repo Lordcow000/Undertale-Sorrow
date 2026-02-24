@@ -11,7 +11,7 @@ alarm[0] = 30;
 milk_capacity = 0;
 milk_gain_rate = 5;
 
-milk = instance_create_layer(global.idealborder[0]+5, global.idealborder[3],"Instances",obj_milk_bullet);
+milk = instance_create_layer(global.idealborder[0]+5, global.idealborder[3],"Instances",blt_milk_puddle);
 
 
 

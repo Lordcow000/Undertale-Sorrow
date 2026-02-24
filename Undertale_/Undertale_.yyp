@@ -123,6 +123,8 @@
     {"id":{"name":"scr_gen_dialoguer","path":"scripts/scr_gen_dialoguer/scr_gen_dialoguer.yy",},},
     {"id":{"name":"scr_gen_lordcow_duo","path":"scripts/scr_gen_lordcow_duo/scr_gen_lordcow_duo.yy",},},
     {"id":{"name":"scr_gen_lordcow_solo","path":"scripts/scr_gen_lordcow_solo/scr_gen_lordcow_solo.yy",},},
+    {"id":{"name":"scr_get_player_atk","path":"scripts/scr_get_player_atk/scr_get_player_atk.yy",},},
+    {"id":{"name":"scr_get_player_def","path":"scripts/scr_get_player_def/scr_get_player_def.yy",},},
     {"id":{"name":"scr_item_add","path":"scripts/scr_item_add/scr_item_add.yy",},},
     {"id":{"name":"scr_item_drop","path":"scripts/scr_item_drop/scr_item_drop.yy",},},
     {"id":{"name":"scr_item_info","path":"scripts/scr_item_info/scr_item_info.yy",},},

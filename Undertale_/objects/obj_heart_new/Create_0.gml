@@ -61,13 +61,14 @@ attack = noone;
 State_Temp_battle_start = function()
 {
 
-	_x = (237 + 397)/2-8; //Replace with left and right
-	_y = (250 + 385)/2-8; // replace with up and down
-	x = _x;
-	y = _y;
 	global.invincible = 0;
 	global.battle.turn_timer = 120;
-	instance_create_layer(x,y,"Instances",obj_attack_generator)
+	instance_create_layer(x,y,"Instances",obj_attack_generator);
+	_x = (global.idealborder[0] + global.idealborder[1])/2-8; //Replace with left and right
+	_y = (global.idealborder[2] + global.idealborder[3])/2-8; // replace with up and down
+	x = _x;
+	y = _y;
+	
 	State = State_Temp_battle;
 	
 	
@@ -77,6 +78,40 @@ State_Temp_battle_start = function()
 
 State_Temp_battle = function ()
 {
+	if (global.invincible > 0)
+	{
+		global.invincible --;
+		image_speed = 3;
+	}
+	else
+	{
+		image_index = 0;
+		image_speed = 0;
+	}
+	
+	var Speed = 2;
+	var xDirection = keyboard_check(vk_right) - keyboard_check(vk_left);
+	var yDirection = keyboard_check(vk_down) - keyboard_check(vk_up);
+	if (scr_multicheck_pressed(1))
+	{
+		Speed = 1
+	}
+	
+	xSpeed = xDirection * Speed;
+	ySpeed = yDirection * Speed;
+	
+	if(place_meeting(x + xSpeed, y, obj_border_parent))
+	{
+		xSpeed = 0;
+	}
+
+	if(place_meeting(x, y + ySpeed, obj_border_parent))
+	{
+		ySpeed = 0;
+	}
+	
+	x += xSpeed;
+	y += ySpeed;
 	
 	
 	
@@ -84,6 +119,10 @@ State_Temp_battle = function ()
 	{
 		global.instantborder = false;
 		scr_new_border(32, 602, 250, 385);
+		
+		image_index = 0;
+		image_speed = 0;
+		
 		x = 40;
 		y = 446;
 		State = State_New_Turn;
@@ -228,7 +267,7 @@ State_Quicktime = function()
 		
 		var enemy = enemies[enemy_select_index];
 		
-		var _damage = ceil(round( (Fetch_item(global.Game_Data.WeaponEquipped).atk + global.Game_Data.Attack) - enemy.defense + random(2)) * _accuracy_multi)
+		var _damage = ceil(round(scr_get_player_atk() - enemy.defense + random(2)) * _accuracy_multi)
 		
 		show_debug_message(_damage);
 		
@@ -249,7 +288,7 @@ State_Quicktime = function()
 		
 		else
 		{
-			State = State_Temp_battle;
+			State = State_Temp_battle_start;
 		}
 		
 	}
@@ -258,7 +297,7 @@ State_Quicktime = function()
 	
 	if(Quicktime_Pos >= 576)
 	{
-		State = State_Temp_battle;
+		State = State_Temp_battle_start;
 	}
 }
 
@@ -427,6 +466,14 @@ State_Act_Start = function()
 	enemy = enemies[enemy_select_index];
 	scr_battle_act_use(_act, enemy);
 	State = State_Act;
+}
+
+State_Act = function()
+{
+	if(!instance_exists(obj_dialogue_battle))
+	{
+		State = State_Temp_battle_start;
+	}
 }
 
 State_Items = function()
@@ -632,17 +679,11 @@ State_Item_Use = function()
 {
 	if(!instance_exists(obj_dialogue_battle))
 	{
-		State = State_New_Turn;
+		State = State_Temp_battle_start;
 	}
 }
 
-State_Act = function()
-{
-	if(!instance_exists(obj_dialogue_battle))
-	{
-		State = State_New_Turn;
-	}
-}
+
 
 State_Mercy = function()
 {

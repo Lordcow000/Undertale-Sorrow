@@ -1,7 +1,8 @@
 /// @description Insert description here
 // You can write your code in this editor
 randomise();
-var spawn = random_range(global.idealborder[0], global.idealborder[1]);
-bullet = instance_create_layer(spawn,global.idealborder[2],"Instances",obj_test_bullet);
-bullet.is_blue = true;
+var spawn = random_range(global.idealborder[0], global.idealborder[1]);//get random x position along the top border
+bullet = instance_create_layer(spawn,global.idealborder[2],"Instances",obj_test_bullet);//create bullet with rand x and y of top border
+
+
 alarm[0] = spawn_delay;

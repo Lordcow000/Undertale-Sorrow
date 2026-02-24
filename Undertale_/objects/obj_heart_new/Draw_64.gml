@@ -127,44 +127,6 @@ if State = State_Items
 		else if(current_page == "right")
 			draw_text_transformed(global.idealborder[0]+323,global.idealborder[2]+84,"  PAGE 2",2,2,0);
 	}
-	
-	//for (var n = 0; n <= 7; n++)
-    //{
-	//	var item = global.Game_Data.Inventory[n]
-	//	if ((n+1) % 2 == 0)
-	//	{
-	//		var multi = 240;
-	//		var row = floor(n / 2);
-			
-	//	}
-		
-	//	else
-	//	{
-	//		var multi = 0;
-	//		var row = floor(n / 2);
-	//	}
-		
-	//	if (item_index == n)
-	//	{
-			
-	//		if (global.Game_Data.Inventory[n] != "Nothing")
-	//		{
-	//			draw_sprite(spr_heart, 0, global.idealborder[0]+32+(multi),global.idealborder[2]+28 + (row*32));
-	//			draw_text_transformed(global.idealborder[0]+68 +(multi), global.idealborder[2]+20 + (row*32), "* "+Fetch_item(item).battle_name, 2, 2, 0);
-	//		}
-	//	}
-	//	else
-	//	{
-	//		if (global.Game_Data.Inventory[n] != "Nothing")
-	//		{
-	//			draw_text_transformed(global.idealborder[0]+68+(multi), global.idealborder[2]+20 + (row*32), "* "+Fetch_item(item).battle_name, 2, 2, 0);
-	//		}
-	//	}
-	//}
-
-
-		
-	
 }
 
 if(State = State_Mercy)

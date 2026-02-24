@@ -6,7 +6,11 @@ if (is_blue)
 	{
 		if (global.invincible <= 0)
 		{
-			var act_dmg = round(dmg - (global.Game_Data.Defense/5));
+			var act_dmg = round(dmg - (scr_get_player_def()/5));
+			if (act_dmg <= 0)
+			{
+				act_dmg = 1;
+			}
 			global.Game_Data.Health -= act_dmg;
 	
 			global.invincible = 60;
@@ -22,7 +26,11 @@ else if (is_orange)
 	{
 		if (global.invincible <= 0)
 		{
-			var act_dmg = round(dmg - (global.Game_Data.Defense/5));
+			var act_dmg = round(dmg - (scr_get_player_def()/5));
+			if (act_dmg <= 0)
+			{
+				act_dmg = 1;
+			}
 			global.Game_Data.Health -= act_dmg;
 	
 			global.invincible = 60;
@@ -35,7 +43,11 @@ else
 {
 	if (global.invincible <= 0)
 	{
-		var act_dmg = round(dmg - (global.Game_Data.Defense/5));
+		var act_dmg = round(dmg - (scr_get_player_def()/5));
+		if (act_dmg <= 0)
+		{
+			act_dmg = 1;
+		}
 		global.Game_Data.Health -= act_dmg;
 	
 		global.invincible = 60;
@@ -43,3 +55,4 @@ else
 		instance_destroy();
 	}
 }
+show_debug_message("Player Health: " + string(global.Game_Data.Health));

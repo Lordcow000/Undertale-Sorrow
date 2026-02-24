@@ -41,12 +41,10 @@ if(global.instantborder)
 
 if(image_xscale == size && x == global.idealborder[0] && y == global.idealborder[3])
 {
-	show_debug_message("obj_border_done")
 	finished = true;
 }
 
 else
 {
-	show_debug_message("obj border not done")
 	finished = false;
 }

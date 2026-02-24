@@ -32,7 +32,7 @@ function scr_gen_lordcow_duo(){
 		killed: false,
 		object: ""
 	};
-	global.battle.enemies[0].object = instance_create_layer(80, 80, "Instances", obj_LORDCOW);
+	global.battle.enemies[0].object = instance_create_layer(80, 80, "Instances", obj_LORDCOW,{ depth: 10});
 	
 	global.battle.enemies[1] =
 	{
@@ -54,6 +54,6 @@ function scr_gen_lordcow_duo(){
 		killed: false,
 		object: ""
 	};
-	global.battle.enemies[1].object = instance_create_layer(380, 80, "Instances", obj_LORDCOW);
+	global.battle.enemies[1].object = instance_create_layer(380, 80, "Instances", obj_LORDCOW,{ depth: 10});
 
 }

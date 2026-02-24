@@ -6,7 +6,7 @@ is_blue = false;
 is_orange = false;
 attacking = false;
 bob_direction = 1;
-bob_speed = 6;
+bob_speed = 3;
 
 left = global.idealborder[0] - 30;
 right = global.idealborder[1] + 30;

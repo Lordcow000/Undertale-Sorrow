@@ -1,3 +1,4 @@
 /// @description Insert description here
 // You can write your code in this editor
-finished = false;
+depth = -10;
+draw_self();

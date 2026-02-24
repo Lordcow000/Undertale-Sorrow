@@ -1,6 +1,6 @@
 /// @description Insert description here
 // You can write your code in this editor
-
+depth = -100;
 if(array_length(_message) <= text_current)
 {
 	instance_destroy();

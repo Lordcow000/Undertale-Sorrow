@@ -30,5 +30,5 @@ function scr_gen_lordcow_solo(){
 		killed: false,
 		object: ""
 	};
-	global.battle.enemies[0].object = instance_create_layer(240, 80, "Instances", obj_LORDCOW);
+	global.battle.enemies[0].object = instance_create_layer(240, 80, "Instances", obj_LORDCOW,{ depth: 10});
 }

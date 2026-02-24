@@ -57,7 +57,7 @@ gained_gold = 0;
 gained_exp = 0;
 
 attack = noone;
-
+depth = 5;
 State_Temp_battle_start = function()
 {
 
@@ -78,6 +78,8 @@ State_Temp_battle_start = function()
 
 State_Temp_battle = function ()
 {
+
+	
 	if (global.invincible > 0)
 	{
 		global.invincible --;
@@ -92,8 +94,9 @@ State_Temp_battle = function ()
 	var Speed = 2;
 	var xDirection = keyboard_check(vk_right) - keyboard_check(vk_left);
 	var yDirection = keyboard_check(vk_down) - keyboard_check(vk_up);
-	if (scr_multicheck_pressed(1))
+	if (scr_multicheck_held(1))
 	{
+		show_debug_message("WORKING AHHHH")
 		Speed = 1
 	}
 	

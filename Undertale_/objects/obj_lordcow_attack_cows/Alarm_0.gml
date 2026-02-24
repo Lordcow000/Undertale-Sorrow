@@ -1,3 +1,3 @@
 /// @description Insert description here
 // You can write your code in this editor
-finished = false;
+event_user(0);

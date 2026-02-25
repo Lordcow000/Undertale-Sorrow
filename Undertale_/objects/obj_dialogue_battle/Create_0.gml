@@ -14,7 +14,7 @@ dialogue_advance = false;
 
 char_current = 1;
 text_current = 0;
-char_speed = 1;
+char_speed = 2;
 
 done = false;
 

@@ -4,9 +4,12 @@ function scr_gen_lordcow_duo(){
 	global.battle.enemy_amts = 2;
 	global.battle.encounter_name = "Lordcow duo";
 	global.battle.encounter_text = "* Lordcow appeard!#* Lordcow came too."
+	global.battle.flavour_text = "* Lordcow appeard!#* Lordcow came too.";
+	
 	global.battle.flavour_text_script = scr_lordcow_duo_flavour_text;
 	global.battle.enemy_attack_scr = scr_lordcow_solo_attacks;
 	global.battle.bg_colour = c_green;
+	global.battle_mus = mus_battle;
 
 	global.battle.enemies = [];
 	
@@ -22,9 +25,7 @@ function scr_gen_lordcow_duo(){
 		[
 		{name:"Check",ID: lordcow_act_3},
 		{name:"Feed",ID: scr_lordcow_act_feed},
-		{name:"Flirt",ID: scr_lordcow_act_flirt},
-		{name:"Feed",ID: scr_lordcow_act_feed},
-		{name:"Flirt",ID: scr_lordcow_act_flirt},
+		{name:"Flirt",ID: scr_lordcow_act_flirt}
 		],
 		last_act: "",
 		spareable: false,
@@ -37,7 +38,7 @@ function scr_gen_lordcow_duo(){
 	global.battle.enemies[1] =
 	{
 		name: "Lordcow b",
-		hp: 1,
+		hp: 115,
 		max_hp: 115,
 		defense: 1,
 		gold: 1000,

@@ -1,6 +1,5 @@
 /// @description Insert description here
 // You can write your code in this editor
-depth = -100;
 if(array_length(_message) <= text_current)
 {
 	instance_destroy();
@@ -16,7 +15,7 @@ if (scr_multicheck_pressed(1) and char_current < _len)
 }
 
 
-if (char_current < _len)
+if (char_current < _len && !done)
 {
     if (pause_timer > 0)
 	{
@@ -52,7 +51,8 @@ if (char_current < _len)
 				
 
 			default:
-				char_current += char_speed;
+				alarm[0] = char_speed
+				done = true;
 				break;
 		}
 	}

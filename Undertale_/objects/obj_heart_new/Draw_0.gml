@@ -46,6 +46,9 @@ if State = State_Enemy_Select
 {
 	array_foreach(enemies,function(enemy, _index)// Loops through each enemy
 	{
+		var draw_x = global.idealborder[0]+68;
+		var draw_y = global.idealborder[2]+20;
+		
 		if(enemy.spareable)
 			draw_set_colour(c_yellow);
 		
@@ -56,14 +59,13 @@ if State = State_Enemy_Select
 		
 		else if (enemy_select_index == _index)
 		{
-			draw_sprite(spr_heart,0,52,275+(_index*30))
-			
-			draw_text_transformed(90, 265+(_index*30), "* "+enemy.name, 2, 2, 0);
+			draw_sprite(spr_heart,0, draw_x-36, draw_y+8+(_index*32));
+			draw_text_transformed(draw_x, draw_y+(_index*32), "* "+enemy.name, 2, 2, 0);
 		}
 		
 		else
 		{
-			draw_text_transformed(90, 265+(_index*30), "* "+enemy.name, 2, 2, 0);
+			draw_text_transformed(draw_x, draw_y+(_index*32), "* "+enemy.name, 2, 2, 0);
 		}
 		draw_set_colour(c_white);           
 	})
@@ -96,7 +98,7 @@ if State = State_Act_Select
 		
 		if(act_index = i)
 		{
-			draw_sprite(spr_heart,0,draw_x - 38, draw_y+10);
+			draw_sprite(spr_heart,0,draw_x - 36, draw_y+8);
 		}
 		draw_text_transformed(draw_x, draw_y, "* "+enemy.actions[i].name, 2,2,0);
 		
@@ -140,16 +142,30 @@ if(State = State_Mercy)
 {
 for(var i = 0; i < array_length(mercy_select); i ++)
 {
-	draw_text_transformed(90, 265+(i*30), "* "+mercy_select[i], 2, 2, 0);
+	if mercy_select[i] == "Spare"
+	{
+		for(var n = 0; n < array_length(global.battle.enemies);n++)
+		{
+			if global.battle.enemies[n].spareable
+			{
+				draw_set_colour(c_yellow);
+			}
+		}
+	}
+	else
+	{
+		draw_set_colour(c_white);
+	}
+	draw_text_transformed(90, 265+(i*32), "* "+mercy_select[i], 2, 2, 0);
 }
 
-draw_sprite(spr_heart,0,52,275+(mercy_index * 30))
+draw_sprite(spr_heart,0,52,275+(mercy_index * 32))
 
 
 }
 
 if(State = State_Flee)
 {
-draw_text_transformed(90, 265, "* " + "I'm outta here", 2, 2, 0);
+	draw_text_transformed(90, 265, "* " + "I'm outta here", 2, 2, 0);
 //draw_sprite(spr_heart_walk,1,52 + Heart_Pos_Mod,275+(Mercy_Index * 30))
 }

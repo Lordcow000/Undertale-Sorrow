@@ -26,6 +26,7 @@ function scr_item_use(Item,item_slot,item_id){
 					dialogue_list[msg_length] = "* HP maxed out.";
 					_health = clamp(_health, 0, _max_health);
 				}
+				audio_play_sound(snd_heal,80,false);
 				global.Game_Data.Health = _health;
 				global.Game_Data.Inventory[item_slot] = "Nothing";
 			}

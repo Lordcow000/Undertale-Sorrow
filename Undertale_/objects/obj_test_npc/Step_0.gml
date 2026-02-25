@@ -13,7 +13,7 @@ if (waiter == 1)
 	with (msg)
 	{
 		portrait = true;
-		dialogue_list[0] = "* WOAW/W2 IT, worked#  Line 2#  Line 3";
+		dialogue_list[0] = "* I'm Sans, Sans the skeleton";
 		dialogue_list[1] = "* WOO HOO 2nd prompt";
 		dialogue_list[2] = "More portrait test";
 		dialogue_list[3] = "More portrait test";

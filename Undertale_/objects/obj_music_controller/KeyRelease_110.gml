@@ -1,3 +1,3 @@
 /// @description Insert description here
 // You can write your code in this editor
-instance_destroy(dialoguer);
+scr_caster_resume(global.overworld_mus);

@@ -1,5 +1,8 @@
 items = global.Game_Data.Inventory;
 
+scr_caster_pause(global.overworld_mus);
+scr_caster_loop(global.battle_mus)
+
 layer_id = layer_get_id("Background"); 
 bg_id = layer_background_get_id(layer_id);
 layer_background_blend(bg_id,global.battle.bg_colour);
@@ -58,6 +61,8 @@ gained_exp = 0;
 
 attack = noone;
 depth = 5;
+
+
 State_Temp_battle_start = function()
 {
 
@@ -140,7 +145,7 @@ State_New_Turn = function()
 	act_index = 0;
 	enemy_select_index = 0;
 	
-	
+	first_turn = false;
 
     if (!scr_check_borders())
     {
@@ -148,18 +153,16 @@ State_New_Turn = function()
     }
 	else
 	{
-		if (instance_exists(obj_battle_text_handler))
-            instance_destroy(obj_battle_text_handler);
-
-        if (instance_exists(obj_battle_act_text_handler))
-            instance_destroy(obj_battle_act_text_handler);
-	
-
-
 	    if (scr_check_enemies())
 	        State = State_End_Battle_Stats;
 	    else
+		{
+			if global.battle.flavour_text == ""
+			{
+				global.battle.flavour_text = script_execute(global.battle.flavour_text_script);
+			}
 	        State = State_Selec;
+		}
 		
 	}
 }
@@ -167,18 +170,13 @@ State_New_Turn = function()
 State_Selec = function()
 {
 
-	if (!instance_exists(obj_battle_text_handler))
+	if (!instance_exists(obj_dialogue_battle))
 	{
-		if (!first_turn)
-		{
-			instance_create_layer(0,0,"Instances",obj_battle_text_handler);
-		}
-		else
-		{
-			i = instance_create_layer(0,0,"Instances",obj_battle_text_handler);
-			i.mode = "encounter"
-		}
+		i = instance_create_layer(0,0,"Instances",obj_dialogue_battle);
+		i._message[0] = global.battle.flavour_text;
+		i.char_speed = 2;
 	}
+	//if(!instance_exists())
 
 	
 
@@ -205,8 +203,9 @@ State_Selec = function()
 	}
 	if(select)
 	{
+		instance_destroy(i);
 		global.battle.draw_text = false;
-
+		audio_play_sound(snd_select,10,false);
 		switch(Selec_Index)
 		{
 			case 0:
@@ -286,12 +285,12 @@ State_Quicktime = function()
 		
 		if(scr_check_enemies())
 		{
-			
 			State = State_End_Battle_Stats;
 		}
 		
 		else
 		{
+			global.battle.flavour_text = ""
 			State = State_Temp_battle_start;
 		}
 		
@@ -368,6 +367,7 @@ State_Enemy_Select = function()
 
 	if(select)
 	{
+		audio_play_sound(snd_select,10,false);
 		if(mode = "act")
 		{
 			State = State_Act_Select;
@@ -383,6 +383,8 @@ State_Enemy_Select = function()
 		State = State_Selec;			
 	}
 }
+
+
 
 State_Act_Select = function()
 {
@@ -455,6 +457,7 @@ State_Act_Select = function()
 	
 	if(select)
 	{
+		audio_play_sound(snd_select,10,false);
 		_act = enemy.actions[act_index];
 		State = State_Act_Start;
 	}
@@ -467,6 +470,7 @@ State_Act_Select = function()
 
 State_Act_Start = function()
 {
+	global.battle.flavour_text = "";
 	enemy = enemies[enemy_select_index];
 	scr_battle_act_use(_act, enemy);
 	State = State_Act;
@@ -479,6 +483,8 @@ State_Act = function()
 		State = State_Temp_battle_start;
 	}
 }
+
+
 
 State_Items = function()
 {
@@ -659,8 +665,9 @@ State_Items = function()
 
 	if(select)
 	{
+		audio_play_sound(snd_select,10,false);
 		var item_slot;
-
+		
 	    if(current_page == "left")
 	        item_slot = item_index;
 	    else
@@ -670,7 +677,7 @@ State_Items = function()
 		scr_item_use_battle(item, item_slot, inventory[item_slot]);
 		current_page = "left";
 		item_index = 0;
-		
+		global.battle.flavour_text = ""
 		State = State_Item_Use;
 	}
 	if(cancel)
@@ -715,6 +722,8 @@ State_Mercy = function()
 	
 	if(select)
 	{
+		audio_play_sound(snd_select,10,false);
+		global.battle.flavour_text = ""
 		if(mercy_select[mercy_index] == "Flee")
 		{
 			Heart_Pos_Mod = 0;
@@ -756,11 +765,11 @@ State_Flee = function()
 
 	if(Heart_Pos_Mod + 52 < -16)
 	{
-		room_goto(global.Game_Data.Previ_Room);
-		obj_mainchara.x = global.Game_Data.PlayerStartxPos;
-		obj_mainchara.y = global.Game_Data.PlayerStartyPos;
+		State= State_End_Battle_Gotoroom;
 	}
 }
+
+
 
 State_Enemy_Attack_Start = function()
 {
@@ -828,6 +837,8 @@ State_Enemy_Attack = function()
 	started = false
 }
 
+
+
 State_End_Battle_Stats = function()
 {
 	for(i=0; i<array_length(enemies);i++)
@@ -851,6 +862,8 @@ State_End_Battle_Gotoroom = function()
 {
 	if(!instance_exists(obj_dialogue_battle_end))
 	{
+		scr_caster_resume(global.overworld_mus);
+		scr_caster_stop(global.battle_mus);
 		room_goto(global.Game_Data.Previ_Room);
 		obj_mainchara.x = global.Game_Data.PlayerStartxPos;
 		obj_mainchara.y = global.Game_Data.PlayerStartyPos;

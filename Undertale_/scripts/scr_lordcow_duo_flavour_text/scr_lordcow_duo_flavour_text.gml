@@ -5,22 +5,34 @@ function scr_lordcow_duo_flavour_text()
 	
 	for(i =0; i < array_length(global.battle.enemies);i++)
 	{
-		if(global.battle.enemies[i].hp < 115)
+		if(global.battle.enemies[i].hp < 30 && !global.battle.enemies[i].killed)
 		{
-			_message[0] = "* Lordcow looks weak.";
-			return;
+			return "* Lordcow looks weak.";
+
+		}
+	}
+	
+	for(i=0; i < array_length(global.battle.enemies);i++)
+	{
+		if(global.battle.enemies[i].spared)
+		{
+			return scr_lordcow_solo_flavour_text();//if one of them is dead, get a random solo Lordcow flavour
+		}
+		else if(global.battle.enemies[i].killed)
+		{
+			return "* Lordcow mourns the loss#  of her \"roommate\" "
 		}
 	}
 	switch irandom_range(0,2)
 	{
 		case 0:
-			_message[0] = "* The Lordcows are looking#  at eachother";
-			break
+			return "* The Lordcows are looking at#  eachother.";
+
 		case 1:
-			_message[0] = "* One of the cows spins around#* The other stares at you"
-			break
+			return "* One of the cows spins around.#* The other stares at you."
+
 		case 2:
-			_message[0] = "* A evil and intimidating horse#  stares at the cows"
+			return "* A evil and intimidating horse#  stares at the cows."
 	}
 	
 	

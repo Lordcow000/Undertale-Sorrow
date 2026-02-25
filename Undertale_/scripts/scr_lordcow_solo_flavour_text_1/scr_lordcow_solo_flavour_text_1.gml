@@ -7,18 +7,16 @@ function scr_lordcow_solo_flavour_text()
 	{
 		if(global.battle.enemies[i].hp < 115)
 		{
-			_message[0] = "* Lordcow looks weak.";
-			return;
+			return "* Lordcow looks weak.";
 		}
 	}
 	switch irandom_range(0,1)
 	{
 		case 0:
-			_message[0] = "* Lordcow stares.";
-			break
+			return "* Lordcow stares.";
 		case 1:
-			_message[0] = "* She's just standing there.../3##  menacingly.";
-			break
+			return "* She's just standing there.../W3##  menacingly.";
+			
 	}
 	
 	

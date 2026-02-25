@@ -20,7 +20,7 @@ if (pause_timer > 0)
 	pause_timer--;
 }
 
-if (char_current < _len)
+else if (char_current < _len && !done)
 {
 
 		var current_char = string_char_at(_message[text_current], char_current + 1);
@@ -32,12 +32,14 @@ if (char_current < _len)
 		{
 			case ".":
 				pause_timer = 20;
-				char_current += 1;
+				alarm[0] = char_speed;
+				done = true;
 				break;
 
 			case ",":
 				pause_timer = 10;
-				char_current += 1;
+				alarm[0] = char_speed;
+				done = true;
 				break;
 			case "/":
 				switch (next_char)
@@ -51,7 +53,8 @@ if (char_current < _len)
 
 
 			default:
-				char_current += char_speed;
+				alarm[0] = char_speed;
+				done = true;
 				break;
 		}
 

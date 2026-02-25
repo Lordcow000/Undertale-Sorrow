@@ -16,6 +16,8 @@ char_current = 1;
 text_current = 0;
 char_speed = 1;
 
+done = false;
+
 pause_timer = 0;
 
 destroyed_self = false;

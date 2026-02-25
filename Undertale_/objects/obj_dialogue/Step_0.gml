@@ -3,14 +3,14 @@
 
 if(array_length(dialogue_list) <= text_current)
 {
-instance_destroy();
+	instance_destroy();
 }
 
 
 var _len = string_length(dialogue_list[text_current]);
 dialogue_advance = false;
 
-if (keyboard_check_pressed(ord("X")) and char_current < _len)
+if (scr_multicheck_pressed(1) and char_current < _len)
 {
 	char_current = _len
 	pause_timer = 0;
@@ -61,8 +61,17 @@ if (char_current < _len)
 
 
 			default:
+				
 				char_current += char_speed;
-				break;
+				current_char = string_char_at(dialogue_list[text_current], char_current + 1);
+				if( current_char != " " && current_char != "  ")
+				{
+					audio_stop_sound(snd_talk);
+					audio_play_sound(snd_talk,80,false);
+				}
+					
+				
+				break;	
 			
 			
 		}
@@ -73,7 +82,7 @@ if (char_current < _len)
 
 
 
-else if (keyboard_check_pressed(ord("Z")))
+else if (scr_multicheck_pressed(0))
 {
 	if (choice == false)
 	{

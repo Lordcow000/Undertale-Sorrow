@@ -4,9 +4,12 @@ function scr_gen_lordcow_solo(){
 	global.battle.enemy_amts = 2;
 	global.battle.encounter_name = "Lordcow solo";
 	global.battle.encounter_text = "* Lordcow appeard!"
+	global.battle.flavour_text = "* Lordcow appeard!"
+	
 	global.battle.flavour_text_script = scr_lordcow_solo_flavour_text;
 	global.battle.enemy_attack_scr = scr_lordcow_solo_attacks;
 	global.battle.bg_colour = c_green;
+	global.battle_mus = mus_battle;
 
 	global.battle.enemies = [];
 	

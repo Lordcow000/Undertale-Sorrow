@@ -102,7 +102,7 @@ function Fetch_item(id){
 			],
 			use: ["* You hold the stick firmly in#  both hands"],
 			type: "Weapon",
-			atk: 5,
+			atk: 50,
 			value: 0,
 		}
 		

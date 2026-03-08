@@ -9,9 +9,9 @@ scr_gen_dialoguer();
 		ch_msg = 0;
 		ch[1] = "Yes";
 		ch[2] = "No";
-        if (outcome != 0 && text_current == 0)
+        if (global.choicer_outcome != 0 && text_current == 0)
         {
-			if (outcome == 1)
+			if (global.choicer_outcome == 1)
 	        {
 				global.Game_Data.Inventory[other.item_slot] = "Nothing"
 				show_debug_message("Thrown")

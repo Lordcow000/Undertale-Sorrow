@@ -8,6 +8,8 @@ function scr_gen_lordcow_solo(){
 	
 	global.battle.flavour_text_script = scr_lordcow_solo_flavour_text;
 	global.battle.enemy_attack_scr = scr_lordcow_solo_attacks;
+	global.battle.bubble_generator = scr_gen_bubble_lordcow_solo;
+	
 	global.battle.bg_colour = c_green;
 	global.battle_mus = mus_battle;
 
@@ -28,6 +30,7 @@ function scr_gen_lordcow_solo(){
 		{name:"Flirt",ID: scr_lordcow_act_flirt},
 		],
 		last_act: "",
+		current_dialogue: "",
 		spareable: false,
 		spared: false,
 		killed: false,

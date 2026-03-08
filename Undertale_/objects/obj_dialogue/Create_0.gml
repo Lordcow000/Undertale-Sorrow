@@ -2,9 +2,10 @@
 // You can write your code in this editor
 choice_locked = false;
 
-dialogue_list[0] = "";
+dialogue_list[0] =        "I'm Flowey, Flowey the flower";
+dialogue_list_colour[0] = "    Flowey                   ";
+//   ^Drawn in yellow
 
-text_width = 300;
 text_x = 56;
 text_y = 340;
 
@@ -30,13 +31,7 @@ ch[4] = "";
 
 ch_alpha = 1;
 p = 1;
-outcome = 0;
+global.choicer_outcome = 0;
 
 position = 0;
 
-pauses = 
-[
-	".",
-	"?",
-	"!",
-];

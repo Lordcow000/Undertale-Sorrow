@@ -22,9 +22,3 @@ pause_timer = 0;
 
 destroyed_self = false;
 
-pauses = 
-[
-	".",
-	"?",
-	"!",
-];

@@ -1,9 +1,9 @@
 {
   "$GMScript":"v1",
-  "%Name":"scr_battle_gen_intro_dialogue",
+  "%Name":"scr_choicer_draw",
   "isCompatibility":false,
   "isDnD":false,
-  "name":"scr_battle_gen_intro_dialogue",
+  "name":"scr_choicer_draw",
   "parent":{
     "name":"Scripts",
     "path":"folders/Scripts.yy",

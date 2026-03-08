@@ -172,7 +172,7 @@ State_Selec = function()
 
 	if (!instance_exists(obj_dialogue_battle))
 	{
-		i = instance_create_layer(0,0,"Instances",obj_dialogue_battle);
+		i = instance_create_layer(global.idealborder[0]+20,global.idealborder[2]+20,"Instances",obj_dialogue_battle);
 		i._message[0] = global.battle.flavour_text;
 		i.char_speed = 2;
 	}
@@ -480,7 +480,7 @@ State_Act = function()
 {
 	if(!instance_exists(obj_dialogue_battle))
 	{
-		State = State_Temp_battle_start;
+		State = State_gen_dialogue_bubbles;
 	}
 }
 
@@ -769,6 +769,29 @@ State_Flee = function()
 	}
 }
 
+
+State_gen_dialogue_bubbles = function()
+{
+	for(var i=0;i<array_length(global.battle.enemies);i++)
+	{
+		//var enemy_object = global.battle.enemies[i].object;
+		//var bubble = instance_create_layer(enemy_object.x+enemy_object.sprite_width, enemy_object.y+10, "Instances", obj_bubble);
+		//instance_create_layer(bubble.x + 15, bubble.y + 10, "Instances", obj_dialogue_battle_bubble);
+		
+		script_execute(global.battle.bubble_generator,i);
+
+	}
+	State = State_dialogue_bubbles;
+	
+}
+
+State_dialogue_bubbles = function()
+{
+	if(!instance_exists(obj_bubble))
+	{
+		State = State_Temp_battle_start;
+	}
+}
 
 
 State_Enemy_Attack_Start = function()

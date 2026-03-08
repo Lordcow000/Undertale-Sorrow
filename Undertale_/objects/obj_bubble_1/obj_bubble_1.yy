@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"Object16",
+  "%Name":"obj_bubble_1",
   "eventList":[],
   "managed":true,
-  "name":"Object16",
+  "name":"obj_bubble_1",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",
@@ -28,8 +28,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_100x100",
-    "path":"sprites/spr_100x100/spr_100x100.yy",
+    "name":"spr_text_bubble_right",
+    "path":"sprites/spr_text_bubble_right/spr_text_bubble_right.yy",
   },
   "spriteMaskId":null,
   "visible":true,

@@ -8,6 +8,8 @@ function scr_gen_lordcow_duo(){
 	
 	global.battle.flavour_text_script = scr_lordcow_duo_flavour_text;
 	global.battle.enemy_attack_scr = scr_lordcow_solo_attacks;
+	global.battle.bubble_generator = scr_gen_bubble_lordcow_duo;
+	
 	global.battle.bg_colour = c_green;
 	global.battle_mus = mus_battle;
 
@@ -28,6 +30,8 @@ function scr_gen_lordcow_duo(){
 		{name:"Flirt",ID: scr_lordcow_act_flirt}
 		],
 		last_act: "",
+		current_dialogue: "",
+		//bubble: {_x: 240, _y: 80},
 		spareable: false,
 		spared: false,
 		killed: false,
@@ -50,6 +54,8 @@ function scr_gen_lordcow_duo(){
 		{name:"Flirt",ID: scr_lordcow_act_flirt},
 		],
 		last_act: "",
+		current_dialogue: "",
+		//bubble: {_x: 360, _y: 80},
 		spareable: false,
 		spared: false,
 		killed: false,

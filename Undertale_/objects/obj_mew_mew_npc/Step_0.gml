@@ -57,5 +57,5 @@ if (waiter == 2 && !instance_exists(obj_dialogue))
 	waiter = 0;
 	talked_to_amt += 1;
 	can_interact = true;
-	outcome = 0;
+	global.choicer_outcome = 0;
 }

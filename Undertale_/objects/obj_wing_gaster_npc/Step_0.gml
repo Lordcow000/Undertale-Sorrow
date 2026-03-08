@@ -23,21 +23,21 @@ if (waiter == 1)
 		prt[0] = Ralsei_port_royalscientist;
 		prt[1] = Ralsei_port_royalscientist;
 		
-		if (outcome != 0 && text_current == 0)
+		if (global.choicer_outcome != 0 && text_current == 0)
         {
-            if (outcome == 1)
+            if (global.choicer_outcome == 1)
             {
                 dialogue_list[1] = "* You selected option 1";
             }
-            else if (outcome == 2)
+            else if (global.choicer_outcome == 2)
             {
                 dialogue_list[1] = "* You selected option 2";
             }
-			else if (outcome == 3)
+			else if (global.choicer_outcome == 3)
             {
                 dialogue_list[1] = "* You selected option 3";
             }
-			else if (outcome == 4)
+			else if (global.choicer_outcome == 4)
             {
                 dialogue_list[1] = "* You selected option 4";
             }
@@ -51,5 +51,5 @@ if (waiter == 2 && !instance_exists(obj_dialogue))
 {
 	waiter = 0;
 	can_interact = true;
-	outcome = 0;
+	global.choicer_outcome = 0;
 }

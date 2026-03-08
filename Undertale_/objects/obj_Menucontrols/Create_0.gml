@@ -26,6 +26,6 @@ global.Game_Data.Inventory = array_create(8, "Nothing");
 
 
 reset_game();
-room_goto(Room0);
+room_goto(room_start);
 }
 	

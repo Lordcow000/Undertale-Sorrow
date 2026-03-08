@@ -1,7 +1,7 @@
 // Script assets have changed for v2.3.0 see
 // https://help.yoyogames.com/hc/en-us/articles/360005277377 for more information
 function scr_choicer(){
-if (outcome == p && choice == false)
+if (global.choicer_outcome == p && choice == false)
 {
     if ((text_current + 1) < array_length(dialogue_list))
     {
@@ -12,8 +12,9 @@ if (outcome == p && choice == false)
     else
     {
         instance_destroy(other);
+		global.choicer_outcome = 0;
     }
-	outcome = 0;
+	global.choicer_outcome = 0;
 	
 	
 }
@@ -79,9 +80,9 @@ if (text_current == ch_msg)
 			//where we would play a sound
 		}
         
-        if (keyboard_check_pressed(ord("Z")))
+        if (scr_multicheck_pressed(0))
         {
-            outcome = p;
+            global.choicer_outcome = p;
 			choice = false;
 
             

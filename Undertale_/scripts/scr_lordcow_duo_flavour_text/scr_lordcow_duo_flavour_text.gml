@@ -16,7 +16,7 @@ function scr_lordcow_duo_flavour_text()
 	{
 		if(global.battle.enemies[i].spared)
 		{
-			return scr_lordcow_solo_flavour_text();//if one of them is dead, get a random solo Lordcow flavour
+			return scr_lordcow_solo_flavour_text();//if one of them is spared, get a random solo Lordcow flavour
 		}
 		else if(global.battle.enemies[i].killed)
 		{
@@ -32,7 +32,7 @@ function scr_lordcow_duo_flavour_text()
 			return "* One of the cows spins around.#* The other stares at you."
 
 		case 2:
-			return "* A evil and intimidating horse#  stares at the cows."
+			return "* An evil and intimidating horse#  stares at the cows."
 	}
 	
 	

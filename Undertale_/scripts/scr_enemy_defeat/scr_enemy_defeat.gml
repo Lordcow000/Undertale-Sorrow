@@ -7,9 +7,11 @@ function scr_enemy_defeat()
 
 	ddd.sprite_index = sprite_index;
 
-	ddd.ht = sprite_height; //Height
+	ddd.ht = sprite_height;
 	ddd.wd = sprite_width;
 
 	ddd.image_speed = 0;
 	ddd.image_index = 1;
+	
+	audio_play_sound(snd_evaporate, 30, false);
 }

@@ -17,7 +17,7 @@ draw_set_font(fnt_main);
 draw_set_color(c_white);
 
 var clean_text = string_copy(dialogue_list[text_current], 1, char_current);
-var clean_colour_text = string_copy(dialogue_list_colour[text_current], 1, char_current);
+var clean_colour_text = string_copy(dialogue_list_colour[text_current].text, 1, char_current);
 
 
 for(i=0;i <= 9; i++)
@@ -33,12 +33,15 @@ if (!portrait)
 {
 
 draw_text_transformed(text_x, text_y, string_hash_to_newline(clean_text),2,2,0);
+}
+if(colour = true)
+{
+draw_set_colour(dialogue_list_colour[text_current].colour);
 
-//draw_set_colour(c_yellow);
-
-//draw_text_transformed(text_x, text_y, string_hash_to_newline(clean_colour_text), 2, 2, 0);
-//draw_set_colour(c_white);
+draw_text_transformed(text_x, text_y, string_hash_to_newline(clean_colour_text), 2, 2, 0);
+draw_set_colour(c_white);
 //                            Just testing
+// just fixin'
 
 }
 

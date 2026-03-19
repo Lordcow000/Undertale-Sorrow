@@ -16,12 +16,16 @@ if (waiter == 1)
 			if scr_item_add(ItemID.Hair_Clip)
 			{
 				dialogue_list[0] = "* Fine, take this."
+				dialogue_list_colour[0].text = ""
 				dialogue_list[1] = "* (You got the hair clip)"
+				dialogue_list_colour[1].text = ""
 			}
 			else
 			{
 				dialogue_list[0] = "* Fine, take thi- Oh? You're#  carrying too much?"
+				dialogue_list_colour[0].text = ""
 				dialogue_list[1] = "* Too bad, i think you would've#  looked pretty."
+				dialogue_list_colour[1].text = ""
 			}
 				
 		
@@ -35,6 +39,8 @@ if (waiter == 1)
 		{
 			portrait = false;
 			dialogue_list[0] = "* LEAVE ME ALONE!!!"
+			dialogue_list_colour[0].text = "* LEAVE ME ALONE!!!"
+			dialogue_list_colour[0].colour = c_red
 		}
 	}
 	
@@ -45,6 +51,7 @@ if (waiter == 1)
 		{
 			portrait = false;
 			dialogue_list[0] = "* You've talked to me:#  " + string(other.talked_to_amt) + " times."
+			dialogue_list_colour[0].text = ""
 		}
 	}
 	waiter = 2;

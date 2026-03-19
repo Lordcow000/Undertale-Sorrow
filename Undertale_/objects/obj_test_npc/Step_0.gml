@@ -14,10 +14,20 @@ if (waiter == 1)
 	{
 		portrait = true;
 		dialogue_list[0] = "* I'm Sans, Sans the skeleton";
+		dialogue_list_colour[0].text = ""
+		dialogue_list_colour[0].colour = c_yellow
 		dialogue_list[1] = "* WOO HOO 2nd prompt";
+		dialogue_list_colour[1].text = ""
+		dialogue_list_colour[1].colour = c_yellow
 		dialogue_list[2] = "More portrait test";
+		dialogue_list_colour[2].text = ""
+		dialogue_list_colour[2].colour = c_yellow
 		dialogue_list[3] = "More portrait test";
+		dialogue_list_colour[3].text = ""
+		dialogue_list_colour[3].colour = c_yellow
 		dialogue_list[4] = "More portrait test"
+		dialogue_list_colour[4].text = ""
+		dialogue_list_colour[4].colour = c_yellow
 		
 		prt[2] = Ralsei_port_happy;
 		prt[3] = Ralsei_port_normal;

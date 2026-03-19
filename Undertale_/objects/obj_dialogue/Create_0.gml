@@ -1,10 +1,15 @@
 /// @description Insert description here
 // You can write your code in this editor
 choice_locked = false;
+colour = true
 
 dialogue_list[0] =        "I'm Flowey, Flowey the flower";
-dialogue_list_colour[0] = "    Flowey                   ";
+dialogue_list_colour[0] = {
+colour: c_yellow,
+text: "    Flowey                   ",
+};
 //   ^Drawn in yellow
+//i'll try!
 
 text_x = 56;
 text_y = 340;
